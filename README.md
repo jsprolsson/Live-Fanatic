@@ -6,3 +6,4 @@
 - Alma Frank
 - Alexander Urtti
 - Filip Nicklasson
+- Fredrik Rosberg
