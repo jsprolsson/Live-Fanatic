@@ -1,0 +1,26 @@
+.main {
+    background-color: #60c7a2;
+
+}
+
+.mainpic>img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+}
+.subpic>img{
+    width: 100%;
+    height: auto;
+    position: relative;
+
+} 
+
+.cinfo{
+height: 10vh;
+width: 100%;
+margin-top: -10vh;
+font-size: 20px;
+color: rgba(255, 255, 255, 0.859);
+position: absolute;
+background-color: #0a0a0a67;
+}
