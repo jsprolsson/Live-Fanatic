@@ -1,12 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import "../styles/homeComponent.css";
 
 const HomeComponent = () => {
   return (
-    <div>
-      <h2>Welcome to Home</h2>
-      <Link to="/aboutus">About</Link>
-    </div>
-  )
-}
+    <>
+      <div class="main">
+        <container class="mainpic">
+          <img src="src/assets/Livefanatic.png" alt="" />
+        </container>
+        <div class="subpic">
+          <img src="src/assets/KonsertGen.jpg"></img>
+          <div class="cinfo">Type your band info here</div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default HomeComponent
+export default HomeComponent;
