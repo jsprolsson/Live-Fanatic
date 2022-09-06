@@ -5,6 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 import AboutUsComponent from './components/AboutUsComponent'
+import FooterComponent from './components/FooterComponent'
 import HeaderComponent from './components/HeaderComponent'
 // import './App.css'
 import HomeComponent from './components/HomeComponent'
@@ -23,14 +24,7 @@ function App() {
             <Route path='/aboutus' element={<AboutUsComponent />} />
           </Routes>
         </main>
-        <footer>
-          <nav>
-            <Link to="/">HomeIcon</Link>
-            <Link to="/events">CalenderIcon</Link>
-            <img src='' alt='img of lookingglass' />
-            <Link to="/profile">ProfileIcon</Link>
-          </nav>
-        </footer>
+        <FooterComponent/>
       </Router>
     </div>
   )
