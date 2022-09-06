@@ -5,6 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 import AboutUsComponent from './components/AboutUsComponent'
+import HeaderComponent from './components/HeaderComponent'
 // import './App.css'
 import HomeComponent from './components/HomeComponent'
 
@@ -15,14 +16,7 @@ function App() {
   return (
     <div>
       <Router>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/aboutus">About</Link>
-            <Link to="/events">Calender</Link>
-          </nav>
-        </header>
+        <HeaderComponent />
         <main>
           <Routes>
             <Route path='/' element={<HomeComponent />} />
