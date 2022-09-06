@@ -1,6 +1,15 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import AboutUsComponent from "./components/AboutUsComponent";
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
+import AboutUsComponent from './components/AboutUsComponent'
+import FooterComponent from './components/FooterComponent'
+import HeaderComponent from './components/HeaderComponent'
 import CalendarComponent from "./components/CalendarComponent";
+
 // import './App.css'
 import HomeComponent from "./components/HomeComponent";
 
@@ -8,14 +17,7 @@ function App() {
   return (
     <div>
       <Router>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/aboutus">About</Link>
-            <Link to="/events">Calender</Link>
-          </nav>
-        </header>
+        <HeaderComponent />
         <main>
           <Routes>
             <Route path="/" element={<HomeComponent />} />
@@ -23,14 +25,9 @@ function App() {
             <Route path="/events" element={<CalendarComponent />} />
           </Routes>
         </main>
-        <footer>
-          <nav>
-            <Link to="/">HomeIcon</Link>
-            <Link to="/events">CalenderIcon</Link>
-            <img src="" alt="img of lookingglass" />
-            <Link to="/profile">ProfileIcon</Link>
-          </nav>
-        </footer>
+
+        <FooterComponent/>
+
       </Router>
     </div>
   );
