@@ -1,0 +1,50 @@
+.calendar-cards {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.date {
+  flex: 1;
+}
+
+.info {
+  font-family: "Quicksand", sans-serif;
+  flex: 4;
+  text-align: center;
+}
+
+.artist {
+  font-size: x-large;
+}
+
+.location {
+  font-size: large;
+}
+
+.material-symbols-outlined {
+  flex: 1;
+  font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 48;
+}
+
+@media (min-width: 668px) {
+  .calendar-cards {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-top: 2vh;
+  }
+}
