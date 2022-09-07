@@ -24,7 +24,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomeComponent />} />
-            <Route path="/aboutus" element={<AboutUsComponent />} />
+            <Route path="/about-us" element={<AboutUsComponent />} />
             <Route path="/events" element={<CalendarComponent />} />
             <Route path='/search' element={<SearchComponent />} />
           </Routes>
