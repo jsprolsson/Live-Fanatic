@@ -1,0 +1,113 @@
+.register-line{
+    display:flex;
+    justify-content:center;
+    background-color: lightgray;
+    border-bottom:3px;
+    border:10px solid black;
+    margin-bottom:10vh;
+    height:15vh;
+
+}
+@media only screen and (min-width: 992px) {
+    .register-line {
+        height:20vh;
+       
+    }
+} 
+
+
+
+.register-line h1{
+    color:white;
+    font-size: 20px;
+    
+
+}
+@media only screen and (min-width: 992px) {
+    .register-line h1 {
+         font-size:30vh;
+       
+    }
+} 
+
+
+.register-page{
+    border:5px solid black;
+    padding:15px;
+    display:flex;
+    justify-content: center;
+    
+}
+@media only screen and (min-width: 992px) {
+    .register-page {
+         display:grid;
+         grid-template-columns: repeat(4,1fr);
+         grid-auto-rows: minmax(150px, auto);
+       
+    }
+} 
+.label-cor{
+    padding:20px 0;
+    
+}
+@media only screen and(min-width:992px){
+    .label-cor{
+        padding:25px 0;
+    }
+}
+button{
+    width: 35vw;
+    height:10vh;
+    color:white;
+    background-color: green;
+    padding:20px;
+  
+}
+@media only screen and(min-width:992px){
+    .button{
+        width: 40vw;
+        height:15vh;
+        padding:25px;
+    }
+}
+.label-text{
+    padding:5px;
+    size:20px
+}
+
+button:hover{
+    box-shadow: 1px 3px 5px blue;
+}
+@media  only screen and (min-width: 992px) {
+    .Image {
+        grid-column: 3/5;
+        grid-row: 1/5;
+        
+        background-color: grey;
+       
+    }
+} 
+
+@media only screen and(min-width:992px){
+    .forms-grid{
+        grid-column: 1/3;
+        grid-row: 1/5;
+    }
+}
+/* .image-register{
+    grid-column: 3/5;
+    grid-row: 1/5;
+    
+    background-color: grey;
+    
+} */
+.register-home{
+    width:100vw;
+    min-height:100vh;
+}
+.register-button{
+    padding:10px;
+    margin-left:3vw;
+}
+
+
