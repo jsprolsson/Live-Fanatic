@@ -1,0 +1,60 @@
+.main {
+    /* background-color: #60c7a2; */
+   
+}
+.mainpic>img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+}
+.subpic{
+    margin-bottom: 0;
+}
+.subpic>img{
+    width: 100%;
+    height: auto;
+    position:relative;
+} 
+.mainpic{
+    
+}
+.cinfo{
+display:grid;
+height: 10vh;
+width: 100%;
+margin-top: -12vh;
+color: rgba(255, 255, 255, 0.784);
+position: absolute;
+background-color: #0a0a0a9b;
+margin-bottom: 0;
+
+}
+.cinfo>div>h5{
+    margin: 0;
+    padding-top: 7px;
+    padding-left:7px;
+}
+.cinfo>p{
+   font-size: 10px;
+   margin:0;
+   padding: 7px; 
+   text-align: center;
+   
+
+   
+  
+}
+.divcol{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.divcol>h5{
+    justify-self: center;
+}
+.divcol>h5:first-child {
+    justify-self: start;
+}
+.divcol>h5:last-child {
+    justify-self: end;
+    padding-right: 7px;
+}
