@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/HeaderComponent.css'
 
 import logo from '../assets/Livefanatic.png'
@@ -18,8 +18,19 @@ function Hamburger() {
 
 function HeaderComponent() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
-
+  const [searchString, setSearchString] = useState("")
+  const navigate = useNavigate()
   const handleHamburger = () => setHamburgerOpen(!hamburgerOpen)
+
+  const inputOnEnterPress = (event) => {
+    if (event.key == 'Enter') {
+      handleSearchSubmit()
+    }
+  }
+  const handleSearchSubmit = (e) => {
+    navigate(`/search?name=${searchString}`)
+    setSearchString('')
+  }
   return (
     <header>
       <div className='header-top'>
@@ -32,8 +43,8 @@ function HeaderComponent() {
           <Link className='header-nav-link' to={"/about-us"}>About us</Link>
         </nav>
         <div id='header-searchbar'>
-          <input placeholder='search' />
-          <button id='header-search-btn'>search</button>
+          <input onKeyDown={inputOnEnterPress} value={searchString} onChange={(e) => setSearchString(e.target.value)} placeholder='search' />
+          <button onClick={handleSearchSubmit} id='header-search-btn'>search</button>
         </div>
         <div className='hamburger' onClick={handleHamburger}>
           <Hamburger />

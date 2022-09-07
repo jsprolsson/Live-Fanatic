@@ -47,6 +47,7 @@ function SearchComponent() {
   const [useSearchString] = useSearchParams()
   const [concerts, setConcerts] = useState([])
 
+  // för att söka i databasen
   // useEffect(() => {
   //   const loadConcerts = async () => {
   //     let rawResponse = await fetch('/data/concerts')

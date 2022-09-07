@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      'concerts': 'http://localhost:3333/data/'
+      '/data': 'http://localhost:3333'
     }
   }
 })
