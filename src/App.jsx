@@ -8,6 +8,8 @@ import AboutUsComponent from './components/AboutUsComponent'
 import HeaderComponent from './components/HeaderComponent'
 // import './App.css'
 import HomeComponent from './components/HomeComponent'
+import EventComponent from './components/EventComponent'
+
 
 
 
@@ -21,6 +23,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomeComponent />} />
             <Route path='/aboutus' element={<AboutUsComponent />} />
+            <Route path='/event/:id' element={<EventComponent/>}/>
           </Routes>
         </main>
         <footer>
@@ -29,6 +32,7 @@ function App() {
             <Link to="/events">CalenderIcon</Link>
             <img src='' alt='img of lookingglass' />
             <Link to="/profile">ProfileIcon</Link>
+            <Link to="/event/:id">Kendrick event</Link>
           </nav>
         </footer>
       </Router>
