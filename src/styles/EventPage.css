@@ -1,12 +1,3 @@
-/* .container {
-    display:flex;
-    max-width: 100vw;
-    margin-left: 5px;
-    margin-right: 5px;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 5px;
-} */
 
 .container {
     display: grid;
@@ -28,14 +19,9 @@ img {
     height: 100%;
 }
 
-p {
-    margin: 0;
-}
 
 
 .left {
-    /* width: 30vw;
-    min-height: 50vh; */
     grid-row: 1 / 3;
 }
 
@@ -48,15 +34,14 @@ p {
 }
 
 .right {
-    /* width: 70vw;
-    margin-left: 15px; */
     grid-column: 2 / 4;
     grid-row: 1 / 3;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
     .eventImage {
         width: 100%;
         height: 60%;
     }
+
 }
