@@ -14,7 +14,10 @@ import EventComponent from './components/EventComponent';
 
 
 // import './App.css'
+
 import HomeComponent from "./components/HomeComponent";
+import RegisterComponent from './components/RegisterComponent'
+
 
 function App() {
   return (
@@ -23,11 +26,14 @@ function App() {
         <HeaderComponent />
         <main>
           <Routes>
+
             <Route path="/" element={<HomeComponent />} />
             <Route path="/about-us" element={<AboutUsComponent />} />
             <Route path="/events" element={<CalendarComponent />} />
             <Route path='/search' element={<SearchComponent />} />
             <Route path='events/:id' element={<EventComponent/>}/>
+            <Route path='/register'element={<RegisterComponent/>}/>
+
           </Routes>
         </main>
 
