@@ -8,9 +8,9 @@ import {
 import AboutUsComponent from './components/AboutUsComponent'
 import FooterComponent from './components/FooterComponent'
 import HeaderComponent from './components/HeaderComponent'
-
 import CalendarComponent from "./components/CalendarComponent";
 import SearchComponent from './components/SearchComponent'
+import EventComponent from './components/EventComponent';
 
 
 // import './App.css'
@@ -27,6 +27,7 @@ function App() {
             <Route path="/about-us" element={<AboutUsComponent />} />
             <Route path="/events" element={<CalendarComponent />} />
             <Route path='/search' element={<SearchComponent />} />
+            <Route path='event/:id' element={<EventComponent/>}/>
           </Routes>
         </main>
 
