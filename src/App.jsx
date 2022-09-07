@@ -7,7 +7,7 @@ import {
 import AboutUsComponent from './components/AboutUsComponent'
 // import './App.css'
 import HomeComponent from './components/HomeComponent'
-
+import RegisterComponent from './components/RegisterComponent'
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomeComponent />} />
             <Route path='/aboutus' element={<AboutUsComponent />} />
+            <Route path='/register'element={<RegisterComponent/>}/>
           </Routes>
         </main>
         <footer>
