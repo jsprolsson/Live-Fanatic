@@ -9,6 +9,7 @@ import FooterComponent from './components/FooterComponent'
 import HeaderComponent from './components/HeaderComponent'
 // import './App.css'
 import HomeComponent from './components/HomeComponent'
+import SearchComponent from './components/SearchComponent'
 
 
 
@@ -22,9 +23,10 @@ function App() {
           <Routes>
             <Route path='/' element={<HomeComponent />} />
             <Route path='/aboutus' element={<AboutUsComponent />} />
+            <Route path='/search' element={<SearchComponent />} />
           </Routes>
         </main>
-        <FooterComponent/>
+        <FooterComponent />
       </Router>
     </div>
   )
