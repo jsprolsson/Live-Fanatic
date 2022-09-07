@@ -1,3 +1,4 @@
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -5,42 +6,42 @@ import {
   Link
 } from 'react-router-dom'
 import AboutUsComponent from './components/AboutUsComponent'
+import FooterComponent from './components/FooterComponent'
+import HeaderComponent from './components/HeaderComponent'
+import CalendarComponent from "./components/CalendarComponent";
+import SearchComponent from './components/SearchComponent'
+import EventComponent from './components/EventComponent';
+
+
 // import './App.css'
-import HomeComponent from './components/HomeComponent'
+
+import HomeComponent from "./components/HomeComponent";
 import RegisterComponent from './components/RegisterComponent'
 
 
 function App() {
-
   return (
     <div>
       <Router>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/aboutus">About</Link>
-            <Link to="/events">Calender</Link>
-          </nav>
-        </header>
+        <HeaderComponent />
         <main>
           <Routes>
-            <Route path='/' element={<HomeComponent />} />
-            <Route path='/aboutus' element={<AboutUsComponent />} />
+
+            <Route path="/" element={<HomeComponent />} />
+            <Route path="/about-us" element={<AboutUsComponent />} />
+            <Route path="/events" element={<CalendarComponent />} />
+            <Route path='/search' element={<SearchComponent />} />
+            <Route path='event/:id' element={<EventComponent/>}/>
             <Route path='/register'element={<RegisterComponent/>}/>
+
           </Routes>
         </main>
-        <footer>
-          <nav>
-            <Link to="/">HomeIcon</Link>
-            <Link to="/events">CalenderIcon</Link>
-            <img src='' alt='img of lookingglass' />
-            <Link to="/profile">ProfileIcon</Link>
-          </nav>
-        </footer>
+
+        <FooterComponent/>
+
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

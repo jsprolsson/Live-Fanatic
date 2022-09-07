@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import "../styles/HomeComponent.css";
+import TodaysShowsComponent from "./TodaysShowsComponent";
 
-const HomeComponent = () => {
+function HomeComponent() {
   return (
-    <div>
-      <h2>Welcome to Home</h2>
-      <Link to="/aboutus">About</Link>
+    <div className="main">
+      <div className="mainpic">
+        <img src="src/assets/Livefanatic.png" alt="" />
+      </div>
+      <div>
+        <TodaysShowsComponent />
+      </div>
     </div>
-  )
+  );
 }
 
-export default HomeComponent
+export default HomeComponent;
