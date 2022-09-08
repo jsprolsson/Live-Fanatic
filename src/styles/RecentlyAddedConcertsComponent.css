@@ -1,0 +1,27 @@
+.recently-added-concerts-container {
+    padding: 10px;
+}
+
+.child-containers{
+    display: flex;
+    justify-content: center;
+  gap: 10px;
+}
+
+.concertstext {
+    color: white;
+    text-align:center;
+    text-shadow: 10px red;
+    background-color: black;
+    font-size: 3vw;
+}
+
+.recently-added-concerts-container > h2 {
+    font-size: 4vw;
+    margin-top: 0;
+}
+
+.concert-container {
+    width: 100%;
+    background-size: cover;
+}
