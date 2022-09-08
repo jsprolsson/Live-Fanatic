@@ -34,7 +34,7 @@ function HeaderComponent() {
     setSearchString('')
   }
   return (
-    <header>
+    <header id='header'>
       <div className='header-top'>
         <Link to={'/'}>
           <img id='header-logo' src={logo} alt='logo of Live Fanatic' />
