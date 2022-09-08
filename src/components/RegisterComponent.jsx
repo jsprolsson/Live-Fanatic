@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef,useState,useEffect } from 'react';
 import "../styles/RegisterComponent.css"
 import {useNavigate}from 'react-router-dom'
 
 
+
 function RegisterComponent(){
-     
+     //mock api
     const adminUser={
         userName:"admin",
         email:"admin@yahoo.com",
@@ -14,16 +15,23 @@ function RegisterComponent(){
 
     
     const [userName, setUserName] = useState("");
+
     const [email, setEmail] = useState("");
+
     const [password,setPassword] = useState("");
+
     const [confirmPassword,setConfirmPassword] = useState("");
 
-   
+    const [error,setError]=useState("");
 
     const navigate= useNavigate();
 
-
-    
+    function ErrorMessage(message){
+       setError(message)
+       setTimeout(() => {
+        setError("")
+       }, 10000);
+    }
 
     
     const handleInputChange = (e) => {
@@ -42,13 +50,34 @@ function RegisterComponent(){
         if(id === "confirmPassword"){
             setConfirmPassword(value);
         }
-
+       
         
 
     }
     const handleSubmit  = (e) => {
-        console.log(userName,email,password,confirmPassword);
-        navigate("/");
+        // console.log(userName,email,password,confirmPassword);
+        e.preventDefault()
+        if(!userName){
+            ErrorMessage("This username is not there or not correct, try again")
+        }
+       else if(!password){
+            ErrorMessage("This password is not there or not correct, try again")
+           
+        }
+        else if(!email){
+            ErrorMessage("This email is not there or not correct, try again")
+           
+        }
+        else if(!confirmPassword){
+            ErrorMessage("This confirm Password is not there or not correct, try again")
+           
+        }
+        else{
+           
+            navigate("/");
+        }
+
+       
     }
     
 
@@ -62,8 +91,8 @@ function RegisterComponent(){
             </div>
             <div className="register-page">
                 <div className="forms-grid">
-                    <form handleSubmit={handleSubmit}>
-                      
+                    <form onSubmit={handleSubmit}>
+                      {(error !="")? (<div className="error">{error}</div>):""}
                             
                         <div className="label-cor"> 
                             <label className="label-text" htmlFor="userName">UserName:</label>
@@ -120,7 +149,7 @@ function RegisterComponent(){
                                 
                         </div>
                         <div className="register-button">
-                            <button onClick={()=>handleSubmit()} type="submit">Register</button>
+                            <button type="submit">Register</button>
                         </div>
                     
                             
