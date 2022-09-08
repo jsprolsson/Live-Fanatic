@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import '../styles/RecentlyAddedConcertsComponent.css'
+import { Link } from "react-router-dom";
 
 const RecentlyAddedConcertsComponent = () => {
     // const [concerts, setConcerts] = useState([])
@@ -31,11 +32,13 @@ const RecentlyAddedConcertsComponent = () => {
         <h2 className="concertstext">Recently added concerts</h2>
         <div className="child-containers">
           {concerts.map((event) => (
-              <section key={event.id} className="concert-container" style={{ backgroundImage: `url(${event.imageUrl})`}}>
+            <Link key={event.id} to={"events/"+event.id}>
+              <section  className="concert-container" style={{ backgroundImage: `url(${event.imageUrl})`}}>
                 <h4 className="concertstext">{event.artist}</h4>
                 <span className="concertstext">{event.time},</span>
                 <span className="concertstext"> {event.date}</span>
                 </section>
+                </Link>
           ))}
           </div>
           </div>
