@@ -1,173 +1,139 @@
-import React, { useRef,useState,useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import "../styles/RegisterComponent.css"
-import {useNavigate}from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 
-function RegisterComponent(){
-     //mock api
-    const adminUser={
-        userName:"admin",
-        email:"admin@yahoo.com",
-        password:"admin123",
-        confirmPassword:"admin123"
+function RegisterComponent() {
+  //mock api
+  const adminUser = {
+    userName: "admin",
+    email: "admin@yahoo.com",
+    password: "admin123",
+    confirmPassword: "admin123"
+  }
+
+
+  const [userName, setUserName] = useState("");
+
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  function ErrorMessage(message) {
+    setError(message)
+    setTimeout(() => {
+      setError("")
+    }, 10000);
+  }
+
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    if (id === "userName") {
+      setUserName(value);
+    }
+    if (id === "email") {
+      setEmail(value);
     }
 
-    
-    const [userName, setUserName] = useState("");
-
-    const [email, setEmail] = useState("");
-
-    const [password,setPassword] = useState("");
-
-    const [confirmPassword,setConfirmPassword] = useState("");
-
-    const [error,setError]=useState("");
-
-    const navigate= useNavigate();
-
-    function ErrorMessage(message){
-       setError(message)
-       setTimeout(() => {
-        setError("")
-       }, 10000);
+    if (id === "password") {
+      setPassword(value);
+    }
+    if (id === "confirmPassword") {
+      setConfirmPassword(value);
     }
 
-    
-    const handleInputChange = (e) => {
-        const {id , value} = e.target;
-        if(id === "userName"){
-            console.log(value);
-            setUserName(value);
-        }
-        if(id === "email"){
-            setEmail(value);
-        }
-        
-        if(id === "password"){
-            setPassword(value);
-        }
-        if(id === "confirmPassword"){
-            setConfirmPassword(value);
-        }
-       
-        
+
+
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!userName) {
+      ErrorMessage("This username is not there or not correct, try again")
+    }
+    else if (!password) {
+      ErrorMessage("This password is not there or not correct, try again")
 
     }
-    const handleSubmit  = (e) => {
-        // console.log(userName,email,password,confirmPassword);
-        e.preventDefault()
-        if(!userName){
-            ErrorMessage("This username is not there or not correct, try again")
-        }
-       else if(!password){
-            ErrorMessage("This password is not there or not correct, try again")
-           
-        }
-        else if(!email){
-            ErrorMessage("This email is not there or not correct, try again")
-           
-        }
-        else if(!confirmPassword){
-            ErrorMessage("This confirm Password is not there or not correct, try again")
-           
-        }
-        else{
-           
-            navigate("/");
-        }
+    else if (!email) {
+      ErrorMessage("This email is not there or not correct, try again")
 
-       
     }
-    
+    else if (!confirmPassword) {
+      ErrorMessage("This confirm Password is not there or not correct, try again")
+
+    }
+    else {
+
+      navigate("/");
+    }
 
 
-    
-    
-    return(
-    <> <div className="register-home">
-            <div className="register-line">
-                <h1>Registrera dig till Live-Fanatic</h1>
-            </div>
-            <div className="register-page">
-                <div className="forms-grid">
-                    <form onSubmit={handleSubmit}>
-                      {(error !="")? (<div className="error">{error}</div>):""}
-                            
-                        <div className="label-cor"> 
-                            <label className="label-text" htmlFor="userName">UserName:</label>
-                        </div>
-                        <div>
-                            <input  
-                                type="text" 
-                                name="userName" 
-                                id="userName" 
-                                value={userName}  
-                                onChange = {handleInputChange} placeholder="userName"
-                             />
-                                
-                        </div>
-                        <div className="label-cor">
-                                <label className="label-text" htmlFor="email">E-mail:</label>
-                        </div>
-                        <div>
-                            <input 
-                                        type="email" 
-                                        name="email" 
-                                        id="email"
-                                        value={email} 
-                                        
-                                        onChange={handleInputChange} placeholder="email"
-                                        />
-                        </div>
-                        <div className="label-cor">
-                                <label className="label-text" htmlFor="password">Password:</label>
-                        </div>
-                        <div>
-                            <input 
-                                        type="password" 
-                                        name="password" 
-                                        value={password} 
-                                        id="password"
-                                        onChange={handleInputChange} placeholder="password"
-                                        />
-                                    
-                        </div>
-                                    
-                        
-                        <div className="label-cor">
-                                <label className=" label-text" htmlFor="confirmPassword">Vertify Password:</label>
-                        </div>
-                        <div>           
-                                   <input 
-                                    type="confirmPassword" 
-                                    name="confirmPassword" 
-                                    value={confirmPassword}
-                                    id="confirmPassword"
-                                    onChange={handleInputChange} placeholder="confirmPassword"
-                                    />
-                                
-                        </div>
-                        <div className="register-button">
-                            <button type="submit">Register</button>
-                        </div>
-                    
-                            
-                    </form>
-                        
-                </div>
-                <div className='Image'>
+  }
 
-                </div>
-                
-            </div>
 
-      </div>
-        
-        
-    </>
-    )
-    
+
+
+
+  return (
+    <div className="register-page">
+      <h1 id='register-header'>Register to Live-Fanatic</h1>
+      <form id='register-form' onSubmit={handleSubmit}>
+        {(error != "") ? (<div className="register-error">{error}</div>) : null}
+
+        <div className='register-field'>
+          <label className="label-text" htmlFor="userName">Username</label>
+          <input
+            type="text"
+            name="userName"
+            id="userName"
+            value={userName}
+            onChange={handleInputChange} placeholder="userName"
+          />
+        </div>
+        <div className='register-field'>
+          <label className="label-text" htmlFor="email">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleInputChange} placeholder="email"
+          />
+        </div>
+        <div className='register-field'>
+          <label className="label-text" htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            id="password"
+            onChange={handleInputChange} placeholder="password"
+          />
+        </div>
+        <div className='register-field'>
+          <label className=" label-text" htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            type="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
+            id="confirmPassword"
+            onChange={handleInputChange} placeholder="confirmPassword"
+          />
+
+        </div>
+        <button className="register-button" type="submit">Register</button>
+      </form>
+    </div>
+  )
+
 
 
 }
