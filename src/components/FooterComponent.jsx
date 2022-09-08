@@ -34,6 +34,7 @@ function FooterComponent() {
                 </Link>
             </button>
         </footer>
+
     )
 }
 /// Profile not linked 08/09
