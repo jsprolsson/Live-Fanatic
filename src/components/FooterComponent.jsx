@@ -7,6 +7,7 @@ const FooterComponent = () => {
             <Link to="/events">CalenderIcon</Link>
             <img src='' alt='img of lookingglass' />
             <Link to="/profile">ProfileIcon</Link>
+            
           </nav>
     )
 }
