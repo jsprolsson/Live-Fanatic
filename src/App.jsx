@@ -11,6 +11,7 @@ import HeaderComponent from './components/HeaderComponent'
 import CalendarComponent from "./components/CalendarComponent";
 import SearchComponent from './components/SearchComponent'
 import EventComponent from './components/EventComponent';
+import PaymentComponent from './components/PaymentComponent';
 
 
 // import './App.css'
@@ -44,10 +45,12 @@ function App() {
               <Route path='/register' element={<RegisterComponent />} />
               <Route path='/livestream/:id' element={<LiveStreamComponent />} />
               <Route path='*' element={<PageNotFoundComponent />} />
+              <Route path='/payment'element={<PaymentComponent/>}/>
             </Routes>
           </main>
           <FooterComponent />
         </GlobalContextProvider>
+
       </Router>
     </div>
   );
