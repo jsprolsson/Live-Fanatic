@@ -83,66 +83,55 @@ function RegisterComponent() {
 
 
   return (
-    <> <div className="register-home">
-      <div className="register-page">
-        <h1 id='register-header'>Registrera dig till Live-Fanatic</h1>
-        <form id='register-form' onSubmit={handleSubmit}>
-          {(error != "") ? (<div className="register-error">{error}</div>) : null}
+    <div className="register-page">
+      <h1 id='register-header'>Register to Live-Fanatic</h1>
+      <form id='register-form' onSubmit={handleSubmit}>
+        {(error != "") ? (<div className="register-error">{error}</div>) : null}
 
-          <div className='register-field'>
-            <label className="label-text" htmlFor="userName">Username</label>
-            <input
-              type="text"
-              name="userName"
-              id="userName"
-              value={userName}
-              onChange={handleInputChange} placeholder="userName"
-            />
-          </div>
-          <div className='register-field'>
-            <label className="label-text" htmlFor="email">E-mail</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={handleInputChange} placeholder="email"
-            />
-          </div>
-          <div className='register-field'>
-            <label className="label-text" htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              id="password"
-              onChange={handleInputChange} placeholder="password"
-            />
-          </div>
-          <div className='register-field'>
-            <label className=" label-text" htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="confirmPassword"
-              name="confirmPassword"
-              value={confirmPassword}
-              id="confirmPassword"
-              onChange={handleInputChange} placeholder="confirmPassword"
-            />
-
-          </div>
-          <button className="register-button" type="submit">Register</button>
-        </form>
-
-        <div className='Image'>
+        <div className='register-field'>
+          <label className="label-text" htmlFor="userName">Username</label>
+          <input
+            type="text"
+            name="userName"
+            id="userName"
+            value={userName}
+            onChange={handleInputChange} placeholder="userName"
+          />
+        </div>
+        <div className='register-field'>
+          <label className="label-text" htmlFor="email">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={handleInputChange} placeholder="email"
+          />
+        </div>
+        <div className='register-field'>
+          <label className="label-text" htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            id="password"
+            onChange={handleInputChange} placeholder="password"
+          />
+        </div>
+        <div className='register-field'>
+          <label className=" label-text" htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            type="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
+            id="confirmPassword"
+            onChange={handleInputChange} placeholder="confirmPassword"
+          />
 
         </div>
-
-      </div>
-
+        <button className="register-button" type="submit">Register</button>
+      </form>
     </div>
-
-
-    </>
   )
 
 
