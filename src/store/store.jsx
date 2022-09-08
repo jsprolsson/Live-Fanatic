@@ -1,8 +1,13 @@
 import { useState, createContext } from 'react'
 
+const exampleUser = {
+  email: 'example@exam.com',
+  password: '432i4h32j32423',
+  roles
+}
 
 const getState = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(exampleUser)
 
   return {
     user,
