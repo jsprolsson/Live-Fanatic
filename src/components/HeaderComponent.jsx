@@ -19,6 +19,8 @@ function Hamburger() {
 function HeaderComponent() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
   const [searchString, setSearchString] = useState("")
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
+
   const navigate = useNavigate()
   const handleHamburger = () => setHamburgerOpen(!hamburgerOpen)
 
@@ -32,7 +34,7 @@ function HeaderComponent() {
     setSearchString('')
   }
   return (
-    <header>
+    <header id='header'>
       <div className='header-top'>
         <Link to={'/'}>
           <img id='header-logo' src={logo} alt='logo of Live Fanatic' />
@@ -41,7 +43,23 @@ function HeaderComponent() {
           <Link className='header-nav-link' to={"/events"}>Calender</Link>
           <Link className='header-nav-link' to={"/profile"}>Profile</Link>
           <Link className='header-nav-link' to={"/about-us"}>About us</Link>
+          <div className='account-dropdown'>
+            <Link className='header-nav-link' to={"/profile"}>Account</Link>
+            <div className='account-dropdown-menu'>
+              {isLoggedIn
+                ? <div>
+                  <p>logout</p>
+                  <p>account</p>
+                </div>
+                : <div>
+                  <p>login</p>
+                  <p>register</p>
+                </div>
+              }
+            </div>
+          </div>
         </nav>
+
         <div id='header-searchbar'>
           <input onKeyDown={inputOnEnterPress} value={searchString} onChange={(e) => setSearchString(e.target.value)} placeholder='search' />
           <button onClick={handleSearchSubmit} id='header-search-btn'>search</button>
@@ -55,6 +73,7 @@ function HeaderComponent() {
           <Link className='header-nav-link' to={"/events"}>Calender</Link>
           <Link className='header-nav-link' to={"/profile"}>Profile</Link>
           <Link className='header-nav-link' to={"/about-us"}>About us</Link>
+          <Link className='header-nav-link' to={"/profile"}>Account</Link>
         </nav>
       </div> : null}
     </header>

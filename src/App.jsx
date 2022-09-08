@@ -31,7 +31,7 @@ function App() {
             <Route path="/about-us" element={<AboutUsComponent />} />
             <Route path="/events" element={<CalendarComponent />} />
             <Route path='/search' element={<SearchComponent />} />
-            <Route path='event/:id' element={<EventComponent/>}/>
+            <Route path='events/:id' element={<EventComponent/>}/>
             <Route path='/register'element={<RegisterComponent/>}/>
 
           </Routes>
