@@ -4,30 +4,40 @@ import '../styles/FooterComponent.css'
 
 function FooterComponent() {
     return(
-        <footer>
+        <footer className='Navbar-Footer'>
             <button className='FooterButtonHome'>
-                <span class="material-symbols-outlined">
-                    home
-                </span>
+                <Link to="/">
+                    <span className="material-symbols-outlined">
+                        home
+                    </span>
+                </Link>
             </button>
             <button className='FooterButtonCalendar'>
-                <span class="material-symbols-outlined">
-                    calendar_month
-                </span>
+                <Link to="/events">
+                    <span className="material-symbols-outlined">
+                        calendar_month
+                    </span>
+                </Link>
             </button>
             <button className='FooterButtonSearch'>
-                <span class="material-symbols-outlined">
-                    search
-                </span>
+                <Link to="/search">
+                    <span className="material-symbols-outlined">
+                        search
+                    </span>
+                </Link>
             </button>
             <button className='FooterButtonProfile'>
-                <span class="material-symbols-outlined">
-                    person
-                </span>
+                <Link to="/profile">
+                    <span className="material-symbols-outlined">
+                        person
+                    </span>
+                </Link>
             </button>
         </footer>
+
     )
 }
+/// Profile not linked 08/09
 
 /// Döp alla knappar till FooterButtonHome t.ex.
 
