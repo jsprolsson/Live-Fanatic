@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../styles/HomeComponent.css";
 import TodaysShowsComponent from "./TodaysShowsComponent";
 
+
 function HomeComponent() {
   return (
     <div className="main">
@@ -10,6 +11,7 @@ function HomeComponent() {
       </div>
       <div>
         <TodaysShowsComponent />
+        
       </div>
     </div>
   );

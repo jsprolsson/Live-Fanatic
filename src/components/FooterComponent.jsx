@@ -4,6 +4,7 @@ import '../styles/FooterComponent.css'
 
 function FooterComponent() {
     return(
+
         <footer>
             <button className='FooterButtonHome'>
                 <span class="material-symbols-outlined">
@@ -26,6 +27,7 @@ function FooterComponent() {
                 </span>
             </button>
         </footer>
+
     )
 }
 
