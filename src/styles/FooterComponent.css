@@ -1,4 +1,26 @@
-button {
-  background-color: #343a40;
-  color: #60c7a2;
+.Navbar-Footer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #343a40;
+    height: 50px;
+    position: fixed; 
+    bottom: 0;
+}
+
+.Navbar-Footer > button{
+    margin-left: 7vw;
+    margin-right: 7vw;
+    margin-top: 5px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    background-color: #343a40;
+}
+
+.Navbar-Footer > button > a{
+    background-color: #343a40;
+    color: white;
+    display: inline-block;
 }
