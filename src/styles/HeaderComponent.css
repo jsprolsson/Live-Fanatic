@@ -58,7 +58,28 @@ header {
   display: none;
 }
 
+.account-dropdown-menu {
+  display: none;
+  background-color: #343A40;
+  border: 1px solid #60c7a2;
+  color: #60c7a2;
+  margin-top: 5px;
+  padding: 5px 2px 5px 2px;
+  position: absolute;
+}
+
+.account-dropdown-menu>div>p {
+  margin-top: 5px;
+  text-transform: uppercase;
+  font-size: small;
+}
+
 @media screen and (min-width: 768px) {
+
+  .account-dropdown:hover .account-dropdown-menu {
+    display: block;
+  }
+
   #header-search-btn {
     display: block;
     color: #60c7a2;
