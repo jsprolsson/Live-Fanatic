@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
 } from 'react-router-dom'
 import AboutUsComponent from './components/AboutUsComponent'
 import FooterComponent from './components/FooterComponent'
@@ -19,6 +19,13 @@ import HomeComponent from "./components/HomeComponent";
 import RegisterComponent from './components/RegisterComponent'
 
 import { GlobalContextProvider } from './store/store';
+import LiveStreamComponent from './components/LiveStreamComponent';
+
+const PageNotFoundComponent = () => {
+  return (
+    <div><h1>Page not found</h1></div>
+  )
+}
 
 function App() {
   return (
@@ -35,7 +42,8 @@ function App() {
               <Route path='/search' element={<SearchComponent />} />
               <Route path='events/:id' element={<EventComponent />} />
               <Route path='/register' element={<RegisterComponent />} />
-
+              <Route path='/livestream/:id' element={<LiveStreamComponent />} />
+              <Route path='*' element={<PageNotFoundComponent />} />
             </Routes>
           </main>
           <FooterComponent />
