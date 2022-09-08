@@ -1,0 +1,78 @@
+.ticketsdiv {
+    display: grid;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: auto;
+    margin: 5px;
+    margin-top: -15px;
+}
+
+.event {
+    margin-top: -15px;
+}
+
+h2 {
+    display: grid;
+    justify-content: center;
+    margin: 7px;
+    margin-bottom: 15px;
+}
+
+.ticketschoice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 6px;
+
+
+}
+
+.ticketschoice>h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.numberOfTickets {
+    height: 4vh;
+    width: 8vh;
+    align-self: center;
+    justify-self: end;
+}
+
+.setRight {
+    display: grid;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.totalPrice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 8vh;
+    margin-bottom: 10px;
+}
+
+hr {
+    margin: 0;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 10px;
+}
+.btn{
+    border-radius: 5px;
+    margin: 8px;
+    
+    
+}
+.counter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.counter>button{
+    margin: 8px;
+}
+.counter>p{
+    justify-self: center;
+}
