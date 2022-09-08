@@ -3,6 +3,7 @@ import "../styles/HomeComponent.css";
 import TodaysShowsComponent from "./TodaysShowsComponent";
 import RecentlyAddedConcertsComponent from "./RecentlyAddedConcertsComponent";
 
+
 function HomeComponent() {
   return (
     <div className="main">
@@ -12,6 +13,7 @@ function HomeComponent() {
       <div>
         <RecentlyAddedConcertsComponent/>
         <TodaysShowsComponent />
+        
       </div>
     </div>
   );
