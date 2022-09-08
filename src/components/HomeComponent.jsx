@@ -13,7 +13,6 @@ function HomeComponent() {
       <div>
         <RecentlyAddedConcertsComponent/>
         <TodaysShowsComponent />
-        
       </div>
     </div>
   );
