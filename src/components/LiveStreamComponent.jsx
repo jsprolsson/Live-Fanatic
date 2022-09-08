@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom"
+import "../styles/LiveStreamComponent.css"
 
 
-const VideoComponent = (props) => {
-  return <video></video>
+const VideoComponent = ({ videoUrl }) => {
+  return <video controls src={videoUrl}>
+
+  </video>
 }
 
 const AudioComponent = (props) => {
@@ -20,10 +23,12 @@ function LiveStreamComponent() {
     date: new Date()
   }
 
+  const exampleUrl = "./canned.mp4"
+
   return (
-    <div>
+    <div className="livestream-container">
       <div className="livestream-media">
-        {isVideoMedia ? <VideoComponent /> : <AudioComponent />}
+        {isVideoMedia ? <VideoComponent videoUrl={exampleUrl} /> : <AudioComponent />}
       </div>
       <div className="livestream-content">
         <h2>{mockConcert.artist} at {mockConcert.address}</h2>
