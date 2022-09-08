@@ -18,27 +18,28 @@ import EventComponent from './components/EventComponent';
 import HomeComponent from "./components/HomeComponent";
 import RegisterComponent from './components/RegisterComponent'
 
+import { GlobalContextProvider } from './store/store';
 
 function App() {
   return (
     <div>
       <Router>
-        <HeaderComponent />
-        <main>
-          <Routes>
+        <GlobalContextProvider>
+          <HeaderComponent />
+          <main>
+            <Routes>
 
-            <Route path="/" element={<HomeComponent />} />
-            <Route path="/about-us" element={<AboutUsComponent />} />
-            <Route path="/events" element={<CalendarComponent />} />
-            <Route path='/search' element={<SearchComponent />} />
-            <Route path='events/:id' element={<EventComponent/>}/>
-            <Route path='/register'element={<RegisterComponent/>}/>
+              <Route path="/" element={<HomeComponent />} />
+              <Route path="/about-us" element={<AboutUsComponent />} />
+              <Route path="/events" element={<CalendarComponent />} />
+              <Route path='/search' element={<SearchComponent />} />
+              <Route path='events/:id' element={<EventComponent />} />
+              <Route path='/register' element={<RegisterComponent />} />
 
-          </Routes>
-        </main>
-
-        <FooterComponent/>
-
+            </Routes>
+          </main>
+          <FooterComponent />
+        </GlobalContextProvider>
       </Router>
     </div>
   );

@@ -1,0 +1,26 @@
+import { useState, createContext } from 'react'
+
+const exampleUser = {
+  email: 'example@exam.com',
+  password: '432i4h32j32423',
+  roles
+}
+
+const getState = () => {
+  const [user, setUser] = useState(exampleUser)
+
+  return {
+    user,
+    setUser
+  }
+}
+
+export const GlobalContext = createContext()
+
+export function GlobalContextProvider(props) {
+  return (
+    <GlobalContext.Provider value={getState()}>
+      {props.children}
+    </GlobalContext.Provider>
+  )
+}
