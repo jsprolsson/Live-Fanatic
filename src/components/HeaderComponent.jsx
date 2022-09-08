@@ -19,7 +19,7 @@ function Hamburger() {
 function HeaderComponent() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
   const [searchString, setSearchString] = useState("")
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const navigate = useNavigate()
   const handleHamburger = () => setHamburgerOpen(!hamburgerOpen)
