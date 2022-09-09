@@ -1,7 +1,7 @@
-import "../styles/LoginModalComponent.css";
+import "../styles/ModalComponent.css";
 import ReactDOM from "react-dom";
 
-const LoginModalComponent = (props) => {
+const ModalComponent = (props) => {
   console.log(props.show);
   if (!props.show) {
     return null;
@@ -24,4 +24,4 @@ const LoginModalComponent = (props) => {
     document.getElementById("root")
   );
 };
-export default LoginModalComponent;
+export default ModalComponent;

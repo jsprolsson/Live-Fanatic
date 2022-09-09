@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoginModalComponent from "./LogInModalComponent";
+import ModalComponent from "./ModalComponent";
 import "../styles/HeaderComponent.css";
 
 import logo from "../assets/Livefanatic.png";
@@ -105,14 +105,9 @@ function HeaderComponent() {
           </nav>
         </div>
       ) : null}
-      <LoginModalComponent
-        title="Login"
-        onClose={() => setShow(false)}
-        show={show}
-      >
-        
-        <LoginComponent/>
-      </LoginModalComponent>
+      <ModalComponent title="Login" onClose={() => setShow(false)} show={show}>
+        <LoginComponent />
+      </ModalComponent>
     </header>
   );
 }
