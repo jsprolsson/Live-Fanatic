@@ -65,8 +65,6 @@
     color: white;
     background-color: #60c7a2;
     border: 0;
-    
-    
 }
 .paycounter{
     display: grid;
@@ -80,4 +78,16 @@
 }
 .paycounter>p{
     justify-self: center;
+}
+
+a:visited{
+    color:white;
+}
+
+a:before{
+    color:white;
+}
+
+a:link{
+    text-decoration: none;
 }

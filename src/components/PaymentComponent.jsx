@@ -56,7 +56,11 @@ const PaymentComponent = ({eventId}) => {
           </div>
           <hr class="payhr"></hr>
           <div className="paytotalPrice">
-            <button class="paybtn">Buy</button>
+            <button class="paybtn">
+              <Link to="/Buy"> {/*This link is just fake and does't work. Put chage this to the real project*/}
+                Buy
+              </Link>
+            </button>
             <button onClick={() => navigate(-1)} class="paybtn">
               Cancel
             </button>
