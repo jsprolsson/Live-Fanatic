@@ -24,3 +24,27 @@
     color: white;
     display: inline-block;
 }
+
+@media screen and (min-width: 678px){
+    .Navbar-Footer > button{
+        display: none;
+    }
+
+    .Navbar-Footer{
+        position: absolute;
+        bottom:auto;
+        margin-top: auto;
+        margin-bottom: 10px;
+    }
+
+    p{
+        color:white;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 678px){
+    p{
+        display: none;
+    }
+}

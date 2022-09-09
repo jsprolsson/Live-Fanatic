@@ -33,12 +33,11 @@ function FooterComponent() {
                     </span>
                 </Link>
             </button>
+            <p>* Biljettpriser och tillgänglighet kan komma att ändras <br/> © 2022 Live Fanatic Sweden. Live Fanatic är ett registrerat varumärke tillhörande Live Farnatic</p>
         </footer>
 
     )
 }
 /// Profile not linked 08/09
-
-/// Döp alla knappar till FooterButtonHome t.ex.
 
 export default FooterComponent
