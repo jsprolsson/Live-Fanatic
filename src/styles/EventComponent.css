@@ -1,5 +1,5 @@
 
-.container {
+.eventcontainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
@@ -27,11 +27,16 @@ img {
     color: white;
     font-size: 4vw;
     border-radius: 10px;
+    text-align: center;
 }
 
 .right {
     grid-column: 2 / 4;
     grid-row: 1 / 3;
+}
+
+.payment {
+    margin-top: 3vh;
 }
 
 
@@ -47,7 +52,7 @@ img {
         grid-column: 1 / 4;
     }
 
-    .container {
+    .eventcontainer {
         grid-template-rows: auto 1fr;
     }
 
