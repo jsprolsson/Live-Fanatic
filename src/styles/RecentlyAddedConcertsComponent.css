@@ -1,0 +1,43 @@
+.recently-added-concerts-container {
+    padding: 10px;
+}
+
+.child-containers{
+    display: flex;
+    justify-content: center;
+  gap: 10px;
+}
+
+.child-containers > a{
+    flex-grow: 1;
+    text-decoration: none;
+    height: 100%;
+}
+
+.concertstext {
+    color: white;
+    text-align:center;
+    background: rgba(0,0,0, 0.6);
+    font-size: 3vw;
+    margin-top: 0;
+}
+
+.recently-added-concerts-container > h2 {
+    font-size: 4vw;
+    margin-top: 0;
+}
+
+.concert-container {
+    width: 100%;
+    background-size: cover;
+}
+
+@media screen and (min-width: 1000px) {
+    .concertstext {
+        font-size: 30px;
+    }
+
+    .recently-added-concerts-container > h2 {
+        font-size: 40px;
+    }
+}
