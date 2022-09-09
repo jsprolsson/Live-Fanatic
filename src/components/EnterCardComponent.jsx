@@ -6,7 +6,7 @@ const cardData = () => {
     <>
       <div id="crdright-col">
         <div className="crdhead">
-          <h1>Payment</h1>
+          <h2>Payment</h2>
           <div id="crdlogotype">
             <img
               id="mastercard"
@@ -17,9 +17,9 @@ const cardData = () => {
         </div>
 
         <div className="crdhead">
-          <h1>Amount:</h1>
+          <h2>Amount:</h2>
           <div id="crdlogotype">
-            <h1 className="amount">{amount} Sek</h1>
+            <h2 className="amount">{amount} Sek</h2>
           </div>
         </div>
 
