@@ -6,8 +6,8 @@ import { useStore } from '../store/useStore'
 
 
 const VideoComponent = ({ videoUrl }) => {
-  return <video controls width="100%" src="./canned.mp4">
-
+  return <video controls width="100%">
+    <source src="https://www.youtube.com/watch?v=G1IbRujko-A" type="video/mp4"></source>
   </video>
 }
 
