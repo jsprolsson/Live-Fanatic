@@ -2,17 +2,18 @@ import { useState } from "react";
 import "../styles/PaymentComponent.css";
 import EventComponent from "./EventComponent";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import ModalComponent from "./ModalComponent"
+import EnterCard from "./EnterCardComponent"
 
-const PaymentComponent = ({eventId}) => {
+const PaymentComponent = ({ eventId }) => {
+  const [show, setShow]=useState(false);
   const navigate = useNavigate();
   const ticketprice = 555;
-  let availibleTickets = 200;
-  const [displayTickets, setDisplayTickets] = useState("Availible");
-  const [numberOfTicket, setNumberOfTicket] = useState(1);
+  let availibleTickets = 199;
 
-  if (availibleTickets < 200) {
-    setDisplayTickets("Few");
-  }
+  const displayTickets = availibleTickets < 200 ? "Few" : "Availible";
+
+  const [numberOfTicket, setNumberOfTicket] = useState(1);
 
   const removeTicket = () => {
     if (numberOfTicket > 1) {
@@ -56,13 +57,16 @@ const PaymentComponent = ({eventId}) => {
           </div>
           <hr class="payhr"></hr>
           <div className="paytotalPrice">
-            <button class="paybtn">Buy</button>
+            <button onClick={()=>setShow(true)} class="paybtn">Buy</button>
             <button onClick={() => navigate(-1)} class="paybtn">
               Cancel
             </button>
           </div>
         </div>
       </div>
+      <ModalComponent title="Payment details" onClose={()=> setShow(false)} show={show}>
+        <EnterCard/>
+        </ModalComponent>
     </>
   );
 };
