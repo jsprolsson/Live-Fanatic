@@ -3,10 +3,10 @@ import "../styles/PaymentComponent.css";
 import EventComponent from "./EventComponent";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
-const PaymentComponent = () => {
+const PaymentComponent = ({eventId}) => {
   const navigate = useNavigate();
   const ticketprice = 555;
-  let availibleTickets = 201;
+  let availibleTickets = 200;
   const [displayTickets, setDisplayTickets] = useState("Availible");
   const [numberOfTicket, setNumberOfTicket] = useState(1);
 
@@ -28,10 +28,6 @@ const PaymentComponent = () => {
 
   return (
     <>
-      <div className="payevent">
-        <EventComponent />
-      </div>
-
       <div className="payticketsdiv">
         <div className="payhead">
           <h2 className="payh2">Tickets:</h2>
