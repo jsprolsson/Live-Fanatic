@@ -21,6 +21,7 @@ import RegisterComponent from './components/RegisterComponent'
 
 import { GlobalContextProvider } from './store/store';
 import LiveStreamComponent from './components/LiveStreamComponent';
+import EnterCardComponent from './components/EnterCardComponent'
 
 const PageNotFoundComponent = () => {
   return (
@@ -46,6 +47,7 @@ function App() {
               <Route path='/livestream/:id' element={<LiveStreamComponent />} />
               <Route path='*' element={<PageNotFoundComponent />} />
               <Route path='/payment'element={<PaymentComponent/>}/>
+              <Route path='/enterCard'element={<EnterCardComponent/>}/>
             </Routes>
           </main>
           <FooterComponent />

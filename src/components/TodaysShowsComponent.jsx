@@ -2,6 +2,8 @@ import "../styles/TodaysShowsComponent.css";
 import { Link } from "react-router-dom";
 
 const TodaysShowsComponent = () => {
+
+  
   const eventInfo = [
     {
       artist: "Kendrick Lamar",
@@ -44,7 +46,7 @@ const TodaysShowsComponent = () => {
       <div className="main">
         {eventInfo.map((show) => (
           <Link key={show.id} to={"event/"+show.id}>
-            <div onClick="" className="subpic">
+            <div  className="subpic">
               <img src={show.img}></img>
               <div className="cinfo">
                 <div className="divcol">
