@@ -1,9 +1,12 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import "../styles/LiveStreamComponent.css"
+
+import { useStore } from '../store/useStore'
 
 
 const VideoComponent = ({ videoUrl }) => {
-  return <video controls src={videoUrl}>
+  return <video controls width="100%" src="./canned.mp4">
 
   </video>
 }
@@ -14,6 +17,20 @@ const AudioComponent = (props) => {
 
 function LiveStreamComponent() {
   const { id } = useParams()
+  const navigate = useNavigate()
+  const { user, setUser } = useStore()
+
+  console.log(user);
+
+  const doesIdExist = () => true
+
+  useEffect(() => {
+    if (isNaN(id) || !doesIdExist()) {
+      navigate('/events')
+    }
+  }, [])
+
+
   const isVideoMedia = true
 
   // get event details
@@ -23,7 +40,7 @@ function LiveStreamComponent() {
     date: new Date()
   }
 
-  const exampleUrl = "./canned.mp4"
+  const exampleUrl = ""
 
   return (
     <div className="livestream-container">
