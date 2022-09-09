@@ -1,6 +1,7 @@
 #crdright-col{
     background-color: white;
-    height: 100vh;
+    height: 75vh;
+    width: 60vw;
     margin-left: 2vh;
     margin-right: 2vh;
 }
@@ -10,19 +11,20 @@
     
 
 }
-.crdhead>h1{
+.crdhead>h2{
     justify-self: center;
     align-self: center;
     font-size: 4vh;
+    margin: 0;
     
 }
 #crdlogotype{
     justify-self: end;
     align-self: center;
-    margin-right: 40px;
+    margin-right: -20px;
 }
 .crdhead>div>img{
-    height: 7vh;
+    height: 5vh;
     width: auto;
     margin-top: 7px;
     align-self: end;
