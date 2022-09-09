@@ -2,7 +2,7 @@ import "../styles/AboutUsComponent.css";
 
 const AboutUsComponent = () => {
   return (
-    <div className="container">
+    <div className="about-us-container">
       <h1>About Us</h1>
       <h3>WE CARE ABOUT LIVE MUSIC</h3>
       <p>
