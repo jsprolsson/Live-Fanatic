@@ -61,7 +61,7 @@ const EventComponent = () => {
     
     return (
       <>
-        <div className="eventcontainer split">
+        <div className="eventcontainer">
           <div className="eventImage">
             <img src={eventData.imageUrl} alt="artist image" />
           </div>

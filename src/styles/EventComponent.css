@@ -13,7 +13,7 @@
 }
 
 
-img {
+.eventImage, .eventImage > img {
     width: 100%;
     height: auto;
 }
