@@ -89,6 +89,9 @@ const EventComponent = () => {
                     {livestreamAvailable ? <span>Go to livestream</span> : <span>Livestream not available</span>}
                 </button>
             </div> : <div></div>}
+            <div className="eventinfo-audio">
+              <audio></audio>
+            </div>
           </div>
         </div>
         <div className="payment">
