@@ -30,11 +30,15 @@ const EventComponent = () => {
     // }
 
     function checkDate() {
-        let eventDate = new Date(eventData.date);
-        eventDate.setHours(eventData.time);
+        let eventStart = new Date(eventData.date);
+        eventStart.setHours(eventData.time);
         let currentTime = new Date();
-
-        if(currentTime >= eventDate) {
+        let eventEnd = new Date(eventStart);
+        eventEnd.setHours(eventStart.getHours() + 1)
+        console.log(eventStart)
+        console.log(eventEnd)
+        
+        if(currentTime >= eventStart && !(currentTime > eventEnd)) {
             setLivestreamAvailable(true);
         }
     }
@@ -55,7 +59,7 @@ const EventComponent = () => {
             "date": "2022-11-25",
             "typeOfEvent": "livestream",
             "ageLimit": 13,
-            "ticketPrice":555 
+            "ticketPrice":555,
         }
 
     
@@ -81,7 +85,7 @@ const EventComponent = () => {
             <p>Age limit: {eventData.ageLimit}</p>
             <p>Type of event: {eventData.typeOfEvent}</p>
             {eventData.typeOfEvent === "livestream" ? <div className="livestream-btn">
-                <button disabled={!livestreamAvailable ? true : false}>
+                <button onClick={() => {navigate("/livestream/" +eventData.id )}} disabled={!livestreamAvailable ? true : false }>
                     {livestreamAvailable ? <span>Go to livestream</span> : <span>Livestream not available</span>}
                 </button>
             </div> : <div></div>}
