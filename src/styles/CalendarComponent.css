@@ -48,3 +48,18 @@
     margin-top: 2vh;
   }
 }
+
+#Sold-out{
+  color:red;
+  font-weight: bold;
+}
+
+#Few-tickets{
+  color:orange;
+  font-weight: bold;
+}
+
+#Available-tickets{
+  color:lightgreen;
+  font-weight: bold;
+}
