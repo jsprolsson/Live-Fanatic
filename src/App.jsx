@@ -12,6 +12,8 @@ import CalendarComponent from "./components/CalendarComponent";
 import SearchComponent from './components/SearchComponent'
 import EventComponent from './components/EventComponent';
 import PaymentComponent from './components/PaymentComponent';
+import ProfileComponent from './components/ProfileComponent';
+
 
 
 // import './App.css'
@@ -34,6 +36,7 @@ function App() {
   return (
     <div>
       <Router>
+
         <GlobalContextProvider>
           <HeaderComponent />
           <main>
@@ -50,10 +53,12 @@ function App() {
               <Route path='/payment'element={<PaymentComponent/>}/>
               <Route path='/enterCard'element={<EnterCardComponent/>}/>
               <Route path='/events/:id/confirmbuy'element={<ConfirmBuyComponent/>}/>
+              <Route path='/profile' element={<ProfileComponent/>}/>
             </Routes>
           </main>
           <FooterComponent />
         </GlobalContextProvider>
+
 
       </Router>
     </div>
