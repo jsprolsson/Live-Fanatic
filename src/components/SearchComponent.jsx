@@ -6,6 +6,7 @@ let data = [
   {
     id: 1,
     artist: "Kent",
+    genre: "rock",
     date: new Date(),
     description: "En sista sång tillsammans"
   },
@@ -13,15 +14,30 @@ let data = [
     id: 2,
     artist: "Soilwork",
     date: new Date(),
+    genre: "rock",
     description: "Kal pedal är skral i jämförelse"
   },
   {
     id: 3,
     artist: "Charlotte Pirelli",
+    genre: "pop",
     date: new Date(),
     description: "Vi har hela helgen på oss"
   },
 ]
+
+function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
+  return <div id='search-filter-boxes'>
+    <label className='search-checkbox'>
+      <input checked={radioAllValue} onChange={handleRadioClick} type="radio" />
+      all
+    </label>
+    <label className='search-checkbox'>
+      <input checked={radioGenreValue} onChange={handleRadioClick} type="radio" />
+      genre
+    </label>
+  </div>
+}
 
 function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick }) {
   return (
@@ -32,10 +48,10 @@ function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick }) {
   )
 }
 
-function NoResult({ searchString }) {
+function NoResult({ searchString, onClick }) {
   return <div className='search-card error'>
     <p>No results for "{searchString}", please refine your search</p>
-    <button>Go to home</button>
+    <button onClick={onClick}>Go to home</button>
   </div>
 }
 
@@ -56,30 +72,37 @@ function SearchComponent() {
   const [useSearchString] = useSearchParams()
   const [searchInputValue, setSearchInputValue] = useState("")
 
-  const [radioAll, setRadioAll] = useState(true)
-  const [radioGenre, setRadioGenre] = useState(false)
+  const [radioCheckAll, setRadioCheckAll] = useState(true)
+  const [radioCheckGenre, setRadioCheckGenre] = useState(false)
 
   const navigate = useNavigate()
-  const searchParam = useSearchString.get('name')
+  let searchParam = useSearchString.get('name')
+  if (!searchParam) {
+    searchParam = useSearchString.get('genre')
+  }
 
   const handleSearchEnter = (e) => {
     if (e.key == 'Enter') {
       handleSearchClick()
     }
   }
-  const handleSearchClick = () => navigate(`/search?name=${searchInputValue}`)
 
-  const handleRadioChange = () => {
-    setRadioAll(!radioAll)
-    setRadioGenre(!radioGenre)
+  const handleSearchClick = () => {
+    if (radioCheckAll) {
+      navigate(`/search?name=${searchInputValue}`)
+    } else {
+      navigate(`/search?genre=${searchInputValue}`)
+    }
   }
 
-  const dataToShow = searchParam ? data.filter(concert => {
-    if (concert.artist.toLowerCase().includes(searchParam.toLowerCase())) {
-      return concert
-    }
-  }) : []
+  const handleRadioChange = () => {
+    setRadioCheckAll(!radioCheckAll)
+    setRadioCheckGenre(!radioCheckGenre)
+  }
 
+  const dataToShow = radioCheckAll
+    ? data.filter(concert => concert.artist.toLowerCase().includes(searchParam.toLowerCase()))
+    : data.filter(concert => concert.genre.toLowerCase().includes(searchParam.toLowerCase()))
 
 
   return (
@@ -90,21 +113,16 @@ function SearchComponent() {
         onInputChange={(e) => setSearchInputValue(e.target.value)}
         onEnter={handleSearchEnter}
         onSearchClick={handleSearchClick} />
-      <div id='search-filter-boxes'>
-        <label className='search-checkbox'>
-          <input type="radio" />
-          all
-        </label>
-        <label className='search-checkbox'>
-          <input type="radio" />
-          genre
-        </label>
-      </div>
+      <RadioBoxes
+        radioAllValue={radioCheckAll}
+        radioGenreValue={radioCheckGenre}
+        handleRadioClick={handleRadioChange}
+      />
       <div>
         <h2>Results</h2>
         {dataToShow.length > 0
           ? dataToShow.map(concert => <SearchResult key={concert.id} concert={concert} />)
-          : <NoResult searchString={searchParam} />
+          : <NoResult onClick={() => navigate('/')} searchString={searchParam} />
         }
       </div>
     </div>
