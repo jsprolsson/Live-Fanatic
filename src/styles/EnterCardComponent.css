@@ -78,16 +78,22 @@
 }
 .crdbtn{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     height: 10vh;
+    
     background-color: white;
     
 }
 #crdpurchase, #crdpaypal {
+   
     margin: 5px;
     color: white;
     background-color: #60c7a2 ;
     border: 0;
     border-radius: 10px;
     font-size: large;
+    justify-self: center;
+    align-self:center;
+    padding: 3vh;
+    text-decoration: none;
 }

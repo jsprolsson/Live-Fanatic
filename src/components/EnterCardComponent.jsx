@@ -1,6 +1,7 @@
 import "../styles/EnterCardComponent.css";
+import { Link } from "react-router-dom";
 
-const cardData = () => {
+const cardData = (props) => {
   const amount = 444;
   return (
     <>
@@ -19,7 +20,7 @@ const cardData = () => {
         <div className="crdhead">
           <h2>Amount:</h2>
           <div id="crdlogotype">
-            <h2 className="amount">{amount} Sek</h2>
+            <h2 className="amount">{props.price} Sek</h2>
           </div>
         </div>
 
@@ -104,14 +105,16 @@ const cardData = () => {
           </div>
 
           <div className="crdbtn">
-            <button id="crdpurchase">Purchase</button>
-            <button id="crdpaypal">
-              <i class="fa fa-paypal" aria-hidden="true"></i> Pay with PayPal
-            </button>
+            <Link  id="crdpurchase" to={"confirmbuy"}>
+              Purchase
+            </Link>
+
+            <Link id="crdpaypal" to="confirmbuy">
+               PayPal
+            </Link>
           </div>
           <p id="support">
-            Having problem with checkout?{" "}
-            <a href="#">Contact our support</a>.
+            Having problem with checkout? <a href="#">Contact our support</a>.
           </p>
         </form>
       </div>
