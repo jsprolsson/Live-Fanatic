@@ -2,6 +2,10 @@ import "../styles/ModalComponent.css";
 import ReactDOM from "react-dom";
 
 const ModalComponent = (props) => {
+<<<<<<< Updated upstream
+=======
+ 
+>>>>>>> Stashed changes
   if (!props.show) {
     return null;
   }

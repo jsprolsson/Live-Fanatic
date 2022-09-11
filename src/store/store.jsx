@@ -6,7 +6,7 @@ const exampleUser = {
 }
 
 const getState = () => {
-  const [user, setUser] = useState(exampleUser)
+  const [user, setUser] = useState(null)
 
   return {
     user,

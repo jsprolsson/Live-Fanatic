@@ -3,17 +3,17 @@ import LoginFormComponent from "./LoginFormComponent";
 import { useStore } from "../store/useStore";
 import { useNavigate } from "react-router-dom";
 
-const LoginComponent = () => {
+const LoginComponent = ({ closeModal }) => {
   const { user, setUser } = useStore();
-
-  const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState("");
+  let dbUser = { email: "test@test.com", password: "test" };
+  const navigate = useNavigate();
 
   const Login = (details) => {
-    if (details.email == user.email && details.password == user.password) {
+    if (details.email == dbUser.email && details.password == dbUser.password) {
       const newUser = { email: details.email, password: details.password };
       setUser(newUser);
-      setUserEmail(details.email);
+      closeModal();
     } else {
       if (!details.password && !details.email) {
         setError("Please enter email and password");
@@ -34,14 +34,7 @@ const LoginComponent = () => {
 
   return (
     <div>
-      {userEmail != "" ? (
-        //här skickas vi till startsidan
-        <div>
-          <h2>Welcome!</h2>
-        </div>
-      ) : (
-        <LoginFormComponent Login={Login} error={error} />
-      )}
+      <LoginFormComponent Login={Login} error={error} />
     </div>
   );
 };

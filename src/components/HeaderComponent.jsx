@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ModalComponent from "./ModalComponent";
 import "../styles/HeaderComponent.css";
-
+import { useStore } from "../store/useStore";
 import logo from "../assets/Livefanatic.png";
 import LoginComponent from "./LogInComponent";
 
@@ -21,7 +21,7 @@ function Hamburger() {
 function HeaderComponent() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [searchString, setSearchString] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { user } = useStore();
   const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ function HeaderComponent() {
               Account
             </Link>
             <div className="account-dropdown-menu">
-              {isLoggedIn ? (
+              {user != null ? (
                 <div>
                   <p>logout</p>
                   <p>account</p>
@@ -105,8 +105,8 @@ function HeaderComponent() {
           </nav>
         </div>
       ) : null}
-      <ModalComponent title="Login" onClose={() => setShow(false)} show={show}>
-        <LoginComponent />
+      <ModalComponent title="Login" onClose={() => setShow(!show)} show={show}>
+        <LoginComponent closeModal={() => setShow(false)} />
       </ModalComponent>
     </header>
   );
