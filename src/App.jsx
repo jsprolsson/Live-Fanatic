@@ -11,6 +11,8 @@ import HeaderComponent from './components/HeaderComponent'
 import CalendarComponent from "./components/CalendarComponent";
 import SearchComponent from './components/SearchComponent'
 import EventComponent from './components/EventComponent';
+import ProfileComponent from './components/ProfileComponent';
+
 
 
 // import './App.css'
@@ -33,6 +35,7 @@ function App() {
             <Route path='/search' element={<SearchComponent />} />
             <Route path='events/:id' element={<EventComponent/>}/>
             <Route path='/register'element={<RegisterComponent/>}/>
+            <Route path='/profile' element={<ProfileComponent/>}/>
 
           </Routes>
         </main>

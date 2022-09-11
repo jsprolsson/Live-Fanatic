@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import "../styles/RegisterComponent.css"
 import { useNavigate } from 'react-router-dom'
 
@@ -6,24 +6,13 @@ import { useNavigate } from 'react-router-dom'
 
 function RegisterComponent() {
   //mock api
-  const adminUser = {
-    userName: "admin",
-    email: "admin@yahoo.com",
-    password: "admin123",
-    confirmPassword: "admin123"
-  }
-
+  
 
   const [userName, setUserName] = useState("");
-
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
-
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
 
   function ErrorMessage(message) {
