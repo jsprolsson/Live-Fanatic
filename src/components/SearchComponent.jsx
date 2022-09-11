@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import "../styles/SearchComponent.css"
 
@@ -23,6 +23,15 @@ let data = [
   },
 ]
 
+function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick }) {
+  return (
+    <div id='search-advanced-group'>
+      <input onKeyDown={onEnter} value={inputValue} onChange={onInputChange} id='search-body-input' />
+      <button onClick={onSearchClick} id='search-body-btn'>Search</button>
+    </div>
+  )
+}
+
 function NoResult({ searchString }) {
   return <div className='search-card error'>
     <p>No results for "{searchString}", please refine your search</p>
@@ -45,22 +54,25 @@ function SearchResult(concert) {
 
 function SearchComponent() {
   const [useSearchString] = useSearchParams()
-  const [concerts, setConcerts] = useState([])
+  const [searchInputValue, setSearchInputValue] = useState("")
 
-  // för att söka i databasen
-  // useEffect(() => {
-  //   const loadConcerts = async () => {
-  //     let rawResponse = await fetch('/data/concerts')
-  //     console.log(rawResponse);
-  //     let response = await rawResponse.json();
+  const [radioAll, setRadioAll] = useState(true)
+  const [radioGenre, setRadioGenre] = useState(false)
 
-  //     console.log(response);
-  //   }
-
-  //   loadConcerts()
-  // }, [])
-
+  const navigate = useNavigate()
   const searchParam = useSearchString.get('name')
+
+  const handleSearchEnter = (e) => {
+    if (e.key == 'Enter') {
+      handleSearchClick()
+    }
+  }
+  const handleSearchClick = () => navigate(`/search?name=${searchInputValue}`)
+
+  const handleRadioChange = () => {
+    setRadioAll(!radioAll)
+    setRadioGenre(!radioGenre)
+  }
 
   const dataToShow = searchParam ? data.filter(concert => {
     if (concert.artist.toLowerCase().includes(searchParam.toLowerCase())) {
@@ -68,13 +80,33 @@ function SearchComponent() {
     }
   }) : []
 
+
+
   return (
     <div className='search-container'>
-      <h2>Search results</h2>
-      {dataToShow.length > 0
-        ? dataToShow.map(concert => <SearchResult key={concert.id} concert={concert} />)
-        : <NoResult searchString={searchParam} />
-      }
+      <h2>Search</h2>
+      <Searchbar
+        inputValue={searchInputValue}
+        onInputChange={(e) => setSearchInputValue(e.target.value)}
+        onEnter={handleSearchEnter}
+        onSearchClick={handleSearchClick} />
+      <div id='search-filter-boxes'>
+        <label className='search-checkbox'>
+          <input type="radio" />
+          all
+        </label>
+        <label className='search-checkbox'>
+          <input type="radio" />
+          genre
+        </label>
+      </div>
+      <div>
+        <h2>Results</h2>
+        {dataToShow.length > 0
+          ? dataToShow.map(concert => <SearchResult key={concert.id} concert={concert} />)
+          : <NoResult searchString={searchParam} />
+        }
+      </div>
     </div>
   )
 }
