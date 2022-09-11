@@ -1,9 +1,12 @@
 import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 import '../styles/EventComponent.css'
 import PaymentComponent from './PaymentComponent'
 
+
 const EventComponent = () => {
+    const navigate = useNavigate();
+    const [livestreamAvailable, setLivestreamAvailable] = useState(false);
     // const params = useParams();
     // const [eventData, setEventData] = useState({});
     // const [dataLoaded, setDataLoaded] = useState(false);
@@ -26,6 +29,24 @@ const EventComponent = () => {
     //     })
     // }
 
+    function checkDate() {
+        let eventStart = new Date(eventData.date);
+        eventStart.setHours(eventData.time);
+        let currentTime = new Date();
+        let eventEnd = new Date(eventStart);
+        eventEnd.setHours(eventStart.getHours() + 1)
+        console.log(eventStart)
+        console.log(eventEnd)
+        
+        if(currentTime >= eventStart && !(currentTime > eventEnd)) {
+            setLivestreamAvailable(true);
+        }
+    }
+
+    useEffect(() => {
+        checkDate();
+    }, [])
+
     const eventData = {
             "id":5,
             "artist": "Kendrick Lamar",
@@ -35,21 +56,20 @@ const EventComponent = () => {
             "city": "Stockholm",
             "address": "Tågeholmsgatan 49B",
             "time": "20.00",
-            "date": "2022-11-15",
-            "typeOfEvent": "Live in venue",
+            "date": "2022-11-25",
+            "typeOfEvent": "livestream",
             "ageLimit": 13,
-            "ticketPrice":555 
+            "ticketPrice":555,
         }
-    
-        
+
     
     return (
       <>
-        <div className="container split">
+        <div className="eventcontainer">
           <div className="eventImage">
             <img src={eventData.imageUrl} alt="artist image" />
           </div>
-          <div className="datetime">
+          <div className="eventDateTime">
             <p>{eventData.date}</p>
             <p> {eventData.time}</p>
           </div>
@@ -64,10 +84,18 @@ const EventComponent = () => {
             </p>
             <p>Age limit: {eventData.ageLimit}</p>
             <p>Type of event: {eventData.typeOfEvent}</p>
+            {eventData.typeOfEvent === "livestream" ? <div className="livestream-btn">
+                <button onClick={() => {navigate("/livestream/" +eventData.id )}} disabled={!livestreamAvailable ? true : false }>
+                    {livestreamAvailable ? <span>Go to livestream</span> : <span>Livestream not available</span>}
+                </button>
+            </div> : <div></div>}
+            <div className="eventinfo-audio">
+              <audio></audio>
+            </div>
           </div>
         </div>
         <div className="payment">
-        <PaymentComponent eventId={eventData.id} />
+        <PaymentComponent event={eventData} />
         </div>
       </>
     );

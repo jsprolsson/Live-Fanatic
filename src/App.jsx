@@ -22,6 +22,7 @@ import RegisterComponent from './components/RegisterComponent'
 import { GlobalContextProvider } from './store/store';
 import LiveStreamComponent from './components/LiveStreamComponent';
 import EnterCardComponent from './components/EnterCardComponent'
+import ConfirmBuyComponent from './components/ConfirmBuyComponent';
 
 const PageNotFoundComponent = () => {
   return (
@@ -48,6 +49,7 @@ function App() {
               <Route path='*' element={<PageNotFoundComponent />} />
               <Route path='/payment'element={<PaymentComponent/>}/>
               <Route path='/enterCard'element={<EnterCardComponent/>}/>
+              <Route path='/events/:id/confirmbuy'element={<ConfirmBuyComponent/>}/>
             </Routes>
           </main>
           <FooterComponent />
