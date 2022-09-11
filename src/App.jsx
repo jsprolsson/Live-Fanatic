@@ -16,7 +16,7 @@ import ProfileComponent from './components/ProfileComponent';
 
 
 
-// import './App.css'
+import './App.css'
 
 import HomeComponent from "./components/HomeComponent";
 import RegisterComponent from './components/RegisterComponent'
@@ -34,7 +34,7 @@ const PageNotFoundComponent = () => {
 
 function App() {
   return (
-    <div>
+    <div className='body'>
       <Router>
 
         <GlobalContextProvider>
@@ -42,7 +42,7 @@ function App() {
           <main>
             <Routes>
 
-              <Route path="/" element={<HomeComponent />} />
+              <Route path="/" element={<HomeComponent/>} />
               <Route path="/about-us" element={<AboutUsComponent />} />
               <Route path="/events" element={<CalendarComponent />} />
               <Route path='/search' element={<SearchComponent />} />
