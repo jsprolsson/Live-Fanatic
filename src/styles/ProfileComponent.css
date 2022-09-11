@@ -5,12 +5,13 @@
   font-size: 15px;
 }
 
-h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 10px;
 }
+.profile-h1{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    }
 
 .profile-label {
   display: flex;
@@ -68,12 +69,13 @@ h1 {
 
 }
 
-h2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 10px;
-}
+
+.profile-h2{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    }
 
 .ticket {
   border: 5px solid gray;
@@ -84,11 +86,12 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
 }
-
-.profile-ticket-img {
-  width: 100%;
-
+.profile-image{
+    width: 100%;
 }
+
+
+
 
 @media only screen and (min-width: 760px) {
   .profile-page {
@@ -111,6 +114,9 @@ h2 {
   h3 {
     font-size: 10px;
   }
+  .profile-h3{
+        font-size:10px;
+    }
 
   .button-component {
     font-size: 10px;

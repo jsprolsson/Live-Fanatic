@@ -63,8 +63,10 @@ function ProfileComponent() {
     if (!username) {
       Message("This username is not there or not correct, try again")
     }
+
     else if (!password) {
       Message("This password is not there or not correct, try again")
+
 
     }
     else if (!email) {
@@ -131,14 +133,14 @@ function ProfileComponent() {
 
     <div className="user-updateAccount">
       <div>
-        <h1>My Profile</h1>
+        <h1 className="profile-h1">My Profile</h1>
 
       </div>
       <div className="profile-page">
         <form id='register-form' onSubmit={handleSubmit}>
           {(error != "") ? (<div className="register-error">{error}</div>) : null}
           <div className="account-label">
-            <h2>Update my Account</h2>
+            <h2 className="profile-h2">Update my Account</h2>
           </div>
 
 
@@ -187,26 +189,26 @@ function ProfileComponent() {
           </div>
         </form>
         <div className="user-purchaseList">
-          <h1>My Purchase</h1>
+          <h1  className="profile-h1">My Purchase</h1>
           <div className="consert-list">
             {userEvents.map((event) => (
               <div className=" ticket">
                 <div>
-                  <h2>Booked Concert:{event.artist}</h2>
-                  <h3>Genre:{event.genre}</h3>
-                  <h3>Time:{event.time}</h3>
-                  <h3>Date:{event.date}</h3>
-                  <h3>Location:{event.location}</h3>
-                  <h3>Number of tickets:{event.tickets}</h3>
-                  <h3>Age Limit:{event.agelimit}</h3>
-                  <h3>Price:{event.price}</h3>
+                  <h2 className="profile-h2">Booked Concert:{event.artist}</h2>
+                  <h3 className="profile-h3">Genre:{event.genre}</h3>
+                  <h3 className="profile-h3">Time:{event.time}</h3>
+                  <h3 className="profile-h3">Date:{event.date}</h3>
+                  <h3 className="profile-h3">Location:{event.location}</h3>
+                  <h3 className="profile-h3">Number of tickets:{event.tickets}</h3>
+                  <h3 className="profile-h3">Age Limit:{event.agelimit}</h3>
+                  <h3 className="profile-h3">Price:{event.price}</h3>
                 </div>
                 <div>
-                  <h3>About the band:</h3>
+                  <h3 className="profile-h3">About the band:</h3>
                   {event.description}
                 </div>
                 <div>
-                  <img className="profile-ticket-img" src={event.url} />
+                  <img className="profile-image" src={event.url} />
                 </div>
                 <div className="button-component">
                   <button className="button" type="button" >Print Ticket</button>
