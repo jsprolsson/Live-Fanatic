@@ -28,7 +28,7 @@
   border-radius: 5px;
 }
 
-.error {
+.search-error {
   display: flex;
   flex-direction: column;
   align-items: center;

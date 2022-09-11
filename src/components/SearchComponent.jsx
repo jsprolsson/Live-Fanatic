@@ -49,7 +49,7 @@ function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick }) {
 }
 
 function NoResult({ searchString, onClick }) {
-  return <div className='search-card error'>
+  return <div className='search-card search-error'>
     <p>No results for "{searchString}", please refine your search</p>
     <button onClick={onClick}>Go to home</button>
   </div>
@@ -99,10 +99,13 @@ function SearchComponent() {
     setRadioCheckAll(!radioCheckAll)
     setRadioCheckGenre(!radioCheckGenre)
   }
+  let dataToShow = []
 
-  const dataToShow = radioCheckAll
-    ? data.filter(concert => concert.artist.toLowerCase().includes(searchParam.toLowerCase()))
-    : data.filter(concert => concert.genre.toLowerCase().includes(searchParam.toLowerCase()))
+  if (searchParam) {
+    dataToShow = radioCheckAll
+      ? data.filter(concert => concert.artist.toLowerCase().includes(searchParam.toLowerCase()))
+      : data.filter(concert => concert.genre.toLowerCase().includes(searchParam.toLowerCase()))
+  }
 
 
   return (
