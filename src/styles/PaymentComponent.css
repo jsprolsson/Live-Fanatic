@@ -1,0 +1,84 @@
+.payticketsdiv {
+    display: grid;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: auto;
+    margin: 5px;
+    margin-top: -15px;
+}
+
+
+.payevent {
+    margin-top: -15px;
+}
+
+.payh2 {
+    display: grid;
+    justify-content: center;
+    margin: 7px;
+    margin-bottom: 15px;
+}
+
+.payticketschoice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    padding: 6px;
+
+
+}
+
+.payticketschoice>h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.paynumberOfTickets {
+    height: 4vh;
+    width: 8vh;
+    align-self: center;
+    justify-self: end;
+}
+
+.paysetRight {
+    display: grid;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.paytotalPrice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 8vh;
+    margin-bottom: 10px;
+}
+
+.payhr {
+    margin: 0;
+    margin-left: 9px;
+    margin-right: 9px;
+    margin-bottom: 10px;
+}
+.paybtn{
+    border-radius: 5px;
+    margin: 8px;
+    color: white;
+    background-color: #60c7a2;
+    border: 0;
+    
+    
+}
+.paycounter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.paycounter>button{
+    margin: 8px;
+    border-radius: 50%;
+    border: 0;
+}
+.paycounter>p{
+    justify-self: center;
+}

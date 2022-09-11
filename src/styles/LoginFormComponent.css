@@ -1,0 +1,28 @@
+.login-form-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
+
+.login-form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 1vh;
+}
+
+label {
+  font-family: "Quicksand", sans-serif;
+}
+
+.login-button {
+  font-family: "Quicksand", sans-serif;
+  background-color: #60c7a2;
+  border: 1px solid black;
+}
+
+#login-error {
+  color: red;
+}

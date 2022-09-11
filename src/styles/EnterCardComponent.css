@@ -1,0 +1,99 @@
+#crdright-col{
+    background-color: white;
+    height: 75vh;
+    width: 60vw;
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+.crdhead{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+
+}
+.crdhead>h2{
+    justify-self: center;
+    align-self: center;
+    font-size: 4vh;
+    margin: 0;
+    
+}
+#crdlogotype{
+    justify-self: end;
+    align-self: center;
+    margin-right: -20px;
+}
+.crdhead>div>img{
+    height: 5vh;
+    width: auto;
+    margin-top: 7px;
+    align-self: end;
+}
+#crdcardnumber{
+    display:grid;
+    grid-template-columns: 3fr 1fr 3fr 1fr 3fr 1fr 3fr ;
+    margin-bottom: 2vh;
+    align-items: center; 
+}
+#crdcardnumber>span{
+    justify-self: center;
+}
+#crdcardnumber>input{
+    border: 1px solid black
+}
+.crdcholder{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: 2vh;
+   
+}
+#crdcardholder{
+    border: 1px solid black;
+}
+.crdexdate{
+    display: grid;
+    grid-template-rows: 3;
+    margin-bottom: 1vh;
+}
+.crdexdate>label{
+    margin-bottom: 1vh;
+}
+#crdmonth{
+    margin-bottom: 1vh;
+    border: 1px solid black;
+}
+#crdyear{
+    margin-bottom: 1vh;
+    border: 1px solid black;
+}
+.crdcvcgrid{
+    display: grid;
+}
+#crdcvc-label{
+    margin-bottom: 1vh;
+}
+#crdcvc{
+    border: 1px solid black;
+    margin-bottom: 2vh;
+}
+.crdbtn{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 10vh;
+    
+    background-color: white;
+    
+}
+#crdpurchase, #crdpaypal {
+   
+    margin: 5px;
+    color: white;
+    background-color: #60c7a2 ;
+    border: 0;
+    border-radius: 10px;
+    font-size: large;
+    justify-self: center;
+    align-self:center;
+    padding: 3vh;
+    text-decoration: none;
+}

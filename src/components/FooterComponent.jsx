@@ -3,34 +3,41 @@ import { Link } from 'react-router-dom'
 import '../styles/FooterComponent.css'
 
 function FooterComponent() {
-    return(
+  return (
+    <footer className='Navbar-Footer'>
+      <button className='FooterButtonHome'>
+        <Link to="/">
+          <span className="material-symbols-outlined">
+            home
+          </span>
+        </Link>
+      </button>
+      <button className='FooterButtonCalendar'>
+        <Link to="/events">
+          <span className="material-symbols-outlined">
+            calendar_month
+          </span>
+        </Link>
+      </button>
+      <button className='FooterButtonSearch'>
+        <Link to="/search">
+          <span className="material-symbols-outlined">
+            search
+          </span>
+        </Link>
+      </button>
+      <button className='FooterButtonProfile'>
+        <Link to="/profile">
+          <span className="material-symbols-outlined">
+            person
+          </span>
+        </Link>
+      </button>
+      <p id='footer-text'>* Biljettpriser och tillgänglighet kan komma att ändras <br /> © 2022 Live Fanatic Sweden. Live Fanatic är ett registrerat varumärke tillhörande Live Farnatic</p>
+    </footer>
 
-        <footer>
-            <button className='FooterButtonHome'>
-                <span class="material-symbols-outlined">
-                    home
-                </span>
-            </button>
-            <button className='FooterButtonCalendar'>
-                <span class="material-symbols-outlined">
-                    calendar_month
-                </span>
-            </button>
-            <button className='FooterButtonSearch'>
-                <span class="material-symbols-outlined">
-                    search
-                </span>
-            </button>
-            <button className='FooterButtonProfile'>
-                <span class="material-symbols-outlined">
-                    person
-                </span>
-            </button>
-        </footer>
-
-    )
+  )
 }
-
-/// Döp alla knappar till FooterButtonHome t.ex.
+/// Profile not linked 08/09
 
 export default FooterComponent
