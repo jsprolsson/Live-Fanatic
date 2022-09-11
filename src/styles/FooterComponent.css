@@ -4,8 +4,8 @@
     justify-content: center;
     width: 100%;
     background-color: #343a40;
-    height: 50px;
-    position:fixed; 
+    height: 6vh;
+    position:sticky; 
     bottom: 0;
 }
 
@@ -32,7 +32,7 @@
   }
 
   .Navbar-Footer {
-    position: absolute;
+    position:sticky;
     bottom: 0;
     /* margin-top: auto; */
     padding: 5px 0 10px 0;

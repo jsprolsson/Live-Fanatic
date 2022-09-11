@@ -25,12 +25,12 @@ const cardData = (props) => {
         </div>
 
         <div className="crdcholder">
-          <label for="">Cardholders name:</label>
+          <label htmlFor="">Cardholders name:</label>
           <input id="crdcardholder" type="text" placeholder="Mr Mo Dahl" />
         </div>
 
         <form action="">
-          <label for="">Cardnumber:</label>
+          <label htmlFor="">Cardnumber:</label>
           <div id="crdcardnumber">
             <input
               type="number"
@@ -39,7 +39,7 @@ const cardData = (props) => {
               min="4"
               placeholder="0123"
             />{" "}
-            <span class="divider">-</span>
+            <span className="divider">-</span>
             <input
               type="number"
               max="4"
@@ -47,7 +47,7 @@ const cardData = (props) => {
               min="4"
               placeholder="4567"
             />{" "}
-            <span class="divider">-</span>
+            <span className="divider">-</span>
             <input
               type="number"
               max="4"
@@ -55,7 +55,7 @@ const cardData = (props) => {
               min="4"
               placeholder="8901"
             />{" "}
-            <span class="divider">-</span>
+            <span className="divider">-</span>
             <input
               type="number"
               max="4"
@@ -65,9 +65,9 @@ const cardData = (props) => {
             />
           </div>
 
-          <div class="crdexdate">
-            <label for="">Expiration Date:</label>
-            <select name="month" id="crdmonth" onchange="" size="1">
+          <div className="crdexdate">
+            <label htmlFor="">Expiration Date:</label>
+            <select name="month" id="crdmonth"  size="1">
               <option value="00">Month</option>
               <option value="01">January</option>
               <option value="02">February</option>
@@ -82,7 +82,7 @@ const cardData = (props) => {
               <option value="11">November</option>
               <option value="12">December</option>
             </select>
-            <select name="year" id="crdyear" onchange="" size="1">
+            <select name="year" id="crdyear"  size="1">
               <option value="00">Year</option>
               <option value="01">2022</option>
               <option value="02">2023</option>
@@ -97,11 +97,11 @@ const cardData = (props) => {
             </select>
           </div>
 
-          <div class="crdcvcgrid">
-            <label id="crdcvc-label" for="">
-              CVC: <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+          <div className="crdcvcgrid">
+            <label id="crdcvc-label" htmlFor="">
+              CVC: <i className="fa fa-question-circle-o" aria-hidden="true"></i>
             </label>
-            <input id="crdcvc" type="text" placeholder="123" maxlength="3" />
+            <input id="crdcvc" type="text" placeholder="123" maxLength="3" />
           </div>
 
           <div className="crdbtn">
