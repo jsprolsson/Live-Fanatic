@@ -2,7 +2,6 @@ import "../styles/ModalComponent.css";
 import ReactDOM from "react-dom";
 
 const ModalComponent = (props) => {
-  console.log(props.show);
   if (!props.show) {
     return null;
   }
