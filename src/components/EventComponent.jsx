@@ -95,7 +95,7 @@ const EventComponent = () => {
           </div>
         </div>
         <div className="payment">
-        <PaymentComponent eventId={eventData.id} />
+        <PaymentComponent event={eventData} />
         </div>
       </>
     );

@@ -45,7 +45,7 @@ const TodaysShowsComponent = () => {
     <>
       <div className="main">
         {eventInfo.map((show) => (
-          <Link key={show.id} to={"event/"+show.id}>
+          <Link key={show.id} to={"events/"+show.id}>
             <div  className="subpic">
               <img src={show.img}></img>
               <div className="cinfo">
