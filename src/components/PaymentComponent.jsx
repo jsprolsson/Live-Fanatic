@@ -40,7 +40,7 @@ const PaymentComponent = ( props ) => {
           <h2 className="payh2">Tickets:</h2>
           <div className="payticketschoice">
             <h3>Available:</h3>
-            <h3 class="paysetRight">{displayTickets}</h3>
+            <h3 className="paysetRight">{displayTickets}</h3>
 
             <h3>Price/ticket incl vat:</h3>
             <h3 className="paysetRight">{ticketprice} Sek</h3>
@@ -49,24 +49,24 @@ const PaymentComponent = ( props ) => {
 
             <div className="paycounter">
               <p></p>
-              <button class="paybtn" onClick={removeTicket}>
+              <button className="paybtn" onClick={removeTicket}>
                 -
               </button>
               <p>{numberOfTicket}</p>
-              <button class="paybtn" onClick={addTicket}>
+              <button className="paybtn" onClick={addTicket}>
                 +
               </button>
             </div>
 
             <h3>Total price incl vat:</h3>
-            <h3 class="paysetRight">{totalPrice} Sek</h3>
+            <h3 className="paysetRight">{totalPrice} Sek</h3>
           </div>
-          <hr class="payhr"></hr>
+          <hr className="payhr"></hr>
           <div className="paytotalPrice">
-            <button onClick={() => setShow(true)} class="paybtn">
+            <button onClick={() => setShow(true)} className="paybtn">
               Buy
             </button>
-            <button onClick={() => navigate(-1)} class="paybtn">
+            <button onClick={() => navigate(-1)} className="paybtn">
               Cancel
             </button>
           </div>
