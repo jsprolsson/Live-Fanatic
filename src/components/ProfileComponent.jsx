@@ -14,13 +14,7 @@ import { useNavigate } from 'react-router-dom'
 
 function ProfileComponent() {
 
-  const user = {
-    username: "admin",
-    email: "admin@yahoo.com",
-    password: "admin123",
-    confirmPassword: "admin123"
-
-  }
+  
 
 
 
@@ -60,19 +54,21 @@ function ProfileComponent() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!username) {
-      Message("This username is not there or not correct, try again")
-    }
+    if (!email) {
+      Message("Email is not there or not correct, try again")
 
+    }
     else if (!password) {
-      Message("This password is not there or not correct, try again")
+      Message("Password is not there or not correct, try again")
 
 
     }
-    else if (!email) {
-      Message("This email is not there or not correct, try again")
+    else if (!confirmPassword) {
+      Message("Confirmpassword is not there or not correct, try again")
+
 
     }
+
     else if (password !== confirmPassword) {
       Message("The password and confirmed password doesent match, try again")
     }
@@ -140,21 +136,12 @@ function ProfileComponent() {
         <form id='register-form' onSubmit={handleSubmit}>
           {(error != "") ? (<div className="register-error">{error}</div>) : null}
           <div className="account-label">
-            <h2 className="profile-h2">Update my Account</h2>
+            <h2 className="profile-h2">Update Password on your Account</h2>
           </div>
 
 
-          <label className="profile-label">New username
-            <input
-              type="text"
-              name="userName"
-              id="userName"
-              value={username}
-              onChange={(e) => setUpdateUsername(e.target.value)} placeholder="userName">
-            </input>
-
-          </label>
-          <label className="profile-label">New Email
+          
+          <label className="profile-label">Enter Email
             <input
               type="email"
               name="email"
@@ -165,7 +152,7 @@ function ProfileComponent() {
 
 
           </label>
-          <label className="profile-label" htmlFor="userName">New Password
+          <label className="profile-label" htmlFor="userName">Enter New Password
             <input
               type="password"
               name="password"
@@ -174,7 +161,7 @@ function ProfileComponent() {
               onChange={(e) => setUpdatePassword(e.target.value)} placeholder="password">
             </input>
           </label>
-          <label className="profile-label" htmlFor="confirmPassword">New Confirmed Password
+          <label className="profile-label" htmlFor="confirmPassword"> Enter New Confirmed Password
             <input
               type="confirmPassword"
               name="confirmPassword"
@@ -189,7 +176,7 @@ function ProfileComponent() {
           </div>
         </form>
         <div className="user-purchaseList">
-          <h1  className="profile-h1">My Purchase</h1>
+          <h1  className="profile-h1">Ticket Purchase</h1>
           <div className="consert-list">
             {userEvents.map((event) => (
               <div className=" ticket">
@@ -211,7 +198,7 @@ function ProfileComponent() {
                   <img className="profile-image" src={event.url} />
                 </div>
                 <div className="button-component">
-                  <button className="button" type="button" >Print Ticket</button>
+                  <button className="button" type="button">See Ticket</button>
                 </div>
               </div>
             ))};
