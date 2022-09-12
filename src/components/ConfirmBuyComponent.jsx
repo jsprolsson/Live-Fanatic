@@ -20,7 +20,7 @@ const ConfirmBuyComponent = () => {
   return (
     <>
       <div onLoad={setTimeout} className="cbmain">
-        <h2>Thanks for buying tickets to xxx show</h2>
+        <h2>Thanks for buying tickets to abc show</h2>
         <hr></hr>
         <h3>You will be directed home in {counter} seconds</h3>
 
