@@ -24,7 +24,7 @@ function ProfileComponent() {
 
   }, []);
 
-  const [username, setUpdateUsername] = useState("");
+  
   const [email, setUpdateEmail] = useState("");
   const [password, setUpdatePassword] = useState("");
   const [confirmPassword, setUpdateConfirmPassword] = useState("");
