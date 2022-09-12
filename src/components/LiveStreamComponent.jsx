@@ -6,8 +6,11 @@ import { useStore } from '../store/useStore'
 
 
 const VideoComponent = ({ videoUrl }) => {
-  return <video controls width="100%">
-    <source src="https://www.youtube.com/watch?v=G1IbRujko-A" type="video/mp4"></source>
+  return <video id="videoPlayer" controls muted="muted">
+    <source
+      src="http://localhost:3333/data/video-stream/2"
+      type="video/mp4"
+    />
   </video>
 }
 

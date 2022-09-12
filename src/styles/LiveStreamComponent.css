@@ -4,12 +4,13 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  background-color: whitesmoke;
 }
 
-.livestream-media {
-  /* background-color: lightgray; */
-  height: 300px;
+.livestream-media>video {
   width: 100%;
+  height: auto;
+  padding-top: 10px;
 }
 
 .livestream-content {
@@ -32,7 +33,7 @@
   }
 
   .livestream-media {
-    max-width: 60%;
+    /* max-width: 60%; */
   }
 
   .livestream-content {
