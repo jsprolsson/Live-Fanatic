@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom'
 
 
 function RegisterComponent() {
-  //mock api
+  
   
 
-  const [userName, setUserName] = useState("");
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,9 +25,7 @@ function RegisterComponent() {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    if (id === "userName") {
-      setUserName(value);
-    }
+   
     if (id === "email") {
       setEmail(value);
     }
@@ -44,10 +42,8 @@ function RegisterComponent() {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!userName) {
-      ErrorMessage("This username is not there or not correct, try again")
-    }
-    else if (!password) {
+    
+    if (!password) {
       ErrorMessage("This password is not there or not correct, try again")
 
     }
@@ -77,18 +73,9 @@ function RegisterComponent() {
       <form id='register-form' onSubmit={handleSubmit}>
         {(error != "") ? (<div className="register-error">{error}</div>) : null}
 
+        
         <div className='register-field'>
-          <label className="label-text" htmlFor="userName">Username</label>
-          <input
-            type="text"
-            name="userName"
-            id="userName"
-            value={userName}
-            onChange={handleInputChange} placeholder="userName"
-          />
-        </div>
-        <div className='register-field'>
-          <label className="label-text" htmlFor="email">E-mail</label>
+          <label className="label-text" htmlFor="email"> Enter E-mail</label>
           <input
             type="email"
             name="email"
@@ -98,7 +85,7 @@ function RegisterComponent() {
           />
         </div>
         <div className='register-field'>
-          <label className="label-text" htmlFor="password">Password</label>
+          <label className="label-text" htmlFor="password"> Enter Password</label>
           <input
             type="password"
             name="password"
@@ -108,7 +95,7 @@ function RegisterComponent() {
           />
         </div>
         <div className='register-field'>
-          <label className=" label-text" htmlFor="confirmPassword">Confirm Password</label>
+          <label className=" label-text" htmlFor="confirmPassword"> Enter Confirm Password</label>
           <input
             type="confirmPassword"
             name="confirmPassword"
