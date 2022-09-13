@@ -26,7 +26,7 @@ function FooterComponent() {
         </Link>
       </button>
 
-      {console.log(user)}
+
       {user == null ? (
         <button onClick={() => setShow(true)} className="FooterButtonProfile">
           <span className="material-symbols-outlined">person</span>
