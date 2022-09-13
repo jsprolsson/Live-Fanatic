@@ -10,8 +10,11 @@ const LoginComponent = ({ closeModal }) => {
   const navigate = useNavigate();
 
   const Login = (details) => {
+    // const response = fetch('http://localhost:3333/data/login', details);
+
     if (details.email == dbUser.email && details.password == dbUser.password) {
       const newUser = { email: details.email, password: details.password };
+
       setUser(newUser);
       closeModal();
     } else {
