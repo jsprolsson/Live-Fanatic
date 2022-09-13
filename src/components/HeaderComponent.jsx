@@ -5,6 +5,7 @@ import "../styles/HeaderComponent.css";
 import { useStore } from "../store/useStore";
 import logo from "../assets/Livefanatic.png";
 import LoginComponent from "./LogInComponent";
+import userService from '../services/userservice'
 
 function Hamburger() {
   return (
@@ -21,7 +22,7 @@ function Hamburger() {
 function HeaderComponent() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [searchString, setSearchString] = useState("");
-  const { user } = useStore();
+  const { user, setUser } = useStore();
   const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
@@ -36,6 +37,14 @@ function HeaderComponent() {
     navigate(`/search?name=${searchString}`);
     setSearchString("");
   };
+
+  const logout = async () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      setUser(null)
+      navigate('/')
+      await userService.logout()
+    }
+  }
   return (
     <header id="header">
       <div className="header-top">
@@ -59,7 +68,7 @@ function HeaderComponent() {
             <div className="account-dropdown-menu">
               {user != null ? (
                 <div>
-                  <p>logout</p>
+                  <p onClick={logout}>logout</p>
                   <p>account</p>
                 </div>
               ) : (
