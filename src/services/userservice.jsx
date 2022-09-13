@@ -1,13 +1,13 @@
 import { useStore } from "../store/useStore";
+import { useNavigate } from "react-router-dom";
 
 
 const logout = () => {
-  const { setUser } = useStore();
+  const { setUser } = useStore()
+  const navigate = useNavigate()
 
-  if (window.confirm("Are you sure you want to logout?")) {
-    setUser(null)
-
-  }
+  setUser(null)
+  return navigate
 }
 
 

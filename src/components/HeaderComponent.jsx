@@ -21,7 +21,7 @@ function Hamburger() {
 function HeaderComponent() {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [searchString, setSearchString] = useState("");
-  const { user } = useStore();
+  const { user, setUser } = useStore();
   const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
@@ -36,6 +36,13 @@ function HeaderComponent() {
     navigate(`/search?name=${searchString}`);
     setSearchString("");
   };
+
+  const logout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      setUser(null)
+      navigate('/')
+    }
+  }
   return (
     <header id="header">
       <div className="header-top">
@@ -59,7 +66,7 @@ function HeaderComponent() {
             <div className="account-dropdown-menu">
               {user != null ? (
                 <div>
-                  <p>logout</p>
+                  <p onClick={logout}>logout</p>
                   <p>account</p>
                 </div>
               ) : (
