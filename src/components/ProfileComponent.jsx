@@ -13,23 +13,42 @@ import { useNavigate } from 'react-router-dom'
 
 
 function ProfileComponent() {
-
-  
-
-
+  const[user,setUser]=useState()
+  const[userTickets,setUserTicket]=useState()
 
 
-  useEffect(() => {
-
-
-  }, []);
-
-  
   const [email, setUpdateEmail] = useState("");
   const [password, setUpdatePassword] = useState("");
   const [confirmPassword, setUpdateConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
+  useEffect( () => {
+    const fetchData=async()=>{
+      let data = await fetch('/data/login');
+      let json  = await data.json();
+      console.log(json)
+    
+    setUser(json);
+    }
+    fetchData()
+    
+    
+    
+  }, []);
+
+  useEffect( () => {
+    const fetchData=async()=>{
+      let data = await fetch('/data/users_tickets/id');
+      let json  = await data.json();
+      console.log(json)
+    
+    setUserTicket(json);
+    }
+    fetchData()
+    
+    
+    
+  }, []);
 
 
 
@@ -179,7 +198,7 @@ function ProfileComponent() {
           <h1  className="profile-h1">Ticket Purchase</h1>
           <div className="consert-list">
             {userEvents.map((event) => (
-              <div className=" ticket">
+              <div key={event.id} className=" ticket">
                 <div>
                   <h2 className="profile-h2">Booked Concert:{event.artist}</h2>
                   <h3 className="profile-h3">Genre:{event.genre}</h3>
