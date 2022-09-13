@@ -6,21 +6,27 @@ import { useStore } from '../store/useStore'
 
 
 const VideoComponent = ({ videoUrl }) => {
-  return <video controls width="100%">
-    <source src="https://www.youtube.com/watch?v=G1IbRujko-A" type="video/mp4"></source>
+  return <video id="videoPlayer" controls muted="muted">
+    <source
+      src="/data/video-stream/3"
+      type="video/mp4"
+    />
   </video>
 }
 
 const AudioComponent = (props) => {
-  return <audio></audio>
+  return <audio controls>
+    <source
+      src="http://localhost:3333/data/audio-example"
+      type="audio/mp3"
+    />
+  </audio>
 }
 
 function LiveStreamComponent() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { user, setUser } = useStore()
-
-  console.log(user);
 
   const doesIdExist = () => true
 
@@ -53,6 +59,7 @@ function LiveStreamComponent() {
         <h3>Information</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto aspernatur velit odit omnis ad enim eius eos optio, earum nulla aliquid cum! Hic voluptate facilis impedit explicabo quod dolores. Nobis?</p>
       </div>
+      <AudioComponent />
     </div>
   )
 }
