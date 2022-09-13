@@ -5,6 +5,7 @@ import "../styles/HeaderComponent.css";
 import { useStore } from "../store/useStore";
 import logo from "../assets/Livefanatic.png";
 import LoginComponent from "./LogInComponent";
+import userService from '../services/userservice'
 
 function Hamburger() {
   return (
@@ -37,10 +38,11 @@ function HeaderComponent() {
     setSearchString("");
   };
 
-  const logout = () => {
+  const logout = async () => {
     if (window.confirm("Are you sure you want to logout?")) {
       setUser(null)
       navigate('/')
+      await userService.logout()
     }
   }
   return (
