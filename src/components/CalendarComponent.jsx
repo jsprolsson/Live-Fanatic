@@ -28,7 +28,7 @@ const CalendarComponent = () => {
     {!dataLoaded && <p>Loading.....</p>}
       {dataLoaded && eventsData.map((data) => (
         <div className="calendar-cards" key={data.event_id}>
-          <Link to={'' + data.event_id}>
+          <Link to={'/events/' + data.event_id}>
           <div className="card">
             <div className="date">{data.event_date}</div>
             <div className="info">
