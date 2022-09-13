@@ -6,11 +6,22 @@ import { useNavigate } from "react-router-dom";
 const LoginComponent = ({ closeModal }) => {
   const { user, setUser } = useStore();
   const [error, setError] = useState("");
-  let dbUser = { email: "test@test.com", password: "test" };
   const navigate = useNavigate();
 
-  const Login = (details) => {
-    if (details.email == dbUser.email && details.password == dbUser.password) {
+  const Login = async (details) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: details.email,
+        password: details.password,
+      }),
+    };
+
+    const response = await fetch("/data/login", requestOptions);
+    const data = await response.json();
+
+    if (data.loggedIn) {
       const newUser = { email: details.email, password: details.password };
       setUser(newUser);
       closeModal();
