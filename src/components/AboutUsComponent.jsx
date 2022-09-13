@@ -15,7 +15,7 @@ const AboutUsComponent = () => {
         Vi vill erbjuda våra konsertbesökare det bästa; både före, under och
         efter evenemanget! Bra ljud och ljus, säkra lokaler, seriös
         biljettförsäljning och en musik- och evenemangsupplevelse att minnas för
-        livet.
+        livet.a 
       </p>
     </div>
   );
