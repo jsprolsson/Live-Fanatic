@@ -1,9 +1,11 @@
 import {useState, useEffect} from 'react'
+import {Link, useNavigate } from "react-router-dom";
 import "../styles/CalendarComponent.css";
 
 const CalendarComponent = () => {
   const [eventsData, setEventsData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
+  let navigate = useNavigate();
 
   useEffect(() => {
         fetchData()
@@ -26,6 +28,7 @@ const CalendarComponent = () => {
     {!dataLoaded && <p>Loading.....</p>}
       {dataLoaded && eventsData.map((data) => (
         <div className="calendar-cards" key={data.event_id}>
+          <Link to={'' + data.event_id}>
           <div className="card">
             <div className="date">{data.event_date}</div>
             <div className="info">
@@ -35,6 +38,7 @@ const CalendarComponent = () => {
             </div>
             <span className="material-symbols-outlined">arrow_forward</span>
           </div>
+          </Link>
         </div>
       ))}
     </>
