@@ -5,7 +5,7 @@ import "../styles/HeaderComponent.css";
 import { useStore } from "../store/useStore";
 import logo from "../assets/Livefanatic.png";
 import LoginComponent from "./LogInComponent";
-import userService from '../services/userservice'
+import userService from "../services/userservice";
 
 function Hamburger() {
   return (
@@ -40,11 +40,11 @@ function HeaderComponent() {
 
   const logout = async () => {
     if (window.confirm("Are you sure you want to logout?")) {
-      setUser(null)
-      navigate('/')
-      await userService.logout()
+      setUser(null);
+      navigate("/");
+      await userService.logout();
     }
-  }
+  };
   return (
     <header id="header">
       <div className="header-top">
@@ -61,20 +61,24 @@ function HeaderComponent() {
           <Link className="header-nav-link" to={"/about-us"}>
             About us
           </Link>
-          <div className="account-dropdown">
-            <Link className="header-nav-link" to={"/profile"}>
-              Account
-            </Link>
-            <div className="account-dropdown-menu">
+          <div className="account-dropdown header-nav-link">
+            Account
+            <div className="account-dropdown-menu header-nav-link">
               {user != null ? (
                 <div>
-                  <p onClick={logout}>logout</p>
-                  <p>account</p>
+                  <p className="header-nav-link" onClick={logout}>
+                    Logout
+                  </p>
+                  <p className="header-nav-link">Account</p>
                 </div>
               ) : (
                 <div>
-                  <p onClick={() => setShow(true)}>login</p>
-                  <p>register</p>
+                  <p className="header-nav-link" onClick={() => setShow(true)}>
+                    Login
+                  </p>
+                  <Link className="header-nav-link" to={"/register"}>
+                    <p>Register</p>
+                  </Link>
                 </div>
               )}
             </div>

@@ -6,7 +6,7 @@ function LoginFormComponent({ Login, error }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
+
     Login(details);
   };
   return (
@@ -14,13 +14,16 @@ function LoginFormComponent({ Login, error }) {
       <div className="login-form-inner">
         {error != "" ? <div id="login-error">{error}</div> : ""}
         <div className="login-form-group">
-          <label className="login-label" htmlFor="email">E-mail:</label>
+          <label className="login-label" htmlFor="email">
+            E-mail:
+          </label>
           <input
             type="email"
             name="email"
             id="email"
             onChange={(e) => setDetails({ ...details, email: e.target.value })}
             value={details.email}
+            placeholder="Email"
           />
         </div>
         <div className="login-form-group">
@@ -33,9 +36,10 @@ function LoginFormComponent({ Login, error }) {
               setDetails({ ...details, password: e.target.value })
             }
             value={details.password}
+            placeholder="Password"
           />
         </div>
-        <input type="submit" value="Login" className="login-button"/>
+        <input type="submit" value="Login" className="login-button" />
       </div>
     </form>
   );

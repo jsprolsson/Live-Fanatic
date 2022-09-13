@@ -26,7 +26,9 @@ const LoginComponent = ({ closeModal }) => {
       setUser(newUser);
       closeModal();
     } else {
-      if (!details.password && !details.email) {
+      if (!data.loggedIn) {
+        setError(data.message);
+      } else if (!details.password && !details.email) {
         setError("Please enter email and password");
       } else if (!details.email) {
         setError("Please enter email");
