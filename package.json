@@ -10,6 +10,7 @@
     "all": "concurrently \"cd ./live-fanatic-backend && npm run dev\" \"npm run dev\""
   },
   "dependencies": {
+    "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
