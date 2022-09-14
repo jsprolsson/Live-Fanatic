@@ -69,7 +69,9 @@ function HeaderComponent() {
                   <p className="header-nav-link" onClick={logout}>
                     Logout
                   </p>
-                  <p className="header-nav-link">Account</p>
+                  {/* <Link className="header-nav-link" to={"/profile"}>
+                    <p>Account</p>
+                  </Link> */}
                 </div>
               ) : (
                 <div>
