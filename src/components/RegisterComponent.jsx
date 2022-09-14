@@ -121,7 +121,7 @@ function RegisterComponent() {
             Enter Confirm Password
           </label>
           <input
-            type="confirmPassword"
+            type="password"
             name="confirmPassword"
             value={confirmPassword}
             id="confirmPassword"
