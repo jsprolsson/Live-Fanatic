@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
+
 import "../styles/ConfirmBuyComponent.css";
-import EventComponent from "./EventComponent";
-import PaymentComponent from "./PaymentComponent";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ConfirmBuyComponent = () => {
   const [counter, setCounter] = React.useState(7);
+  const [paymentSuccesful, setPaymentSuccesful] = useState(null)
+
+  async function getCheckoutResult() {
+    let response = await fetch('/data/checkout')
+    console.log('response', response)
+    let result = await response.json()
+    console.log('result', result)
+  }
+
+  useEffect(() => {
+    getCheckoutResult()
+  }, [])
+
 
   React.useEffect(() => {
     const timer =
@@ -15,16 +26,17 @@ const ConfirmBuyComponent = () => {
 
   setTimeout(function () {
     window.location = "http://127.0.0.1:5173/";
-  }, 7000);
+  }, 30000);
 
   return (
     <>
       <div onLoad={setTimeout} className="cbmain">
-        <h2>Thanks for buying tickets to abc show</h2>
+        <h2>Purchase confirmed</h2>
+        <p>Thanks for using live fanatic!</p>
         <hr></hr>
         <h3>You will be directed home in {counter} seconds</h3>
 
-        
+
       </div>
     </>
   );
