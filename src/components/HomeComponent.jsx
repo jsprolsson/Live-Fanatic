@@ -9,7 +9,6 @@ function HomeComponent() {
   useEffect(() => {
     const loadData = async () => {
       let data = await eventService.getAll()
-
       setEvents(data)
     }
 
