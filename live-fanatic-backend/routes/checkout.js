@@ -45,9 +45,13 @@ module.exports = function (server, db, host) {
       }
     })
 
+    const orderDetails = req.body.orderDetails
+    console.log(orderDetails);
+
     // Create a checkout session with Stripe
     try {
       const checkoutSession = await stripe.checkout.sessions.create({
+        metadata: orderDetails,
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: "payment",
@@ -57,7 +61,9 @@ module.exports = function (server, db, host) {
         cancel_url: "http://127.0.0.1:5173" + '/confirmbuy',
       })
       // save current checkout session to user session, so we can check result after
+
       req.session.checkoutSession = checkoutSession
+
       // send user to stripe process,
       // note that you will have to handle the result of the payment after that process,
       // when the user returns to our client
@@ -71,6 +77,7 @@ module.exports = function (server, db, host) {
   // route to retrieve checkout session to check result
   server.get('/data/checkout', async (req, res) => {
     try {
+      console.log(req.session.itemInformation);
       const checkoutSession = await stripe.checkout.sessions.retrieve(req.session.checkoutSession.id)
       res.json({ checkoutSession: checkoutSession })
     } catch (e) {

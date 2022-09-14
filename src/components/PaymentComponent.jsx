@@ -4,16 +4,17 @@ import EventComponent from "./EventComponent";
 import { useNavigate, useParams } from "react-router-dom";
 import ModalComponent from "./ModalComponent"
 import EnterCard from "./EnterCardComponent"
+import { useStore } from "../store/useStore"
 
 const PaymentComponent = (props) => {
   const [show, setShow] = useState(false);
   const [stripeUrl, setStripeUrl] = useState(null)
   const navigate = useNavigate();
   const ticketprice = props.event.price;
-  let availibleTickets = 199;
+  const { user } = useStore()
 
 
-  const displayTickets = availibleTickets < 200 ? "Few" : "Availible";
+  const displayTickets = props.event.tickets < 200 ? "Few" : "Availible";
 
   const [numberOfTicket, setNumberOfTicket] = useState(1);
 
@@ -42,7 +43,12 @@ const PaymentComponent = (props) => {
           "price": props.event.price,
           "quantity": numberOfTicket
         }
-      ]
+      ],
+      "orderDetails": {
+        "userId": 1,
+        "eventId": props.event.id,
+        "amountOfTickets": 3
+      }
     }
 
     let response = await fetch('/data/checkout', {
