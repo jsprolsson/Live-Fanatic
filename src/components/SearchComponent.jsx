@@ -1,3 +1,4 @@
+
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/SearchComponent.css";
@@ -52,14 +53,17 @@ function NoResult({ searchString, onClick }) {
 }
 
 function SearchResult(concert) {
-  const { artist, date, description } = concert.concert;
+  const { artist, date, description, id } = concert.concert;
+
 
   return (
     <div className="search-card">
       <h3>{artist}</h3>
       <h4>{date}</h4>
       <p>{description}</p>
-      <button>More information</button>
+      <Link className="header-nav-link" to={"/events/" + id}>
+        More information
+      </Link>
     </div>
   );
 }
@@ -67,6 +71,7 @@ function SearchResult(concert) {
 function SearchComponent() {
   const [useSearchString] = useSearchParams();
   const [searchInputValue, setSearchInputValue] = useState("");
+
   const [radioCheckAll, setRadioCheckAll] = useState(true);
   const [radioCheckGenre, setRadioCheckGenre] = useState(false);
   const navigate = useNavigate();
@@ -81,6 +86,7 @@ function SearchComponent() {
     loadData();
   }, []);
   console.log(events);
+
 
   let searchParam = useSearchString.get("name");
   if (!searchParam) {
@@ -109,10 +115,12 @@ function SearchComponent() {
 
   if (searchParam) {
     dataToShow = radioCheckAll
+
       ? events.filter((concert) =>
           concert.artist.toLowerCase().includes(searchParam.toLowerCase())
         )
       : events.filter((concert) =>
+
           concert.genre.toLowerCase().includes(searchParam.toLowerCase())
         );
   }

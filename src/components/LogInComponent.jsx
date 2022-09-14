@@ -22,9 +22,18 @@ const LoginComponent = ({ closeModal }) => {
     const data = await response.json();
 
     if (data.loggedIn) {
-      const newUser = { email: details.email, password: details.password };
+      //fetch userid
+      const userResponse = await fetch("/data/login");
+      const userFromDb = await userResponse.json();
+      //set user in context
+      const newUser = {
+        email: details.email,
+        password: details.password,
+        id: userFromDb.id,
+      };
       setUser(newUser);
       closeModal();
+      navigate("/");
     } else {
       if (!data.loggedIn) {
         setError(data.message);
