@@ -9,10 +9,8 @@ const ConfirmBuyComponent = () => {
 
   async function getCheckoutResult() {
     let response = await fetch('/data/checkout')
-    console.log('response', response)
     let result = await response.json()
-    console.log('result', result)
-    setPaymentMetada(result)
+    setPaymentMetadata(result)
   }
 
   useEffect(() => {
@@ -30,10 +28,6 @@ const ConfirmBuyComponent = () => {
   //   window.location = "http://127.0.0.1:5173/";
   // }, 30000);
 
-  if (condition) {
-
-  }
-
   return (
     <>
       <div onLoad={setTimeout} className="cbmain">
@@ -41,7 +35,6 @@ const ConfirmBuyComponent = () => {
         <p>Thanks for using live fanatic!</p>
         <hr></hr>
         <h3>You will be directed home in {counter} seconds</h3>
-
 
       </div>
     </>
