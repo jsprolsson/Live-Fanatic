@@ -1,30 +1,8 @@
-import { useSearchParams, useNavigate, Link } from "react-router-dom";
+
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/SearchComponent.css";
-
-let data = [
-  {
-    id: 1,
-    artist: "Kent",
-    genre: "rock",
-    date: new Date(),
-    description: "En sista sång tillsammans",
-  },
-  {
-    id: 2,
-    artist: "Soilwork",
-    date: new Date(),
-    genre: "rock",
-    description: "Kal pedal är skral i jämförelse",
-  },
-  {
-    id: 3,
-    artist: "Charlotte Pirelli",
-    genre: "pop",
-    date: new Date(),
-    description: "Vi har hela helgen på oss",
-  },
-];
+import eventService from "../services/eventService";
 
 function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
   return (
@@ -77,10 +55,11 @@ function NoResult({ searchString, onClick }) {
 function SearchResult(concert) {
   const { artist, date, description, id } = concert.concert;
 
+
   return (
     <div className="search-card">
       <h3>{artist}</h3>
-      <h4>{date.toLocaleDateString()}</h4>
+      <h4>{date}</h4>
       <p>{description}</p>
       <Link className="header-nav-link" to={"/events/" + id}>
         More information
@@ -95,8 +74,20 @@ function SearchComponent() {
 
   const [radioCheckAll, setRadioCheckAll] = useState(true);
   const [radioCheckGenre, setRadioCheckGenre] = useState(false);
-
   const navigate = useNavigate();
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      let data = await eventService.getAll();
+      setEvents(data);
+    };
+
+    loadData();
+  }, []);
+  console.log(events);
+
+
   let searchParam = useSearchString.get("name");
   if (!searchParam) {
     searchParam = useSearchString.get("genre");
@@ -124,10 +115,12 @@ function SearchComponent() {
 
   if (searchParam) {
     dataToShow = radioCheckAll
-      ? data.filter((concert) =>
+
+      ? events.filter((concert) =>
           concert.artist.toLowerCase().includes(searchParam.toLowerCase())
         )
-      : data.filter((concert) =>
+      : events.filter((concert) =>
+
           concert.genre.toLowerCase().includes(searchParam.toLowerCase())
         );
   }
