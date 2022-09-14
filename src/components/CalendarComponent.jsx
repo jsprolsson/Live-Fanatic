@@ -31,14 +31,14 @@ const CalendarComponent = () => {
     <>
       {!dataLoaded && <p>Loading.....</p>}
       {dataLoaded && eventsData.map((data) => (
-        <div className="calendar-cards" key={data.event_id}>
-          <Link to={'/events/' + data.event_id}>
+        <div className="calendar-cards" key={data.id}>
+          <Link to={'/events/' + data.id}>
             <div className="card">
-              <div className="date">{data.event_date}</div>
+              <div className="date">{data.date}</div>
               <div className="info">
-                <div className="artist">{data.event_artist}</div>
-                <div className="location">{data.event_venue}</div>
-                <div className="Tickets">{data.event_tickets === 0 ? <span id='Sold-out'>Sold Out</span> : data.event_tickets <= 150 ? <span id='Few-tickets'>Few tickets Available</span> : <span id='Available-tickets'>A Lot Tickets Available</span>}</div>
+                <div className="artist">{data.artist}</div>
+                <div className="location">{data.venue}</div>
+                <div className="Tickets">{data.tickets === 0 ? <span id='Sold-out'>Sold Out</span> : data.tickets <= 150 ? <span id='Few-tickets'>Few tickets Available</span> : <span id='Available-tickets'>A Lot Tickets Available</span>}</div>
               </div>
               <span className="material-symbols-outlined">arrow_forward</span>
             </div>
