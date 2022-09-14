@@ -16,14 +16,16 @@ function HomeComponent() {
     loadData()
   }, [])
 
+  const recentlyAddedEvents = events.slice(-3)
+
   return (
     <div className="main">
       <div className="mainpic">
         <img src="src/assets/Livefanatic.png" alt="" />
       </div>
       <div>
-        <RecentlyAddedConcertsComponent events={events} />
-        <TodaysShowsComponent />
+        <RecentlyAddedConcertsComponent events={recentlyAddedEvents} />
+        <TodaysShowsComponent events={events} />
       </div>
     </div>
   );
