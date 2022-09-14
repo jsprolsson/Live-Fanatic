@@ -25,7 +25,7 @@ function HomeComponent() {
       </div>
       <div>
         <RecentlyAddedConcertsComponent events={recentlyAddedEvents} />
-        <TodaysShowsComponent />
+        <TodaysShowsComponent events={events} />
       </div>
     </div>
   );
