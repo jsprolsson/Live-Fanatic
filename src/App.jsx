@@ -42,7 +42,7 @@ function App() {
           <main>
             <Routes>
 
-              <Route path="/" element={<HomeComponent/>} />
+              <Route path="/" element={<HomeComponent />} />
               <Route path="/about-us" element={<AboutUsComponent />} />
               <Route path="/events" element={<CalendarComponent />} />
               <Route path='/search' element={<SearchComponent />} />
@@ -50,10 +50,10 @@ function App() {
               <Route path='/register' element={<RegisterComponent />} />
               <Route path='/livestream/:id' element={<LiveStreamComponent />} />
               <Route path='*' element={<PageNotFoundComponent />} />
-              <Route path='/payment'element={<PaymentComponent/>}/>
-              <Route path='/enterCard'element={<EnterCardComponent/>}/>
-              <Route path='/events/:id/confirmbuy'element={<ConfirmBuyComponent/>}/>
-              <Route path='/profile' element={<ProfileComponent/>}/>
+              <Route path='/payment' element={<PaymentComponent />} />
+              <Route path='/enterCard' element={<EnterCardComponent />} />
+              <Route path='/confirmbuy' element={<ConfirmBuyComponent />} />
+              <Route path='/profile' element={<ProfileComponent />} />
             </Routes>
           </main>
           <FooterComponent />
