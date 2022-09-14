@@ -56,7 +56,6 @@ function RegisterComponent() {
       };
 
       const response = await fetch("/data/users", registerRequest);
-      console.log(response);
 
       if (response.ok) {
         const loginRequest = {
@@ -71,7 +70,15 @@ function RegisterComponent() {
         const response = await fetch("/data/login", loginRequest);
         const loginData = await response.json();
         if (loginData.loggedIn) {
-          const newUser = { email: email, password: password };
+          //fetch userid
+          const userResponse = await fetch("/data/login");
+          const userFromDb = await userResponse.json();
+          //set user in context
+          const newUser = {
+            email: email,
+            password: password,
+            id: userFromDb.id,
+          };
           setUser(newUser);
           navigate("/");
         }
@@ -121,7 +128,7 @@ function RegisterComponent() {
             Enter Confirm Password
           </label>
           <input
-            type="confirmPassword"
+            type="password"
             name="confirmPassword"
             value={confirmPassword}
             id="confirmPassword"
