@@ -5,18 +5,21 @@ import eventService from "../services/eventService";
 
 const ConfirmBuyComponent = () => {
   const [counter, setCounter] = useState(7);
-  const [paymentMetadata, setPaymentMetadata] = useState(null)
+  const [paymentResult, setPaymentResult] = useState(null)
 
   async function getCheckoutResult() {
     let response = await fetch('/data/checkout')
     let result = await response.json()
-    setPaymentMetadata(result)
+
+    const { userId, eventId, amountOfTickets } = result.checkoutSession.metadata
+    const event = await eventService.getOneEvent(eventId)
+    const updatedEvent = { ...event, tickets: event.tickets - amountOfTickets }
+    await eventService.update(eventId, updatedEvent)
   }
 
   useEffect(() => {
     getCheckoutResult()
   }, [])
-
 
   React.useEffect(() => {
     const timer =
