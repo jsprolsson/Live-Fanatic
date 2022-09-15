@@ -82,3 +82,12 @@
 .paycounter>p{
     justify-self: center;
 }
+.confirmdiv{
+    display: grid;
+    justify-items: center;
+    margin: 2vh;
+}
+.confirmdiv>a{
+    padding:20px;
+    text-decoration: none;
+}
