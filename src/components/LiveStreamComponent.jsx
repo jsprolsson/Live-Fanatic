@@ -28,12 +28,15 @@ function LiveStreamComponent() {
   const { user, setUser } = useStore()
   const [isLoading, setIsLoading] = useState(true)
   const [event, setEvent] = useState(null)
+  const [isVideoMedia, setIsVideoMedia] = useState(false)
 
   useEffect(() => {
     const loadEvent = async () => {
       try {
         const eventFromDb = await eventService.getOneEvent(id)
         setEvent(eventFromDb)
+        const mediaType = eventFromDb.type === 'livestream' ? true : false
+        setIsVideoMedia(mediaType)
         setIsLoading(false)
       } catch (error) {
         setEvent(null)
@@ -46,7 +49,9 @@ function LiveStreamComponent() {
 
   const doesIdExist = () => true
 
-  const isVideoMedia = true
+  console.log(event);
+
+
   if (isLoading) {
     return (
       <div>
