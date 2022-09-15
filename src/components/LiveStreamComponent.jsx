@@ -63,7 +63,7 @@ function LiveStreamComponent() {
           <div className="livestream-media">
             {isVideoMedia ? <VideoComponent>
               <source
-                src={`http://localhost:3333/data/video-stream/${event.id}`}
+                src="http://localhost:3333/data/video-stream/1"
                 type="video/mp4"
               />
             </VideoComponent> :

@@ -10,38 +10,50 @@ const ConfirmBuyComponent = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    let isCancelled = false
     const getCheckoutResult = async () => {
       let response = await fetch('/data/checkout')
       let result = await response.json()
 
-      if (!result.error) {
-        setIsLoading(false)
-        setPurchaseData(result.checkoutSession.metadata)
-      }
-      else {
-        setTimeout(() => {
-          navigate('/')
-        }, 5000);
+      if (!isCancelled) {
+        if (!result.error) {
+          setIsLoading(false)
+          setPurchaseData(result.checkoutSession.metadata)
+        }
+        else {
+          setTimeout(() => {
+            navigate('/')
+          }, 5000);
+        }
       }
     }
 
     getCheckoutResult()
+    return () => {
+      isCancelled = true
+    }
   }, [])
 
   useEffect(() => {
+    let isCancelled = false
     const updateDatabase = async () => {
-      if (purchaseData) {
-        const { userId, eventId, amountOfTickets } = purchaseData
-        await removeTicketsFromEvent(eventId, amountOfTickets)
-        await addTicketsToUser(eventId, userId, amountOfTickets)
-        // setTimeout(() => {
-        //   navigate('/profile')
-        // }, 10000);
-        navigate('/profile')
+      if (!isCancelled) {
+        if (purchaseData) {
+          const { userId, eventId, amountOfTickets } = purchaseData
+          await removeTicketsFromEvent(eventId, amountOfTickets)
+          await addTicketsToUser(eventId, userId, amountOfTickets)
+          setTimeout(() => {
+            navigate('/profile')
+          }, 10000);
+          // navigate('/profile')
+        }
       }
     }
 
     updateDatabase()
+    return () => {
+      isCancelled = true
+    }
   }, [purchaseData])
 
   const generateId = () => Math.floor(Math.random() * 1000000)
