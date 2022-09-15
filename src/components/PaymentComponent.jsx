@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ModalComponent from "./ModalComponent"
 import EnterCard from "./EnterCardComponent"
 import { useStore } from "../store/useStore"
+import DatePickerComponent from "./DatePickerComponent";
 
 const PaymentComponent = (props) => {
   const [show, setShow] = useState(false);
@@ -70,12 +71,18 @@ const PaymentComponent = (props) => {
         <>
           <div className="payticketsdiv">
             <div className="confirmdiv">
-              <h3>Buy {numberOfTicket} tickets to {props.event.artist} for the amount of {totalPrice} Sek?
-            </h3>
-            
-            <a className="paybtn" href={stripeUrl}>
-              Confirm buy
-            </a>
+              <h3>
+                Buy {numberOfTicket} tickets to {props.event.artist} on{" "}
+                {props.event.venue} {props.event.date} for the amount of{" "}
+                {totalPrice} Sek?
+              </h3>
+
+              <a className="paybtn" href={stripeUrl}>
+                Confirm buy
+              </a>
+              <button onClick={() => navigate(0)} className="paybtn">
+                Cancel
+              </button>
             </div>
           </div>
         </>
