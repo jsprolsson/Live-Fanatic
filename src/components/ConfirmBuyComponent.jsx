@@ -45,7 +45,6 @@ const ConfirmBuyComponent = () => {
           setTimeout(() => {
             navigate('/profile')
           }, 10000);
-          // navigate('/profile')
         }
       }
     }
@@ -61,7 +60,6 @@ const ConfirmBuyComponent = () => {
   const removeTicketsFromEvent = async (eventId, amountOfTickets) => {
     const event = await eventService.getOneEvent(eventId)
     const updatedEvent = { ...event, tickets: event.tickets - amountOfTickets }
-    console.log("removed tickets from event");
     await eventService.update(eventId, updatedEvent)
   }
 
