@@ -95,9 +95,12 @@ function ProfileComponent() {
       <div className="user-updateAccount">
         <div>
           <h1 className="profile-h1">Welcome to your page {user.email}</h1>
+          <p className="register-error">{error}</p>
           <h1 className="profile-h1">Profile</h1>
+         
         </div>
         <div className="profile-page">
+           
           <form id="register-form" onSubmit={handleSubmit}>
             <div className="account-label">
               <h2 className="profile-h2">Update Password on your Account</h2>
@@ -128,11 +131,13 @@ function ProfileComponent() {
             </label>
             <button className="button" type="submit">
               Save Changes
+            
             </button>
             <div className="logout-buttoncomponent">
               <button className="button">Log out</button>
             </div>
-            <p className="register-error">{error}</p>
+           
+            
           </form>
 
           <div className="user-purchaseList">
