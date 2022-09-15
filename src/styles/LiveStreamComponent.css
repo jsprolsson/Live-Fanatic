@@ -26,6 +26,26 @@
   }
 }
 
+.livestream-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 500px;
+  background-color: #60c7a2;
+  border-radius: 5px;
+  margin: 20px 50px;
+}
+
+.livestream-error-btn {
+  color: #60c7a2;
+  background-color: #343a40;
+  border: 1px solid #60c7a2;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 @media screen and (min-width: 768px) {
   .livestream-container {
     max-width: 1000px;

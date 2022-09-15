@@ -3,26 +3,6 @@ import "../styles/ConfirmBuyComponent.css";
 import React, { useEffect, useState } from "react";
 import eventService from "../services/eventService";
 import { useNavigate } from "react-router-dom";
-import { useId } from "react";
-
-// async function getCheckoutResult() {
-//   let response = await fetch('/data/checkout')
-//   let result = await response.json()
-
-//   if (!result.checkoutSession.metadata) {
-//     console.log("no data");
-//     return
-//   }
-
-//   const { userId, eventId, amountOfTickets } = result.checkoutSession.metadata
-//   const event = await eventService.getOneEvent(eventId)
-//   const updatedEvent = { ...event, tickets: event.tickets - amountOfTickets }
-//   await eventService.update(eventId, updatedEvent)
-// }
-
-// useEffect(() => {
-//   getCheckoutResult()
-// }, [])
 
 const ConfirmBuyComponent = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -43,11 +23,6 @@ const ConfirmBuyComponent = () => {
           navigate('/')
         }, 5000);
       }
-      // hämta checkoutsession
-      // ta bort tickets från event
-      // lägga till användarens tickets
-      // navigera till profile
-
     }
 
     getCheckoutResult()
@@ -88,9 +63,7 @@ const ConfirmBuyComponent = () => {
 
     const requestOptions = {
       method: 'post',
-      // and that we will send data json formatted
       headers: { 'Content-Type': 'application/json' },
-      // the data encoded as json
       body: JSON.stringify(newUserTickets)
     }
 
