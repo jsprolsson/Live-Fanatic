@@ -9,7 +9,7 @@
   margin-top: auto;
 }
 
-.Navbar-Footer>button {
+.Navbar-Footer > button {
   margin-left: 7vw;
   margin-right: 7vw;
   margin-top: 5px;
@@ -20,23 +20,28 @@
   background-color: #343a40;
 }
 
-.Navbar-Footer>button>a {
+.Navbar-Footer > button > a {
   background-color: #343a40;
   color: white;
   display: inline-block;
 }
 
 @media screen and (min-width: 678px) {
-  .Navbar-Footer>button {
+  .Navbar-Footer > button {
     display: none;
   }
 
-  .Navbar-Footer {
-    position: sticky;
+  #navbar-footer-desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     bottom: 0;
-    /* margin-top: auto; */
+    left: 0;
+    right: 0;
     padding: 5px 0 10px 0;
     margin-top: auto;
+    height: 20vh;
   }
 
   #footer-text {

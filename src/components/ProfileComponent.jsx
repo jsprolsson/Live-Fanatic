@@ -13,27 +13,66 @@ import { useNavigate } from 'react-router-dom'
 
 
 function ProfileComponent() {
-
+  const [user,setUser]=useState({})
+  const [userevents ,setUserEvents] = useState([])
+  const [userTickets, setUserTickets] = useState([])
   
 
-
-
-
-  useEffect(() => {
-
-
-  }, []);
-
-  
   const [email, setUpdateEmail] = useState("");
   const [password, setUpdatePassword] = useState("");
   const [confirmPassword, setUpdateConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
+   //hämta användare
+  useEffect( () => {
+    const fetchData=async()=>{
+
+     let response = await fetch('/data/login')
+     let userdata = await response.json()
 
 
+     setUser(userdata);
+
+      
+
+        
+        
+      
+       
+      
+     
 
 
+    
+
+    
+    
+    
+    //hämta user tickets
+     let ticketdata = await fetch(`/data/user/tickets/` + userdata.id);
+     
+      const ticketjson  = await ticketdata.json();
+      console.log(ticketjson)
+       setUserTickets(ticketjson);
+
+       //filtrera ut bara ticketsid till egen lista
+       const ticketsId = ticketjson.map(({event_id}) => (event_id));
+
+       //fetch alla events
+       let eventdata = await fetch('data/events')
+       const eventjson = await eventdata.json();
+
+       //filtrera ut bara events usern ska på
+       let filteredjson = eventjson.filter(event => ticketsId.includes(event.event_id));
+
+      setUserEvents(filteredjson);
+      console.log(filteredjson)
+      
+    }
+    fetchData()
+  }, []);
+
+  
 
 
 
@@ -44,6 +83,10 @@ function ProfileComponent() {
     }, 10000);
   }
 
+ 
+function getUser() {
+  
+} 
 
 
 
@@ -77,10 +120,8 @@ function ProfileComponent() {
     }
   }
 
-  const logOut = () => {
-    //navigera till login
-
-  }
+  
+  
 
 
 
@@ -92,13 +133,13 @@ function ProfileComponent() {
 
 
 
-  const userEvents = [
+   const userEvents = [
     {
       id: 1,
       artist: "Timbaktu:This is life",
       date: "12/02/22",
       time: "20:00",
-      location: "Malmö Arena",
+      venue: "Malmö Arena",
       description: "Jason Michael Bosak Diakité, known under the stage name Timbuktu, is Swedish rapper and reggae artist. In the mid-1990s, he started as part of the rap group Excel before going solo as Timbuktu. ",
       tickets: "2",
       url: "https://www.lundagard.se/wp-content/uploads/2014/05/Timbuktu.jpg",
@@ -111,7 +152,7 @@ function ProfileComponent() {
       artist: "Muse Vinter Concert",
       date: "15/02/22",
       time: "22:00",
-      location: "Malmö Arena",
+      venue: "Malmö Arena",
       description: "Muse are always playing the game of escalation. Whenever they head into the studio, the next album needs to be better, and the tour to support it needs to bigger than the last. ",
       tickets: "2",
       url: "https://cdn.wegow.com/media/artists/muse/muse-1541428643.98.2560x1440.jpg",
@@ -129,7 +170,8 @@ function ProfileComponent() {
 
     <div className="user-updateAccount">
       <div>
-        <h1 className="profile-h1">My Profile</h1>
+        <h1 className="profile-h1">Welcome to your page{user.email}</h1>
+        <h1 className="profile-h1">Profile</h1>
 
       </div>
       <div className="profile-page">
@@ -172,36 +214,35 @@ function ProfileComponent() {
           </label>
           <button className="button" type="submit">Save Changes</button>
           <div className="logout-buttoncomponent">
-            <button className="button" onClick={logOut}>Log out</button>
+            <button className="button" >Log out</button>
           </div>
         </form>
         <div className="user-purchaseList">
           <h1  className="profile-h1">Ticket Purchase</h1>
           <div className="consert-list">
-            {userEvents.map((event) => (
-              <div className=" ticket">
+            {userevents.map((event) => (
+              <div key={event.event_id} className=" ticket">
                 <div>
-                  <h2 className="profile-h2">Booked Concert:{event.artist}</h2>
-                  <h3 className="profile-h3">Genre:{event.genre}</h3>
-                  <h3 className="profile-h3">Time:{event.time}</h3>
-                  <h3 className="profile-h3">Date:{event.date}</h3>
-                  <h3 className="profile-h3">Location:{event.location}</h3>
-                  <h3 className="profile-h3">Number of tickets:{event.tickets}</h3>
-                  <h3 className="profile-h3">Age Limit:{event.agelimit}</h3>
-                  <h3 className="profile-h3">Price:{event.price}</h3>
+                  <h2 className="profile-h2">Booked Event Concert:{event.event_artist}</h2>
+                  <h3 className="profile-h3">Event Genre:{event.event_genre}</h3>
+                  <h3 className="profile-h3">Adress Location:{event.event_address}</h3>
+                  <h3 className="profile-h3">Event Date:{event.event_date}</h3>
+                  <h3 className="profile-h3">Event Age Limit:{event.event_age_limit}</h3>
+                  <h3 className="profile-h3">Event Price:{event.event_price}</h3>
+                  
                 </div>
                 <div>
-                  <h3 className="profile-h3">About the band:</h3>
-                  {event.description}
+                  <h3 className="profile-h3">About the band</h3>
+                  {event.event_description}
                 </div>
                 <div>
-                  <img className="profile-image" src={event.url} />
+                  <img className="profile-image" src={event.event_img_url} />
                 </div>
                 <div className="button-component">
                   <button className="button" type="button">See Ticket</button>
                 </div>
               </div>
-            ))};
+            ))}
           </div>
         </div>
       </div>

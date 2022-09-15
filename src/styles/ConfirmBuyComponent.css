@@ -1,5 +1,24 @@
-.cbmain{
-    margin-left: 5vw;
-    margin-right: 5vw;
-    
+.cb-loading-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.cb-loading-container {
+  background-color: #60C7A2;
+  padding: 2px 10px 2px 10px;
+  margin-top: 50px;
+  max-width: 200px;
+  border: 1px solid #343a40;
+  border-radius: 5px;
+  color: #343a40;
+  font-weight: 1000;
+}
+
+.cb-main {
+  margin-left: 5vw;
+  margin-right: 5vw;
+
+}
+
+@media screen and (min-width: 768px) {}

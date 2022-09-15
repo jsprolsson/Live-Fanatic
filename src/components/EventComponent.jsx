@@ -32,8 +32,8 @@ const EventComponent = () => {
   }
 
   function checkDate() {
-    let eventStart = new Date(eventData.event_date)
-    eventStart.setHours(eventData.event_time)
+    let eventStart = new Date(eventData.date)
+    eventStart.setHours(eventData.time)
     let eventEnd = new Date(eventStart);
     let currentTime = new Date();
     eventEnd.setHours(eventStart.getHours() + 1)
@@ -67,13 +67,13 @@ const EventComponent = () => {
           <h2>{eventData.artist}</h2>
           <h3>{eventData.venue}</h3>
           <h4>
-            {eventData.address}, {eventData.venue}
+            {eventData.address}, {eventData.city}
           </h4>
           <p>
             <i>{eventData.description}</i>
           </p>
-          <p>Age limit: {eventData.event_age_limit}</p>
-          <p>Type of event: {eventData.event_type}</p>
+          <p>Age limit: {eventData.age_limit}</p>
+          <p>Type of event: {eventData.type}</p>
           {eventData.type === "livestream" ? <div className="livestream-btn">
             <button onClick={() => { navigate("/livestream/" + eventData.id) }} disabled={!livestreamAvailable ? true : false}>
               {livestreamAvailable ? <span>Go to livestream</span> : <span>Livestream not available</span>}
