@@ -7,16 +7,16 @@ import eventService from '../services/eventService'
 const VideoComponent = ({ videoUrl }) => {
   return <video id="videoPlayer" controls muted="muted">
     <source
-      src="/data/video-stream/3"
+      src={videoUrl}
       type="video/mp4"
     />
   </video>
 }
 
-const AudioComponent = (props) => {
+const AudioComponent = ({ audioUrl }) => {
   return <audio controls>
     <source
-      src="http://localhost:3333/data/audio-example"
+      src={audioUrl}
       type="audio/mp3"
     />
   </audio>
@@ -30,23 +30,29 @@ function LiveStreamComponent() {
   const [isVideoMedia, setIsVideoMedia] = useState(false)
 
   useEffect(() => {
+    let isCancelled = false
     const loadEvent = async () => {
-      try {
-        if (isNaN(id)) {
-          throw error
+      if (!isCancelled) {
+        try {
+          if (isNaN(id)) {
+            throw error
+          }
+          const eventFromDb = await eventService.getOneEvent(id)
+          setEvent(eventFromDb)
+          const mediaType = eventFromDb.type === 'livestream' ? true : false
+          setIsVideoMedia(mediaType)
+          setIsLoading(false)
+        } catch (error) {
+          setEvent(null)
+          setIsLoading(false)
         }
-        const eventFromDb = await eventService.getOneEvent(id)
-        setEvent(eventFromDb)
-        const mediaType = eventFromDb.type === 'livestream' ? true : false
-        setIsVideoMedia(mediaType)
-        setIsLoading(false)
-      } catch (error) {
-        setEvent(null)
-        setIsLoading(false)
       }
     }
 
     loadEvent()
+    return () => {
+      isCancelled
+    }
   }, [])
 
   if (isLoading) {
@@ -61,18 +67,9 @@ function LiveStreamComponent() {
       {
         event != null ? <div className="livestream-container">
           <div className="livestream-media">
-            {isVideoMedia ? <VideoComponent>
-              <source
-                src="http://localhost:3333/data/video-stream/1"
-                type="video/mp4"
-              />
-            </VideoComponent> :
-              <AudioComponent>
-                <source
-                  src={`http://localhost:3333/data/audio-stream/${event.id}`}
-                  type="video/mp4"
-                />
-              </AudioComponent>}
+            {isVideoMedia ? <VideoComponent videoUrl={`http://localhost:3333/data/video-stream/${event.id}`} />
+              :
+              <AudioComponent audioUrl={`http://localhost:3333/data/audio-stream/${event.id}`} />}
           </div>
           <div className="livestream-content">
             <h2>{event.artist} at {event.venue}</h2>

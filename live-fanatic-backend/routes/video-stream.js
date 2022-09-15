@@ -12,9 +12,6 @@ module.exports = function (server, db) {
     if (!range) {
       res.status(400).send("Requires Range header");
     }
-    console.log(result);
-    console.log(req.params)
-    console.log(result.url);
 
     const videoPath = __dirname + "/../video/" + result.url;
     const videoSize = fs.statSync(videoPath).size;
