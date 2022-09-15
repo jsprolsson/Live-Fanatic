@@ -77,7 +77,6 @@ module.exports = function (server, db, host) {
   // route to retrieve checkout session to check result
   server.get('/data/checkout', async (req, res) => {
     try {
-      console.log(req.session.itemInformation);
       const checkoutSession = await stripe.checkout.sessions.retrieve(req.session.checkoutSession.id)
       res.json({ checkoutSession: checkoutSession })
     } catch (e) {
