@@ -75,10 +75,10 @@ function LiveStreamComponent() {
               </AudioComponent>}
           </div>
           <div className="livestream-content">
-            <h2>{event.artist} at {event.address}</h2>
-            <p>{event.date}</p>
-            <h3>Information</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto aspernatur velit odit omnis ad enim eius eos optio, earum nulla aliquid cum! Hic voluptate facilis impedit explicabo quod dolores. Nobis?</p>
+            <h2>{event.artist} at {event.venue}</h2>
+            <h3>{event.date}</h3>
+            <h4>Information</h4>
+            <p>{event.description}</p>
           </div>
         </div> : <div className="livestream-error">
           <h2 className="livestream-error-text">No stream with that id</h2>
