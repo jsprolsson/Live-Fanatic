@@ -48,7 +48,7 @@ const PaymentComponent = (props) => {
       "orderDetails": {
         "userId": 1,
         "eventId": props.event.id,
-        "amountOfTickets": 3
+        "amountOfTickets": numberOfTicket
       }
     }
 

@@ -1,4 +1,6 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+
+import { useSearchParams, useNavigate, Link } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import "../styles/SearchComponent.css";
 import eventService from "../services/eventService";
@@ -32,7 +34,7 @@ function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
   );
 }
 
-function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick }) {
+function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick, radioCheckGenre }) {
   return (
     <div id="search-advanced-group">
       <input
@@ -40,7 +42,14 @@ function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick }) {
         value={inputValue}
         onChange={onInputChange}
         id="search-body-input"
+        list="suggestions"
       />
+      {radioCheckGenre ? (<datalist id="suggestions">
+        <option>Rock</option>
+        <option>Orchestra</option>
+        <option>Metal</option>
+      </datalist>):(<></>)}
+      
       <button onClick={onSearchClick} id="search-body-btn">
         Search
       </button>
@@ -91,7 +100,7 @@ function SearchComponent() {
 
     loadData();
   }, []);
-  console.log(events);
+
 
   let searchParam = useSearchString.get("name");
   if (!searchParam) {
@@ -136,6 +145,7 @@ function SearchComponent() {
         onInputChange={(e) => setSearchInputValue(e.target.value)}
         onEnter={handleSearchEnter}
         onSearchClick={handleSearchClick}
+        radioCheckGenre={radioCheckGenre}
       />
       <RadioBoxes
         radioAllValue={radioCheckAll}

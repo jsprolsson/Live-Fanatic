@@ -5,12 +5,13 @@
   align-items: center;
   gap: 20px;
   background-color: whitesmoke;
+  max-width: 500px;
 }
 
 .livestream-media>video {
   width: 100%;
   height: auto;
-  padding-top: 10px;
+  /* padding-top: 10px; */
 }
 
 .livestream-content {
@@ -18,6 +19,7 @@
   border-radius: 5px;
   margin: 10px;
   padding: 5px;
+  width: 100%;
 }
 
 @media screen and (max-width: 400px) {
@@ -26,14 +28,34 @@
   }
 }
 
+.livestream-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 500px;
+  background-color: #60c7a2;
+  border-radius: 5px;
+  margin: 20px 50px;
+}
+
+.livestream-error-btn {
+  color: #60c7a2;
+  background-color: #343a40;
+  border: 1px solid #60c7a2;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 @media screen and (min-width: 768px) {
   .livestream-container {
     max-width: 1000px;
     margin-top: 20px;
   }
 
-  .livestream-media {
-    /* max-width: 60%; */
+  .livestream-media>video {
+    margin-top: 20px;
   }
 
   .livestream-content {

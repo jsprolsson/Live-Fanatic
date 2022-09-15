@@ -1,23 +1,22 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import "../styles/LiveStreamComponent.css"
-
 import { useStore } from '../store/useStore'
-
+import eventService from '../services/eventService'
 
 const VideoComponent = ({ videoUrl }) => {
   return <video id="videoPlayer" controls muted="muted">
     <source
-      src="/data/video-stream/3"
+      src={videoUrl}
       type="video/mp4"
     />
   </video>
 }
 
-const AudioComponent = (props) => {
+const AudioComponent = ({ audioUrl }) => {
   return <audio controls>
     <source
-      src="http://localhost:3333/data/audio-example"
+      src={audioUrl}
       type="audio/mp3"
     />
   </audio>
@@ -26,40 +25,63 @@ const AudioComponent = (props) => {
 function LiveStreamComponent() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { user, setUser } = useStore()
-
-  const doesIdExist = () => true
+  const [isLoading, setIsLoading] = useState(true)
+  const [event, setEvent] = useState(null)
+  const [isVideoMedia, setIsVideoMedia] = useState(false)
 
   useEffect(() => {
-    if (isNaN(id) || !doesIdExist()) {
-      navigate('/events')
+    let isCancelled = false
+    const loadEvent = async () => {
+      if (!isCancelled) {
+        try {
+          if (isNaN(id)) {
+            throw error
+          }
+          const eventFromDb = await eventService.getOneEvent(id)
+          setEvent(eventFromDb)
+          const mediaType = eventFromDb.type === 'livestream' ? true : false
+          setIsVideoMedia(mediaType)
+          setIsLoading(false)
+        } catch (error) {
+          setEvent(null)
+          setIsLoading(false)
+        }
+      }
+    }
+
+    loadEvent()
+    return () => {
+      isCancelled
     }
   }, [])
 
-
-  const isVideoMedia = true
-
-  // get event details
-  const mockConcert = {
-    artist: "Prince",
-    address: "Superbowl MVII",
-    date: new Date()
+  if (isLoading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    )
   }
-
-  const exampleUrl = ""
-
   return (
-    <div className="livestream-container">
-      <div className="livestream-media">
-        {isVideoMedia ? <VideoComponent videoUrl={exampleUrl} /> : <AudioComponent />}
-      </div>
-      <div className="livestream-content">
-        <h2>{mockConcert.artist} at {mockConcert.address}</h2>
-        <p>{mockConcert.date.toDateString()}</p>
-        <h3>Information</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto aspernatur velit odit omnis ad enim eius eos optio, earum nulla aliquid cum! Hic voluptate facilis impedit explicabo quod dolores. Nobis?</p>
-      </div>
-      <AudioComponent />
+    <div>
+      {
+        event != null ? <div className="livestream-container">
+          <div className="livestream-media">
+            {isVideoMedia ? <VideoComponent videoUrl={`http://localhost:3333/data/video-stream/${event.id}`} />
+              :
+              <AudioComponent audioUrl={`http://localhost:3333/data/audio-stream/${event.id}`} />}
+          </div>
+          <div className="livestream-content">
+            <h2>{event.artist} at {event.venue}</h2>
+            <h3>{event.date}</h3>
+            <h4>Information</h4>
+            <p>{event.description}</p>
+          </div>
+        </div> : <div className="livestream-error">
+          <h2 className="livestream-error-text">No stream with that id</h2>
+          <button onClick={() => navigate('/')} className="livestream-error-btn">Back to home</button>
+        </div>
+      }
     </div>
   )
 }

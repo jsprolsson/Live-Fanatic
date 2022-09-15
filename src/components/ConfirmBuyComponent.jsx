@@ -2,39 +2,101 @@
 import "../styles/ConfirmBuyComponent.css";
 import React, { useEffect, useState } from "react";
 import eventService from "../services/eventService";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmBuyComponent = () => {
-  const [counter, setCounter] = useState(7);
-  const [paymentMetadata, setPaymentMetadata] = useState(null)
-
-  async function getCheckoutResult() {
-    let response = await fetch('/data/checkout')
-    let result = await response.json()
-    setPaymentMetadata(result)
-  }
+  const [isLoading, setIsLoading] = useState(true)
+  const [purchaseData, setPurchaseData] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
+    let isCancelled = false
+    const getCheckoutResult = async () => {
+      let response = await fetch('/data/checkout')
+      let result = await response.json()
+
+      if (!isCancelled) {
+        if (!result.error) {
+          setIsLoading(false)
+          setPurchaseData(result.checkoutSession.metadata)
+        }
+        else {
+          setTimeout(() => {
+            navigate('/')
+          }, 5000);
+        }
+      }
+    }
+
     getCheckoutResult()
+    return () => {
+      isCancelled = true
+    }
   }, [])
 
+  useEffect(() => {
+    let isCancelled = false
+    const updateDatabase = async () => {
+      if (!isCancelled) {
+        if (purchaseData) {
+          const { userId, eventId, amountOfTickets } = purchaseData
+          await removeTicketsFromEvent(eventId, amountOfTickets)
+          await addTicketsToUser(eventId, userId, amountOfTickets)
+          setTimeout(() => {
+            navigate('/profile')
+          }, 10000);
+        }
+      }
+    }
 
-  React.useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-    return () => clearInterval(timer);
-  }, [counter]);
+    updateDatabase()
+    return () => {
+      isCancelled = true
+    }
+  }, [purchaseData])
 
-  setTimeout(function () {
-    window.location = "http://127.0.0.1:5173/";
-  }, 7000);
+  const generateId = () => Math.floor(Math.random() * 1000000)
+
+  const removeTicketsFromEvent = async (eventId, amountOfTickets) => {
+    const event = await eventService.getOneEvent(eventId)
+    const updatedEvent = { ...event, tickets: event.tickets - amountOfTickets }
+    await eventService.update(eventId, updatedEvent)
+  }
+
+  const addTicketsToUser = async (eventId, userId, amountOfTickets) => {
+    const newUserTickets = {
+      id: generateId(),
+      event_id: eventId,
+      user_id: userId,
+      tickets: amountOfTickets
+    }
+
+
+    const requestOptions = {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newUserTickets)
+    }
+
+    await fetch('/data/usertickets', requestOptions)
+  }
+
+  if (isLoading) {
+    return <div className="cb-loading-main">
+      <div className="cb-loading-container">
+        <p className="cb-text">Loading...</p>
+      </div>
+    </div>
+  }
+
 
   return (
     <>
-      <div onLoad={setTimeout} className="cbmain">
+      <div className="cb-main">
         <h2>Purchase confirmed</h2>
         <p>Thanks for using live fanatic!</p>
         <hr></hr>
-        <h3>You will be directed home in {counter} seconds</h3>
+        <h3>You will be directed home in 10 seconds</h3>
 
       </div>
     </>
