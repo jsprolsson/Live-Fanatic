@@ -65,9 +65,8 @@ function ProfileComponent() {
       }),
     };
     const response = await fetch("/data/users/password", requestChangePassword);
-    const changePasswordRequestJson = await response.json();
 
-    console.log(newPassword);
+    if (response.status == 200) {
       const changePasswordInDb = {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -80,9 +79,15 @@ function ProfileComponent() {
         "/data/users/password",
         changePasswordInDb
       );
-      const changePasswordJson = await dbResponse.json();
-      console.log(changePasswordJson);
-    
+
+      if (dbResponse.status == 200) {
+        Message("Password successfully changed!");
+      } else {
+        Message("Oops something went wrong");
+      }
+    } else {
+      Message(response.status.toString());
+    }
   };
 
   return (
@@ -94,7 +99,6 @@ function ProfileComponent() {
         </div>
         <div className="profile-page">
           <form id="register-form" onSubmit={handleSubmit}>
-            {error != "" ? <div className="register-error">{error}</div> : null}
             <div className="account-label">
               <h2 className="profile-h2">Update Password on your Account</h2>
             </div>
@@ -128,6 +132,7 @@ function ProfileComponent() {
             <div className="logout-buttoncomponent">
               <button className="button">Log out</button>
             </div>
+            <p className="register-error">{error}</p>
           </form>
 
           <div className="user-purchaseList">
