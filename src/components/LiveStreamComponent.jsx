@@ -25,7 +25,6 @@ const AudioComponent = (props) => {
 function LiveStreamComponent() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const { user, setUser } = useStore()
   const [isLoading, setIsLoading] = useState(true)
   const [event, setEvent] = useState(null)
   const [isVideoMedia, setIsVideoMedia] = useState(false)
@@ -33,6 +32,9 @@ function LiveStreamComponent() {
   useEffect(() => {
     const loadEvent = async () => {
       try {
+        if (isNaN(id)) {
+          throw error
+        }
         const eventFromDb = await eventService.getOneEvent(id)
         setEvent(eventFromDb)
         const mediaType = eventFromDb.type === 'livestream' ? true : false
@@ -47,11 +49,6 @@ function LiveStreamComponent() {
     loadEvent()
   }, [])
 
-  const doesIdExist = () => true
-
-  console.log(event);
-
-
   if (isLoading) {
     return (
       <div>
@@ -64,7 +61,18 @@ function LiveStreamComponent() {
       {
         event != null ? <div className="livestream-container">
           <div className="livestream-media">
-            {isVideoMedia ? <VideoComponent /> : <AudioComponent />}
+            {isVideoMedia ? <VideoComponent>
+              <source
+                src={`http://localhost:3333/data/video-stream/${event.id}`}
+                type="video/mp4"
+              />
+            </VideoComponent> :
+              <AudioComponent>
+                <source
+                  src={`http://localhost:3333/data/audio-stream/${event.id}`}
+                  type="video/mp4"
+                />
+              </AudioComponent>}
           </div>
           <div className="livestream-content">
             <h2>{event.artist} at {event.address}</h2>
