@@ -1,0 +1,10 @@
+.dpdiv{
+
+    display: grid;
+    padding: 3px;
+  
+
+}
+.dpdiv>:first-child{
+    padding-bottom: 10px;
+}

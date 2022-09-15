@@ -24,9 +24,9 @@ const ConfirmBuyComponent = () => {
     return () => clearInterval(timer);
   }, [counter]);
 
-  // setTimeout(function () {
-  //   window.location = "http://127.0.0.1:5173/";
-  // }, 30000);
+  setTimeout(function () {
+    window.location = "http://127.0.0.1:5173/";
+  }, 7000);
 
   return (
     <>
