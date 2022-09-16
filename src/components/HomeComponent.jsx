@@ -16,6 +16,9 @@ function HomeComponent() {
   }, [])
 
   const recentlyAddedEvents = events.slice(-3)
+  let currentDate = new Date()
+  const eventsInNearFuture = events.filter(event => Date.parse(event.date) >= currentDate)
+    .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
 
   return (
     <div className="main">
@@ -24,7 +27,7 @@ function HomeComponent() {
       </div>
       <div>
         <RecentlyAddedConcertsComponent events={recentlyAddedEvents} />
-        <TodaysShowsComponent events={events} />
+        <TodaysShowsComponent events={eventsInNearFuture} />
       </div>
     </div>
   );
