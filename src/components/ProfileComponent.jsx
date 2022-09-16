@@ -54,6 +54,9 @@ function ProfileComponent() {
     e.preventDefault();
     changePassword(newPassword);
   };
+  const seeTicket=()=>{
+    navigate ("/ticketComponent")
+  }
 
   const changePassword = async (newPassword) => {
     // //sätter lösenord till null i db
@@ -134,11 +137,14 @@ function ProfileComponent() {
             
             </button>
             <div className="logout-buttoncomponent">
+             
               <button className="button">Log out</button>
             </div>
+            
            
             
           </form>
+        
 
           <div className="user-purchaseList">
             <h1 className="profile-h1">Ticket Purchase</h1>
@@ -173,7 +179,7 @@ function ProfileComponent() {
                     <img className="profile-image" src={event.event_img_url} />
                   </div>
                   <div className="button-component">
-                    <button className="button" type="button">
+                    <button className="button" type="button"onClick={()=>{seeTicket}}>
                       See Ticket
                     </button>
                   </div>

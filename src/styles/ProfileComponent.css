@@ -89,6 +89,10 @@
 .profile-image{
     width: 100%;
 }
+.register-error{
+  margin-left: 15vw;
+  font-size:10px;
+}
 
 
 
