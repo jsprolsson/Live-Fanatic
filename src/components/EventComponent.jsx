@@ -24,7 +24,6 @@ const EventComponent = () => {
   const { user } = useStore()
 
   function fetchData() {
-    //add param.id to endpoint when api call working
     fetch(`/data/events/${params.id}`)
       .then(response => {
         if (response.ok) {
@@ -32,9 +31,6 @@ const EventComponent = () => {
         }
       })
       .then(data => {
-        // const id = parseInt(params.id);
-        // let event = data.find(event => event.event_id === id)
-        // if (event != null) {
         setEventData(data);
         setDataLoaded(true);
         // }
@@ -91,19 +87,18 @@ const EventComponent = () => {
             </button>
           </div> : <div></div>}
           <div className="eventinfo-audio">
-            <div>Listen: </div>
             <audio controls>
               <source
                 src="http://localhost:3333/data/audio-example"
                 type="audio/mp3"
               />
             </audio>
+            {user !== null ? <TicketOptions show={dataLoaded} data={eventData} />
+              : <button id='event-toggle-modal-btn' onClick={() => setToggleLoginModal(true)}>Login to purchase tickets</button>
+            }
           </div>
         </div>
       </div>}
-      {user !== null ? <TicketOptions show={dataLoaded} data={eventData} />
-        : <button id='event-toggle-modal-btn' onClick={() => setToggleLoginModal(true)}>Login to purchase tickets</button>
-      }
       <ModalComponent title="login" show={toggleLoginModal} onClose={() => setToggleLoginModal(false)} >
         <LoginComponent closeModal={() => console.log('this should be removed')} />
       </ModalComponent>
