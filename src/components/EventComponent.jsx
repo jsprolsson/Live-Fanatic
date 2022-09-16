@@ -59,7 +59,6 @@ const EventComponent = () => {
   }, [eventData])
 
   const randomizeAudioStreamId = Math.floor(Math.random() * (2 - 1 + 1) + 1)
-  console.log(randomizeAudioStreamId);
 
   return (
     <>
