@@ -1,6 +1,8 @@
 import "../styles/ProfileComponent.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import paymentService from "../services/paymentService";
+import eventService from "../services/eventService";
 
 function ProfileComponent() {
   const [user, setUser] = useState({});
@@ -20,22 +22,18 @@ function ProfileComponent() {
       setUser(userdata);
 
       //hämta user tickets
-      let ticketdata = await fetch(`/data/user/tickets/` + userdata.id);
-
-      const ticketjson = await ticketdata.json();
-
-      setUserTickets(ticketjson);
+      const userTicketData = await paymentService.getTickets(userdata.id);
+      setUserTickets(userTicketData);
 
       //filtrera ut bara ticketsid till egen lista
-      const ticketsId = ticketjson.map(({ event_id }) => event_id);
+      const ticketsIds = userTicketData.map(({ event_id }) => event_id);
 
       //fetch alla events
-      let eventdata = await fetch("data/events");
-      const eventjson = await eventdata.json();
+      const allEvents = await eventService.getAll();
 
       //filtrera ut bara events usern ska på
-      let filteredjson = eventjson.filter((event) =>
-        ticketsId.includes(event.event_id)
+      let filteredjson = allEvents.filter((event) =>
+        ticketsIds.includes(event.id)
       );
 
       setUserEvents(filteredjson);
@@ -144,33 +142,33 @@ function ProfileComponent() {
             <h1 className="profile-h1">Ticket Purchase</h1>
             <div className="consert-list">
               {userevents.map((event) => (
-                <div key={event.event_id} className=" ticket">
+                <div key={event.id} className=" ticket">
                   <div>
                     <h2 className="profile-h2">
-                      Booked Event Concert:{event.event_artist}
+                      Booked Event Concert:{event.artist}
                     </h2>
                     <h3 className="profile-h3">
-                      Event Genre:{event.event_genre}
+                      Event Genre:{event.genre}
                     </h3>
                     <h3 className="profile-h3">
-                      Adress Location:{event.event_address}
+                      Adress Location:{event.address}
                     </h3>
                     <h3 className="profile-h3">
-                      Event Date:{event.event_date}
+                      Event Date:{event.date}
                     </h3>
                     <h3 className="profile-h3">
-                      Event Age Limit:{event.event_age_limit}
+                      Event Age Limit:{event.age_limit}
                     </h3>
                     <h3 className="profile-h3">
-                      Event Price:{event.event_price}
+                      Event Price:{event.price}
                     </h3>
                   </div>
                   <div>
                     <h3 className="profile-h3">About the band</h3>
-                    {event.event_description}
+                    {event.description}
                   </div>
                   <div>
-                    <img className="profile-image" src={event.event_img_url} />
+                    <img className="profile-image" src={event.img_url} />
                   </div>
                   <div className="button-component">
                     <button className="button" type="button">
