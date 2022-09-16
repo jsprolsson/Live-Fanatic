@@ -58,7 +58,7 @@ module.exports = function (server, db, host) {
         // Set a success and cancel URL we will send customers to
         // They are complete urls
         success_url: "http://127.0.0.1:5173" + '/confirmbuy', // these should be client routes in the react app
-        cancel_url: "http://127.0.0.1:5173" + '/confirmbuy',
+        cancel_url: "http://127.0.0.1:5173" + '/cancelbuy',
       })
       // save current checkout session to user session, so we can check result after
 
