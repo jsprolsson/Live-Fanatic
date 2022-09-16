@@ -6,10 +6,9 @@
   height: 6vh;
   position: sticky;
   bottom: 0;
-  margin-top: auto;
 }
 
-.Navbar-Footer > button {
+.Navbar-Footer>button {
   margin-left: 7vw;
   margin-right: 7vw;
   margin-top: 5px;
@@ -20,14 +19,14 @@
   background-color: #343a40;
 }
 
-.Navbar-Footer > button > a {
+.Navbar-Footer>button>a {
   background-color: #343a40;
   color: white;
   display: inline-block;
 }
 
-@media screen and (min-width: 678px) {
-  .Navbar-Footer > button {
+@media screen and (min-width: 768px) {
+  .Navbar-Footer>button {
     display: none;
   }
 
@@ -41,7 +40,7 @@
     right: 0;
     padding: 5px 0 10px 0;
     margin-top: auto;
-    height: 20vh;
+    height: 10vh;
   }
 
   #footer-text {
@@ -50,7 +49,7 @@
   }
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 768px) {
   #footer-text {
     display: none;
   }

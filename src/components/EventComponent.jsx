@@ -2,7 +2,17 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import '../styles/EventComponent.css'
 import PaymentComponent from './PaymentComponent'
+import { useStore } from '../store/useStore'
+import ModalComponent from './ModalComponent'
+import LoginComponent from './LogInComponent'
 
+const TicketOptions = ({ show, data }) => {
+  if (show) {
+    return <PaymentComponent event={data} />
+  } else {
+    return null
+  }
+}
 
 const EventComponent = () => {
   const navigate = useNavigate();
@@ -10,10 +20,10 @@ const EventComponent = () => {
   const params = useParams();
   const [eventData, setEventData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
-
+  const [toggleLoginModal, setToggleLoginModal] = useState(false)
+  const { user } = useStore()
 
   function fetchData() {
-    //add param.id to endpoint when api call working
     fetch(`/data/events/${params.id}`)
       .then(response => {
         if (response.ok) {
@@ -21,9 +31,6 @@ const EventComponent = () => {
         }
       })
       .then(data => {
-        // const id = parseInt(params.id);
-        // let event = data.find(event => event.event_id === id)
-        // if (event != null) {
         setEventData(data);
         setDataLoaded(true);
         // }
@@ -51,6 +58,7 @@ const EventComponent = () => {
     checkDate();
   }, [eventData])
 
+  const randomizeAudioStreamId = Math.floor(Math.random() * (2 - 1 + 1) + 1)
 
   return (
     <>
@@ -80,20 +88,21 @@ const EventComponent = () => {
             </button>
           </div> : <div></div>}
           <div className="eventinfo-audio">
-            <div>Listen: </div>
             <audio controls>
               <source
-                src="http://localhost:3333/data/audio-example"
+                src={`http://localhost:3333/data/audio-stream/${randomizeAudioStreamId}`}
                 type="audio/mp3"
               />
             </audio>
+            {user !== null ? <TicketOptions show={dataLoaded} data={eventData} />
+              : <button id='event-toggle-modal-btn' onClick={() => setToggleLoginModal(true)}>Login to purchase tickets</button>
+            }
           </div>
         </div>
       </div>}
-      {dataLoaded && <div className="payment">
-        <PaymentComponent event={eventData} />
-      </div>}
-
+      <ModalComponent title="login" show={toggleLoginModal} onClose={() => setToggleLoginModal(false)} >
+        <LoginComponent closeModal={() => console.log('this should be removed')} />
+      </ModalComponent>
     </>
   );
 }
