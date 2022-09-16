@@ -71,6 +71,7 @@ const ConfirmBuyComponent = () => {
       tickets: amountOfTickets
     }
 
+
     const requestOptions = {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -87,6 +88,7 @@ const ConfirmBuyComponent = () => {
       </div>
     </div>
   }
+
 
   return (
     <>

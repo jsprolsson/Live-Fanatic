@@ -40,17 +40,23 @@
 }
 
 #search-filter-boxes {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  width: 70vw;
+  align-items: center;
+  justify-content: space-between;
   margin-top: 15px;
   margin-bottom: 5px;
 }
-
+#search-filter-boxes>:last-child> {
+ margin: 0;
+ 
+}
 .search-checkbox {
-  text-transform: capitalize;
+  
   font-size: 16px;
-  font-weight: 1000;
+  font-weight: 500;
+  
 }
 
 .search-checkbox>input {
