@@ -1,7 +1,10 @@
+
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import "../styles/SearchComponent.css";
 import eventService from "../services/eventService";
+import DatePickerComponent from "./DatePickerComponent";
 
 function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
   return (
@@ -12,7 +15,7 @@ function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
           onChange={handleRadioClick}
           type="radio"
         />
-        all
+        All
       </label>
       <label className="search-checkbox">
         <input
@@ -20,8 +23,12 @@ function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
           onChange={handleRadioClick}
           type="radio"
         />
-        genre
+        Genre
       </label>
+      <div className="search-checkbox ">
+        <button>Sort by date</button>
+
+      </div>
     </div>
   );
 }
@@ -40,8 +47,8 @@ function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick, radioChe
         <option>Rock</option>
         <option>Orchestra</option>
         <option>Metal</option>
-      </datalist>):(<></>)}
-      
+      </datalist>) : (<></>)}
+
       <button onClick={onSearchClick} id="search-body-btn">
         Search
       </button>
@@ -60,15 +67,18 @@ function NoResult({ searchString, onClick }) {
 
 function SearchResult(concert) {
   const { artist, date, description, id } = concert.concert;
+
   return (
-    <div className="search-card">
-      <h3>{artist}</h3>
-      <h4>{date}</h4>
-      <p>{description}</p>
-      <Link className="header-nav-link" to={"/events/" + id}>
-        More information
-      </Link>
-    </div>
+    <>
+      <div className="search-card">
+        <h3 class="searchh3">{artist}</h3>
+        <h4>{date}</h4>
+        <p>{description}</p>
+        <Link className="header-nav-link" to={"/events/" + id}>
+          More information
+        </Link>
+      </div>
+    </>
   );
 }
 
@@ -89,6 +99,7 @@ function SearchComponent() {
 
     loadData();
   }, []);
+
 
   let searchParam = useSearchString.get("name");
   if (!searchParam) {
@@ -118,11 +129,11 @@ function SearchComponent() {
   if (searchParam) {
     dataToShow = radioCheckAll
       ? events.filter((concert) =>
-          concert.artist.toLowerCase().includes(searchParam.toLowerCase())
-        )
+        concert.artist.toLowerCase().includes(searchParam.toLowerCase())
+      )
       : events.filter((concert) =>
-          concert.genre.toLowerCase().includes(searchParam.toLowerCase())
-        );
+        concert.genre.toLowerCase().includes(searchParam.toLowerCase())
+      );
   }
 
   return (
@@ -140,14 +151,15 @@ function SearchComponent() {
         radioGenreValue={radioCheckGenre}
         handleRadioClick={handleRadioChange}
       />
+
       <div>
-        <h2>Results</h2>
         {dataToShow.length > 0 ? (
           dataToShow.map((concert) => (
             <SearchResult key={concert.id} concert={concert} />
           ))
         ) : (
-          <NoResult onClick={() => navigate("/")} searchString={searchParam} />
+          // <NoResult onClick={() => navigate("/")} searchString={searchParam} />
+          <DatePickerComponent />
         )}
       </div>
     </div>

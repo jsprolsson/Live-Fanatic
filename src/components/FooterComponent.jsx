@@ -9,7 +9,7 @@ function FooterComponent() {
   const { user } = useStore();
   const [show, setShow] = useState(false);
   return (
-    <footer className="Navbar-Footer">
+    <footer className="Navbar-Footer" id="navbar-footer-desktop">
       <button className="FooterButtonHome">
         <Link to="/">
           <span className="material-symbols-outlined">home</span>
@@ -25,7 +25,6 @@ function FooterComponent() {
           <span className="material-symbols-outlined">search</span>
         </Link>
       </button>
-
 
       {user == null ? (
         <button onClick={() => setShow(true)} className="FooterButtonProfile">
