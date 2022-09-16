@@ -1,6 +1,8 @@
 import "../styles/ProfileComponent.css";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import paymentService from "../services/paymentService";
+import eventService from "../services/eventService";
 
 function ProfileComponent() {
   const [user, setUser] = useState({});
@@ -20,24 +22,18 @@ function ProfileComponent() {
       setUser(userdata);
 
       //hämta user tickets
-      let ticketdata = await fetch(`/data/user/tickets/` + userdata.id);
-
-      const ticketjson = await ticketdata.json();
-
-      setUserTickets(ticketjson);
+      const userTicketData = await paymentService.getTickets(userdata.id);
+      setUserTickets(userTicketData);
 
       //filtrera ut bara ticketsid till egen lista
-      const ticketsId = ticketjson.map(({ event_id }) => event_id);
+      const ticketsIds = userTicketData.map(({ event_id }) => event_id);
 
       //fetch alla events
-      let eventdata = await fetch("data/events");
-      const eventjson = await eventdata.json();
-
-      
+      const allEvents = await eventService.getAll();
 
       //filtrera ut bara events usern ska på
-      let filteredjson = eventjson.filter((event) =>
-        ticketsId.includes(event.id)
+      let filteredjson = allEvents.filter((event) =>
+        ticketsIds.includes(event.id)
       );
 
       setUserEvents(filteredjson);
