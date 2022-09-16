@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import "../styles/SearchComponent.css";
 import eventService from "../services/eventService";
 import DatePickerComponent from "./DatePickerComponent";
-import { Link } from "react-router-dom";
 
 function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
   return (
