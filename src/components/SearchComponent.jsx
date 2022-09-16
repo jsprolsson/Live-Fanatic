@@ -26,7 +26,7 @@ function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
         Genre
       </label>
       <div className="search-checkbox ">
-      <button>Sort by date</button>
+        <button>Sort by date</button>
 
       </div>
     </div>
@@ -47,8 +47,8 @@ function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick, radioChe
         <option>Rock</option>
         <option>Orchestra</option>
         <option>Metal</option>
-      </datalist>):(<></>)}
-      
+      </datalist>) : (<></>)}
+
       <button onClick={onSearchClick} id="search-body-btn">
         Search
       </button>
@@ -129,11 +129,11 @@ function SearchComponent() {
   if (searchParam) {
     dataToShow = radioCheckAll
       ? events.filter((concert) =>
-          concert.artist.toLowerCase().includes(searchParam.toLowerCase())
-        )
+        concert.artist.toLowerCase().includes(searchParam.toLowerCase())
+      )
       : events.filter((concert) =>
-          concert.genre.toLowerCase().includes(searchParam.toLowerCase())
-        );
+        concert.genre.toLowerCase().includes(searchParam.toLowerCase())
+      );
   }
 
   return (
