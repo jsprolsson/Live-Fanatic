@@ -58,6 +58,8 @@ const EventComponent = () => {
     checkDate();
   }, [eventData])
 
+  const randomizeAudioStreamId = Math.floor(Math.random() * (2 - 1 + 1) + 1)
+  console.log(randomizeAudioStreamId);
 
   return (
     <>
@@ -89,7 +91,7 @@ const EventComponent = () => {
           <div className="eventinfo-audio">
             <audio controls>
               <source
-                src="http://localhost:3333/data/audio-example"
+                src={`http://localhost:3333/data/audio-stream/${randomizeAudioStreamId}`}
                 type="audio/mp3"
               />
             </audio>
