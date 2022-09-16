@@ -26,9 +26,13 @@ const login = async (details, setUser) => {
           email: loggedInUser.email,
           roles: loggedInUser.roles,
         })
+        return data;
+    }
+    else{
+      return "Incorrect information";
     }
   
-    return data;
+    
 }
 
 export default {
