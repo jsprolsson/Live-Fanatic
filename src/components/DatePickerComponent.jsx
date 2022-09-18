@@ -12,18 +12,17 @@ const datepicker = () => {
 
   //   const [dataLoaded, setDataLoaded] = useState(false);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
 
-  async function fetchData() {
-    let data = await eventService.getAll();
-    setEventsData(data);
-    //   setDataLoaded(true);
-  }
+//   async function fetchData() {
+//     let data = await eventService.getAll();
+//     setEventsData(data);
+//     //   setDataLoaded(true);
+//   }
 
-  console.log(typeof selectedDateOne);
-  console.log(typeof selectedDateTwo);
+  
 
   return (
     <>
@@ -54,11 +53,11 @@ const datepicker = () => {
         />
       </div>
 
-      {eventsData
+      {/* {eventsData
         .filter(
           (ev) =>
-            Date.parse(ev.date) > Date.parse(selectedDateOne) &&
-            Date.parse(ev.date) < Date.parse(selectedDateTwo)
+            Date.parse(ev.date) >= Date.parse(selectedDateOne) &&
+            Date.parse(ev.date) <= Date.parse(selectedDateTwo)
         )
         .map((event) => (
           <p key={event.id}>
@@ -66,7 +65,7 @@ const datepicker = () => {
             {event.artist + " "}
             {event.venue}
           </p>
-        ))}
+        ))} */}
     </>
   );
 };

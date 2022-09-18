@@ -27,6 +27,15 @@
   padding: 5px;
   border-radius: 5px;
 }
+.sortbydatebtn{
+  
+  color: #60c7a2;
+    background-color: #343A40;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+
+}
 
 .search-error {
   display: flex;
@@ -41,7 +50,7 @@
 
 #search-filter-boxes {
   display: grid;
-  grid-template-columns: 30% 30% 40%;
+  grid-template-columns:1fr 1fr;
   width: 70vw;
   align-items: center;
   justify-content: space-between;
@@ -50,6 +59,7 @@
 }
 #search-filter-boxes>:last-child> {
  margin: 0;
+ 
  
 }
 .search-checkbox {
