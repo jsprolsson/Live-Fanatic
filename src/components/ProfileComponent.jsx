@@ -154,35 +154,35 @@ function ProfileComponent() {
               <h1 className="profile-h1">Ticket Purchase</h1>
               <div className="concert-list">
                 {userevents.map((event) => (
-                  <div key={event.event_id} className=" ticket">
+                  <div key={event.id} className=" ticket">
                     <div>
                       <h2 className="profile-h2">
-                        Booked Event Concert:{event.event_artist}
+                        Booked Event Concert:{event.artist}
                       </h2>
                       <h3 className="profile-h3">
-                        Event Genre:{event.event_genre}
+                        Event Genre:{event.genre}
                       </h3>
                       <h3 className="profile-h3">
-                        Address Location:{event.event_address}
+                        Address Location:{event.address}
                       </h3>
                       <h3 className="profile-h3">
-                        Event Date:{event.event_date}
+                        Event Date:{event.date}
                       </h3>
                       <h3 className="profile-h3">
-                        Event Age Limit:{event.event_age_limit}
+                        Event Age Limit:{event.age_limit}
                       </h3>
                       <h3 className="profile-h3">
-                        Event Price:{event.event_price}
+                        Event Price:{event.price}
                       </h3>
                     </div>
                     <div>
                       <h3 className="profile-h3">About the band</h3>
-                      {event.event_description}
+                      {event.description}
                     </div>
                     <div>
                       <img
                         className="profile-image"
-                        src={event.event_img_url}
+                        src={event.img_url}
                       />
                     </div>
                     <div className="button-component">
