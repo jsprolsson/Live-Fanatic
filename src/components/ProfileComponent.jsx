@@ -44,8 +44,34 @@ function ProfileComponent() {
       let filteredJson = allEvents.filter((event) =>
         ticketsIds.includes(event.id)
       );
-        
-      setUserEvents(filteredJson);
+
+      //sortera efter datum
+      filteredJson.sort(function(a,b) {
+          return a.date > b.date ? 1 : -1;
+      })
+      
+      let expiredTickets = []
+
+      //om event är utgånget
+      filteredJson.forEach(event => {
+        let todaysDate = new Date();
+        let eventDate = new Date(event.date);
+        eventDate = eventDate.setHours(event.time);
+
+        //lägg till i expiredTix-list och ta bort från filteredJson
+        if(todaysDate > eventDate){
+          expiredTickets.push(event)
+          // filteredJson.splice(event, 0)
+        }
+      })
+
+      // console.log(expiredTickets)
+
+      //lägg till utgånga events i slutet av listan för att inte displaya dem i ordningen med aktuella biljetter
+      // const allEventsEvenExpired = filteredJson.concat(expiredTickets)
+
+      // setUserEvents(allEventsEvenExpired);
+       setUserEvents(filteredJson)
     }
     };
     fetchData();
