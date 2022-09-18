@@ -7,6 +7,7 @@ import eventService from "../services/eventService";
 import { useStore } from "../store/useStore";
 import ModalComponent from "./ModalComponent";
 import LoginComponent from "./LogInComponent";
+import UserTicketsComponent from "./UserTicketsComponent";
 
 function ProfileComponent() {
   const [userFromDb, setUserFromDb] = useState({});
@@ -21,7 +22,9 @@ function ProfileComponent() {
 
   //hämta användare
   useEffect(() => {
+    let isCancelled = false
     const fetchData = async () => {
+      if(!isCancelled) {
       let response = await fetch("/data/login");
       let userData = await response.json();
 
@@ -40,12 +43,41 @@ function ProfileComponent() {
       //filtrera ut bara events usern ska på
       let filteredJson = allEvents.filter((event) =>
         ticketsIds.includes(event.id)
-
       );
 
-      setUserEvents(filteredJson);
+      //sortera efter datum
+      filteredJson.sort(function(a,b) {
+          return a.date > b.date ? 1 : -1;
+      })
+      
+      let expiredTickets = []
+
+      //om event är utgånget
+      filteredJson.forEach(event => {
+        let todaysDate = new Date();
+        let eventDate = new Date(event.date);
+        eventDate = eventDate.setHours(event.time);
+
+        //lägg till i expiredTix-list och ta bort från filteredJson
+        if(todaysDate > eventDate){
+          expiredTickets.push(event)
+          // filteredJson.splice(event, 0)
+        }
+      })
+
+      // console.log(expiredTickets)
+
+      //lägg till utgånga events i slutet av listan för att inte displaya dem i ordningen med aktuella biljetter
+      // const allEventsEvenExpired = filteredJson.concat(expiredTickets)
+
+      // setUserEvents(allEventsEvenExpired);
+       setUserEvents(filteredJson)
+    }
     };
     fetchData();
+    return () => {
+      isCancelled = true
+    }
   }, []);
 
   function Message(message) {
@@ -153,44 +185,8 @@ function ProfileComponent() {
             <div className="user-purchase-list">
               <h1 className="profile-h1">Ticket Purchase</h1>
               <div className="concert-list">
-                {userevents.map((event) => (
-                  <div key={event.id} className=" ticket">
-                    <div>
-                      <h2 className="profile-h2">
-                        Booked Event Concert:{event.artist}
-                      </h2>
-                      <h3 className="profile-h3">
-                        Event Genre:{event.genre}
-                      </h3>
-                      <h3 className="profile-h3">
-                        Address Location:{event.address}
-                      </h3>
-                      <h3 className="profile-h3">
-                        Event Date:{event.date}
-                      </h3>
-                      <h3 className="profile-h3">
-                        Event Age Limit:{event.age_limit}
-                      </h3>
-                      <h3 className="profile-h3">
-                        Event Price:{event.price}
-                      </h3>
-                    </div>
-                    <div>
-                      <h3 className="profile-h3">About the band</h3>
-                      {event.description}
-                    </div>
-                    <div>
-                      <img
-                        className="profile-image"
-                        src={event.img_url}
-                      />
-                    </div>
-                    <div className="button-component">
-                      <button className="button" type="button">
-                        See Ticket
-                      </button>
-                    </div>
-                  </div>
+                {userevents.map((events) => (
+                  <UserTicketsComponent key={events.id} event={events}/>
                 ))}
               </div>
             </div>
