@@ -53,6 +53,10 @@
   align-items: center;
 }
 
+.expired-ticket {
+  background-color: grey;
+}
+
 .user-purchase-list {
   margin: 5px;
 }
