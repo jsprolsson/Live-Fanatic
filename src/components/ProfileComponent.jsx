@@ -40,38 +40,23 @@ function ProfileComponent() {
       //fetch alla events
       const allEvents = await eventService.getAll();
 
-      //filtrera ut bara events usern ska på
-      let filteredJson = allEvents.filter((event) =>
+      //filtrera ut bara events usern ska på och sortera efter datum
+      let filteredEventsList = allEvents.filter((event) =>
         ticketsIds.includes(event.id)
-      );
-
-      //sortera efter datum
-      filteredJson.sort(function(a,b) {
+      ).sort((a,b) => {
           return a.date > b.date ? 1 : -1;
       })
       
-      let expiredTickets = []
+      // lägg till utgånga biljetter i egen lista
+      let expiredTickets = filteredEventsList.filter(event => Date.parse(event.date) < new Date()).splice(-3)
 
-      //om event är utgånget
-      filteredJson.forEach(event => {
-        let todaysDate = new Date();
-        let eventDate = new Date(event.date);
-        eventDate = eventDate.setHours(event.time);
+      //ta bort utgånga biljetter från listan med userns event
+      filteredEventsList = filteredEventsList.filter(event => Date.parse(event.date) > new Date())
 
-        //lägg till i expiredTix-list och ta bort från filteredJson
-        if(todaysDate > eventDate){
-          expiredTickets.push(event)
-          // filteredJson.splice(event, 0)
-        }
-      })
+      //lägg till utgånga events i slutet av listan för att separera aktuella och utgånga biljetter
+      const sortedUsersEventList = filteredEventsList.concat(expiredTickets)
 
-      // console.log(expiredTickets)
-
-      //lägg till utgånga events i slutet av listan för att inte displaya dem i ordningen med aktuella biljetter
-      // const allEventsEvenExpired = filteredJson.concat(expiredTickets)
-
-      // setUserEvents(allEventsEvenExpired);
-       setUserEvents(filteredJson)
+      setUserEvents(sortedUsersEventList);
     }
     };
     fetchData();
