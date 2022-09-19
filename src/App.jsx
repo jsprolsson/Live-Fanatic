@@ -26,6 +26,7 @@ import EnterCardComponent from './components/EnterCardComponent'
 import ConfirmBuyComponent from './components/ConfirmBuyComponent';
 import CancelBuyComponent from './components/CancelBuyComponent';
 import PageNotFoundComponent from './components/PageNotFoundComponent';
+import TicketComponent from './components/TicketComponent'
 
 function App() {
   return (
