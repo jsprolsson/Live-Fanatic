@@ -6,21 +6,3 @@
 * {
   font-family: 'Roboto', sans-serif;
 }
-
-@media screen and (min-width: 64em) {
-  body {
-    margin: 0 8%;
-  }
-}
-
-@media screen and (min-width: 120em) {
-  body {
-    margin: 0 12%;
-  }
-}
-
-@media screen and (min-width: 160em) {
-  body {
-    margin: 0 16%;
-  }
-}
