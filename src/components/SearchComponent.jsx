@@ -69,8 +69,8 @@ function NoResult({ searchString, onClick }) {
   );
 }
 
-function SearchResult(concert) {
-  const { artist, date, description, id } = concert.concert;
+function SearchResult({ concert }) {
+  const { artist, date, description, id } = concert;
 
   return (
     <>
@@ -81,6 +81,57 @@ function SearchResult(concert) {
         <Link className="header-nav-link" to={"/events/" + id}>
           More information
         </Link>
+      </div>
+    </>
+  );
+}
+function DateFilter({
+  selectedDateOne,
+  selectedDateTwo,
+  setSelectedDateOne,
+  setSelectedDateTwo,
+  handleDateReset,
+  handleSetSortByDate,
+  sortByDate,
+}) {
+  return (
+    <>
+      <div className="search-checkbox">
+        <button onClick={handleSetSortByDate} className="sortbydatebtn ">
+          Sort by date
+        </button>
+      </div>
+
+      <div className="dpdiv">
+        {sortByDate ? (
+          <>
+            <div className="dpdiv">
+              <Datepicker
+                value={selectedDateOne}
+                onChange={(date) => {
+                  const d = new Date(date).toLocaleDateString("sv-SE");
+                  console.log(d);
+                  setSelectedDateOne(d);
+                }}
+                minDate={new Date()}
+              />
+              <Datepicker
+                value={selectedDateTwo}
+                onChange={(date) => {
+                  const d = new Date(date).toLocaleDateString("sv-SE");
+                  console.log(d);
+                  setSelectedDateTwo(d);
+                }}
+                minDate={new Date(selectedDateOne)}
+              />
+            </div>
+            <button onClick={handleDateReset} className="sortbydatebtn ">
+              Reset
+            </button>
+          </>
+        ) : (
+          <div></div>
+        )}
       </div>
     </>
   );
@@ -107,7 +158,9 @@ function SearchComponent() {
   useEffect(() => {
     const loadData = async () => {
       let data = await eventService.getAll();
-      const listSortedByDate=[...data].sort((a,b)=>a.date > b.date? 1:-1)
+      const listSortedByDate = [...data].sort((a, b) =>
+        a.date > b.date ? 1 : -1
+      );
       setEvents(listSortedByDate);
     };
 
@@ -173,17 +226,12 @@ function SearchComponent() {
                   Date.parse(concert.date) <= Date.parse(selectedDateTwo)
               ))
       : (dataToShow = radioCheckAll
-          ? events
-              .filter((concert) =>
-                concert.artist.toLowerCase().includes(searchParam.toLowerCase())
-              )
-              
-          : events
-              .filter((concert) =>
-                concert.genre.toLowerCase().includes(searchParam.toLowerCase())
-              )
-              );
-    
+          ? events.filter((concert) =>
+              concert.artist.toLowerCase().includes(searchParam.toLowerCase())
+            )
+          : events.filter((concert) =>
+              concert.genre.toLowerCase().includes(searchParam.toLowerCase())
+            ));
   }
 
   return (
@@ -201,44 +249,15 @@ function SearchComponent() {
         radioGenreValue={radioCheckGenre}
         handleRadioClick={handleRadioChange}
       />
-      <div className="search-checkbox">
-        <button onClick={handleSetSortByDate} className="sortbydatebtn ">
-          Sort by date
-        </button>
-      </div>
-
-      <div className="dpdiv">
-        {sortByDate ? (
-          <>
-            
-            <div className="dpdiv">
-              <Datepicker
-                value={selectedDateOne}
-                onChange={(date) => {
-                  const d = new Date(date).toLocaleDateString("sv-SE");
-                  console.log(d);
-                  setSelectedDateOne(d);
-                }}
-                minDate={new Date()}
-              />
-              <Datepicker
-                value={selectedDateTwo}
-                onChange={(date) => {
-                  const d = new Date(date).toLocaleDateString("sv-SE");
-                  console.log(d);
-                  setSelectedDateTwo(d);
-                }}
-                minDate={new Date(selectedDateOne)}
-              />
-            </div>
-            <button onClick={handleDateReset} className="sortbydatebtn ">
-              Reset
-            </button>
-          </>
-        ) : (
-          <div></div>
-        )}
-      </div>
+      <DateFilter
+        selectedDateOne={selectedDateOne}
+        selectedDateTwo={selectedDateTwo}
+        setSelectedDateOne={setSelectedDateOne}
+        setSelectedDateTwo={setSelectedDateTwo}
+        sortByDate={sortByDate}
+        handleDateReset={handleDateReset}
+        handleSetSortByDate={handleSetSortByDate}
+      />
 
       <div>
         {dataToShow.length > 0 ? (
