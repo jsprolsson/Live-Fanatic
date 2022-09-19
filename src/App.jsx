@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
 } from 'react-router-dom'
 import AboutUsComponent from './components/AboutUsComponent'
 import FooterComponent from './components/FooterComponent'
