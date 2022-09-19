@@ -96,7 +96,7 @@ function SearchComponent() {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const date = new Date();
-  date.setFullYear(date.getFullYear() + 2);
+  date.setMonth(date.getMonth() + 1);
   const [sortByDate, setSortByDate] = useState(false);
   const [selectedDateOne, setSelectedDateOne] = useState(
     new Date().toLocaleDateString()
@@ -108,7 +108,8 @@ function SearchComponent() {
   useEffect(() => {
     const loadData = async () => {
       let data = await eventService.getAll();
-      setEvents(data);
+      const listSortedByDate=[...data].sort((a,b)=>a.date > b.date? 1:-1)
+      setEvents(listSortedByDate);
     };
 
     loadData();
