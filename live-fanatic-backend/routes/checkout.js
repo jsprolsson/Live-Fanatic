@@ -57,7 +57,7 @@ module.exports = function (server, db, host) {
         mode: "payment",
         // Set a success and cancel URL we will send customers to
         // They are complete urls
-        // Create-buyfail-page-T113
+
         success_url: "http://127.0.0.1:5173" + '/confirmbuy', // these should be client routes in the react app
         cancel_url: "http://127.0.0.1:5173" + '/cancelbuy',
       })
