@@ -56,7 +56,7 @@ function App() {
               <Route path='/confirmbuy' element={<ConfirmBuyComponent />} />
               <Route path='/cancelbuy' element={<CancelBuyComponent />} />
               <Route path='/profile' element={<ProfileComponent />} />
-              <Route path='/ticket/:id' element={<TicketComponent />} />
+              <Route path='/ticket' element={<TicketComponent />} />
             </Routes>
           </main>
           <FooterComponent />

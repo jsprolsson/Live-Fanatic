@@ -3,7 +3,6 @@ import eventService from "./eventService";
 const getTickets = async (user_Id) => {
     const response = await fetch(`data/user/tickets/${user_Id}`);
     const userTickets = await response.json();
-    console.log(userTickets);
     return userTickets;
 }
 

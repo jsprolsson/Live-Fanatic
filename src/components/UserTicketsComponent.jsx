@@ -57,7 +57,7 @@ useEffect(() => {
         EXPIRED
       </button>
     </div> : <div className="button-component">
-      <Link to={"/ticket/"+event.id}> <button className="button" type="button">
+      <Link to="/ticket" state={{ eventId: event.id }}> <button className="button" type="button">
         Show Ticket
       </button></Link>
       
