@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, useEffect, createContext } from 'react'
 
 const exampleUser = {
   email: 'example@exam.com',
@@ -7,6 +7,15 @@ const exampleUser = {
 
 const getState = () => {
   const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const userInStorage = JSON.parse(localStorage.getItem('user'))
+
+    if (userInStorage) {
+      setUser(userInStorage)
+    }
+  }, [])
+
 
   return {
     user,
