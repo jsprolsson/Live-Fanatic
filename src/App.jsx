@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
 } from 'react-router-dom'
 import AboutUsComponent from './components/AboutUsComponent'
 import FooterComponent from './components/FooterComponent'
@@ -26,12 +25,7 @@ import LiveStreamComponent from './components/LiveStreamComponent';
 import EnterCardComponent from './components/EnterCardComponent'
 import ConfirmBuyComponent from './components/ConfirmBuyComponent';
 import CancelBuyComponent from './components/CancelBuyComponent';
-import TicketComponent from'./components/TicketComponent';
-const PageNotFoundComponent = () => {
-  return (
-    <div><h1>Page not found</h1></div>
-  )
-}
+import PageNotFoundComponent from './components/PageNotFoundComponent';
 
 function App() {
   return (

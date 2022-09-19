@@ -1,7 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import "../styles/LiveStreamComponent.css"
-import { useStore } from '../store/useStore'
 import eventService from '../services/eventService'
 
 const VideoComponent = ({ videoUrl }) => {
@@ -63,13 +62,13 @@ function LiveStreamComponent() {
     )
   }
   return (
-    <div>
+    <div id="livestream-main">
       {
         event != null ? <div className="livestream-container">
           <div className="livestream-media">
-            {isVideoMedia ? <VideoComponent videoUrl={`http://localhost:3333/data/video-stream/${event.id}`} />
+            {isVideoMedia ? <VideoComponent videoUrl={`http://localhost:3333/data/video-stream/${Math.floor(Math.random() * (3 - 1 + 1) + 1)}`} />
               :
-              <AudioComponent audioUrl={`http://localhost:3333/data/audio-stream/${event.id}`} />}
+              <AudioComponent audioUrl={`http://localhost:3333/data/audio-stream/${Math.random() > 0.5 ? 1 : 2}`} />}
           </div>
           <div className="livestream-content">
             <h2>{event.artist} at {event.venue}</h2>

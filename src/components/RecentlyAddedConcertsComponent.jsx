@@ -32,7 +32,7 @@ const RecentlyAddedConcertsComponent = ({ events }) => {
         <h2 className="concertstext">Recently added concerts</h2>
         <div className="child-containers">
           {events.map((event) => (
-            <div key={event.id} id="recently-added-wrapper" style={{ backgroundImage: `url(${event.img_url})` }}>
+            <div key={event.id} className="recently-added-wrapper" style={{ backgroundImage: `url(${event.img_url})` }}>
               <Link to={"events/" + event.id}>
                 <section className="concert-container" >
                   <h4 className="concertstext">{event.artist}</h4>
