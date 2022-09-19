@@ -25,11 +25,7 @@ import LiveStreamComponent from './components/LiveStreamComponent';
 import EnterCardComponent from './components/EnterCardComponent'
 import ConfirmBuyComponent from './components/ConfirmBuyComponent';
 import CancelBuyComponent from './components/CancelBuyComponent';
-const PageNotFoundComponent = () => {
-  return (
-    <div><h1>Page not found</h1></div>
-  )
-}
+import PageNotFoundComponent from './components/PageNotFoundComponent';
 
 function App() {
   return (
