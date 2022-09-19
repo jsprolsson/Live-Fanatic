@@ -65,7 +65,6 @@ function NoResult({ searchString, onClick }) {
   return (
     <div className="search-card search-error">
       <p>No results for "{searchString}", please refine your search</p>
-      <button onClick={onClick}>Go to home</button>
     </div>
   );
 }
@@ -153,25 +152,38 @@ function SearchComponent() {
   let dataToShow = [];
 
   if (searchParam) {
-    dataToShow = radioCheckAll
-      ? events
-          .filter((concert) =>
-            concert.artist.toLowerCase().includes(searchParam.toLowerCase())
-          )
-          .filter(
-            (concert) =>
-              Date.parse(concert.date) >= Date.parse(selectedDateOne) &&
-              Date.parse(concert.date) <= Date.parse(selectedDateTwo)
-          )
-      : events
-          .filter((concert) =>
-            concert.genre.toLowerCase().includes(searchParam.toLowerCase())
-          )
-          .filter(
-            (concert) =>
-              Date.parse(concert.date) >= Date.parse(selectedDateOne) &&
-              Date.parse(concert.date) <= Date.parse(selectedDateTwo)
-          );
+    sortByDate
+      ? (dataToShow = radioCheckAll
+          ? events
+              .filter((concert) =>
+                concert.artist.toLowerCase().includes(searchParam.toLowerCase())
+              )
+              .filter(
+                (concert) =>
+                  Date.parse(concert.date) >= Date.parse(selectedDateOne) &&
+                  Date.parse(concert.date) <= Date.parse(selectedDateTwo)
+              )
+          : events
+              .filter((concert) =>
+                concert.genre.toLowerCase().includes(searchParam.toLowerCase())
+              )
+              .filter(
+                (concert) =>
+                  Date.parse(concert.date) >= Date.parse(selectedDateOne) &&
+                  Date.parse(concert.date) <= Date.parse(selectedDateTwo)
+              ))
+      : (dataToShow = radioCheckAll
+          ? events
+              .filter((concert) =>
+                concert.artist.toLowerCase().includes(searchParam.toLowerCase())
+              )
+              
+          : events
+              .filter((concert) =>
+                concert.genre.toLowerCase().includes(searchParam.toLowerCase())
+              )
+              );
+    
   }
 
   return (
@@ -198,7 +210,7 @@ function SearchComponent() {
       <div className="dpdiv">
         {sortByDate ? (
           <>
-            <h2>Sort events by date:</h2>
+            
             <div className="dpdiv">
               <Datepicker
                 value={selectedDateOne}
