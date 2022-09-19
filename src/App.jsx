@@ -26,6 +26,7 @@ import LiveStreamComponent from './components/LiveStreamComponent';
 import EnterCardComponent from './components/EnterCardComponent'
 import ConfirmBuyComponent from './components/ConfirmBuyComponent';
 import CancelBuyComponent from './components/CancelBuyComponent';
+import TicketComponent from'./components/TicketComponent';
 const PageNotFoundComponent = () => {
   return (
     <div><h1>Page not found</h1></div>
@@ -55,6 +56,7 @@ function App() {
               <Route path='/confirmbuy' element={<ConfirmBuyComponent />} />
               <Route path='/cancelbuy' element={<CancelBuyComponent />} />
               <Route path='/profile' element={<ProfileComponent />} />
+              <Route path='/ticket/:id' element={<TicketComponent />} />
             </Routes>
           </main>
           <FooterComponent />

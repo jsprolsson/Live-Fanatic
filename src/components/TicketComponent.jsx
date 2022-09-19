@@ -1,42 +1,34 @@
-import React,{ useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import QRCode from 'react-native-qrcode-svg';
+import {useStore} from '../store/useStore'
+import {useParams} from'react-router-dom'
+import paymentService from '../services/paymentService';
+import {useEffect} from'react'
+
 
 
 
 function TicketComponent(){
+  const {user}=useStore();
+  const params=useParams();
+  
+  useEffect(()=>{
+  const fetchTickets= async ()=>{
+   const userTickets= await paymentService.getTickets(user.id);
+   console.log(userTickets);
+    
+  }
+  fetchTickets();
+  },[])
+
+  
+
+   
    
   
-  const [userTicket, setUserTicket] = useState({});
-  const [error, setError] = useState("");
-  const params = useParams();
-  // const [qrvalue, setQrvalue] = useState('');
-  
-  const useEffect= (()=>{
-    const fetchData= async ()=>{
-    let requestUserTicket= await fetch ('/data/users/tickets/'+params.id);
-    let responsData= await requestUserTicket.json();
-    console.log(responsData);
-    setUserTicket(responsData);
-    };
-    fetchData();
-  },[]);
-  return<>
-    <div>
-      <h1>User Ticket</h1>
-      {/* <QRCode>
-          
-          value={qrvalue ? qrvalue : 'NA'}
-          size={250}
-          color="black"
-          backgroundColor="white"
-          logo={{
-            url:
-      </QRCode> */}
+ 
 
-
-    </div>
+  return(
+    <h1>Ticket Component</h1>
      
-   </>
+   )
 }
 export default TicketComponent
