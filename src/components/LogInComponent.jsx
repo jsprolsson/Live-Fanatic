@@ -10,11 +10,10 @@ const LoginComponent = ({ closeModal }) => {
   const navigate = useNavigate();
 
   const Login = async (details) => {
-    const data = await userService.login(details, setUser);
+  const data = await userService.login(details, setUser);
 
     if (data.loggedIn) {
       closeModal();
-      navigate("/");
     } else {
       if (!details.password && !details.email) {
         setError("Please enter email and password");

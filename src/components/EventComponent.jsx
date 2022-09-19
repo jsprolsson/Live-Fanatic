@@ -63,45 +63,71 @@ const EventComponent = () => {
   return (
     <>
       {!dataLoaded && <p>No event found</p>}
-      {dataLoaded && <div className="eventcontainer">
-        <div className="event-image">
-          <img src={eventData.img_url} alt="artist image" />
-        </div>
-        <div className="event-date-time">
-          <p>{eventData.date}</p>
-          <p> {eventData.time}</p>
-        </div>
-        <div className="right">
-          <h2>{eventData.artist}</h2>
-          <h3>{eventData.venue}</h3>
-          <h4>
-            {eventData.address}, {eventData.city}
-          </h4>
-          <p>
-            <i>{eventData.description}</i>
-          </p>
-          <p>Age limit: {eventData.age_limit}</p>
-          <p>Type of event: {eventData.type}</p>
-          {eventData.type === "livestream" ? <div className="livestream-btn">
-            <button onClick={() => { navigate("/livestream/" + eventData.id) }} disabled={!livestreamAvailable ? true : false}>
-              {livestreamAvailable ? <span>Go to livestream</span> : <span>Livestream not available</span>}
-            </button>
-          </div> : <div></div>}
-          <div className="eventinfo-audio">
-            <audio controls>
-              <source
-                src={`http://localhost:3333/data/audio-stream/${randomizeAudioStreamId}`}
-                type="audio/mp3"
-              />
-            </audio>
-            {user !== null ? <TicketOptions show={dataLoaded} data={eventData} />
-              : <button id='event-toggle-modal-btn' onClick={() => setToggleLoginModal(true)}>Login to purchase tickets</button>
-            }
+      {dataLoaded && (
+        <div className="eventcontainer">
+          <div className="event-image">
+            <img src={eventData.img_url} alt="artist image" />
+          </div>
+          <div className="event-date-time">
+            <p>{eventData.date}</p>
+            <p> {eventData.time}</p>
+          </div>
+          <div className="right">
+            <h2>{eventData.artist}</h2>
+            <h3>{eventData.venue}</h3>
+            <h4>
+              {eventData.address}, {eventData.city}
+            </h4>
+            <p>
+              <i>{eventData.description}</i>
+            </p>
+            <p>Age limit: {eventData.age_limit}</p>
+            <p>Type of event: {eventData.type}</p>
+            {eventData.type === "livestream" ? (
+              <div className="livestream-btn">
+                <button
+                  onClick={() => {
+                    navigate("/livestream/" + eventData.id);
+                  }}
+                  disabled={!livestreamAvailable ? true : false}
+                >
+                  {livestreamAvailable ? (
+                    <span>Go to livestream</span>
+                  ) : (
+                    <span>Livestream not available</span>
+                  )}
+                </button>
+              </div>
+            ) : (
+              <div></div>
+            )}
+            <div className="eventinfo-audio">
+              <audio controls>
+                <source
+                  src={`http://localhost:3333/data/audio-stream/${randomizeAudioStreamId}`}
+                  type="audio/mp3"
+                />
+              </audio>
+              {user !== null ? (
+                <TicketOptions show={dataLoaded} data={eventData} />
+              ) : (
+                <button
+                  id="event-toggle-modal-btn"
+                  onClick={() => setToggleLoginModal(true)}
+                >
+                  Login to purchase tickets
+                </button>
+              )}
+            </div>
           </div>
         </div>
-      </div>}
-      <ModalComponent title="login" show={toggleLoginModal} onClose={() => setToggleLoginModal(false)} >
-        <LoginComponent closeModal={() => console.log('this should be removed')} />
+      )}
+      <ModalComponent
+        title="login"
+        show={toggleLoginModal}
+        onClose={() => setToggleLoginModal(false)}
+      >
+        <LoginComponent closeModal={() => setToggleLoginModal(false)} />
       </ModalComponent>
     </>
   );
