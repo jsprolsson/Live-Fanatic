@@ -1,9 +1,9 @@
 import eventService from "./eventService";
 
 const getTickets = async (user_Id) => {
-    const response = await fetch('data/user/tickets/' + user_Id);
-        const userTickets = await response.json();
-        return userTickets;
+    const response = await fetch(`data/user/tickets/${user_Id}`);
+    const userTickets = await response.json();
+    return userTickets;
 }
 
 const addTicketsToUser = async (eventId, userId, amountOfTickets) => {

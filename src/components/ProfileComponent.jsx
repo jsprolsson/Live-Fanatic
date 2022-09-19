@@ -7,7 +7,7 @@ import eventService from "../services/eventService";
 import { useStore } from "../store/useStore";
 import ModalComponent from "./ModalComponent";
 import LoginComponent from "./LogInComponent";
-import UserTicketsComponent from "./UserTicketsComponent";
+import UserTicketsProfileComponent from "./UserTicketsProfileComponent";
 
 function ProfileComponent() {
   const [userFromDb, setUserFromDb] = useState({});
@@ -76,6 +76,9 @@ function ProfileComponent() {
     e.preventDefault();
     changePassword(newPassword);
   };
+  const seeTicket=()=>{
+    navigate ("/ticketComponent")
+  }
 
   const changePassword = async (newPassword) => {
     // //sätter lösenord till null i db
@@ -135,6 +138,7 @@ function ProfileComponent() {
                 <h2 className="profile-h2">Update Password on your Account</h2>
               </div>
 
+
               <label className="profile-label">
                 Enter Email
                 <input
@@ -171,7 +175,7 @@ function ProfileComponent() {
               <h1 className="profile-h1">Ticket Purchase</h1>
               <div className="concert-list">
                 {userevents.map((events) => (
-                  <UserTicketsComponent key={events.id} event={events}/>
+                  <UserTicketsProfileComponent key={events.id} event={events}/>
                 ))}
               </div>
             </div>

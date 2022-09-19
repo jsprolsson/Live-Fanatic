@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Link} from 'react-router-dom'
 
 const UserTicketsComponent = ({event}) => {
     const [expiredTicket, setExpiredTicket] = useState(false);
@@ -50,14 +51,16 @@ useEffect(() => {
         src={event.img_url}
       />
     </div>
+    
     {expiredTicket ? <div className="button-component">
       <button className="button expired-ticket" type="button">
         EXPIRED
       </button>
     </div> : <div className="button-component">
-      <button className="button" type="button">
+      <Link to="/ticket" state={{ eventId: event.id }}> <button className="button" type="button">
         Show Ticket
-      </button>
+      </button></Link>
+      
     </div>}
     
 
