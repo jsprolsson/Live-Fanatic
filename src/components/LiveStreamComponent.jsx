@@ -62,7 +62,7 @@ function LiveStreamComponent() {
     )
   }
   return (
-    <div>
+    <div id="livestream-main">
       {
         event != null ? <div className="livestream-container">
           <div className="livestream-media">
