@@ -7,7 +7,7 @@ import eventService from "../services/eventService";
 import { useStore } from "../store/useStore";
 import ModalComponent from "./ModalComponent";
 import LoginComponent from "./LogInComponent";
-import UserTicketsComponent from "./UserTicketsComponent";
+import UserTicketsProfileComponent from "./UserTicketsProfileComponent";
 
 function ProfileComponent() {
   const [userFromDb, setUserFromDb] = useState({});
@@ -175,7 +175,7 @@ function ProfileComponent() {
               <h1 className="profile-h1">Ticket Purchase</h1>
               <div className="concert-list">
                 {userevents.map((events) => (
-                  <UserTicketsComponent key={events.id} event={events}/>
+                  <UserTicketsProfileComponent key={events.id} event={events}/>
                 ))}
               </div>
             </div>

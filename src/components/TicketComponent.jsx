@@ -1,8 +1,9 @@
 import {useStore} from '../store/useStore'
-import {useParams, useLocation} from'react-router-dom'
+import {useLocation} from'react-router-dom'
 import paymentService from '../services/paymentService';
 import {useEffect, useState} from'react'
 import eventService from '../services/eventService';
+import UserTicketsToEventComponent from './UserTicketsToEventComponent';
 
 
 
@@ -10,7 +11,6 @@ import eventService from '../services/eventService';
 function TicketComponent(){
   const [userTickets, setUserTickets] = useState([]);
   const {user}=useStore();
-  const params=useParams();
   const location = useLocation()
   const eventId = location.state
   
@@ -45,18 +45,7 @@ function TicketComponent(){
 
   return <>
   {userTickets.map((ticket, index) => (
-    <div className="calendar-cards split" key={index}>
-      <div className="leftcol">
-        <h4>Ticket #{++index}</h4>
-      <h2>{ticket.artist}</h2>
-      <p>Location: {ticket.address}</p>
-      <p>Time: {ticket.time}</p>
-      <p>Date: {ticket.date}</p>
-      </div>
-      <div className="rightcol">
-        <img src="https://quicknet.se/wp-content/uploads/2012/05/qr-code-459x459.png" alt="qr code" />
-      </div>
-    </div>
+    <UserTicketsToEventComponent key={index} ticket={ticket} index={index}/>
   ))})
   </>
    
