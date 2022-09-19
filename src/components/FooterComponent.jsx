@@ -41,7 +41,7 @@ function FooterComponent() {
       <p id="footer-text">
         * Biljettpriser och tillgänglighet kan komma att ändras <br /> © 2022
         Live Fanatic Sweden. Live Fanatic är ett registrerat varumärke
-        tillhörande Live Farnatic
+        tillhörande Live Fanatic
       </p>
       <ModalComponent title="Login" onClose={() => setShow(!show)} show={show}>
         <LoginComponent closeModal={() => setShow(false)} />

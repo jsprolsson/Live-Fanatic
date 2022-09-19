@@ -1,10 +1,9 @@
-
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import "../styles/SearchComponent.css";
 import eventService from "../services/eventService";
-import DatePickerComponent from "./DatePickerComponent";
+import Datepicker from "react-datepicker";
 
 function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
   return (
@@ -25,15 +24,17 @@ function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
         />
         Genre
       </label>
-      <div className="search-checkbox ">
-        <button>Sort by date</button>
-
-      </div>
     </div>
   );
 }
 
-function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick, radioCheckGenre }) {
+function Searchbar({
+  inputValue,
+  onInputChange,
+  onEnter,
+  onSearchClick,
+  radioCheckGenre,
+}) {
   return (
     <div id="search-advanced-group">
       <input
@@ -43,11 +44,15 @@ function Searchbar({ inputValue, onInputChange, onEnter, onSearchClick, radioChe
         id="search-body-input"
         list="suggestions"
       />
-      {radioCheckGenre ? (<datalist id="suggestions">
-        <option>Rock</option>
-        <option>Orchestra</option>
-        <option>Metal</option>
-      </datalist>) : (<></>)}
+      {radioCheckGenre ? (
+        <datalist id="suggestions">
+          <option>Rock</option>
+          <option>Orchestra</option>
+          <option>Metal</option>
+        </datalist>
+      ) : (
+        <></>
+      )}
 
       <button onClick={onSearchClick} id="search-body-btn">
         Search
@@ -71,7 +76,7 @@ function SearchResult(concert) {
   return (
     <>
       <div className="search-card">
-        <h3 class="searchh3">{artist}</h3>
+        <h3 className="searchh3">{artist}</h3>
         <h4>{date}</h4>
         <p>{description}</p>
         <Link className="header-nav-link" to={"/events/" + id}>
@@ -90,6 +95,15 @@ function SearchComponent() {
   const [radioCheckGenre, setRadioCheckGenre] = useState(false);
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
+  const date = new Date();
+  date.setFullYear(date.getFullYear() + 2);
+  const [sortByDate, setSortByDate] = useState(false);
+  const [selectedDateOne, setSelectedDateOne] = useState(
+    new Date().toLocaleDateString()
+  );
+  const [selectedDateTwo, setSelectedDateTwo] = useState(
+    date.toLocaleDateString()
+  );
 
   useEffect(() => {
     const loadData = async () => {
@@ -99,7 +113,6 @@ function SearchComponent() {
 
     loadData();
   }, []);
-
 
   let searchParam = useSearchString.get("name");
   if (!searchParam) {
@@ -120,20 +133,44 @@ function SearchComponent() {
     }
   };
 
+  const handleSetSortByDate = () => {
+    {
+      sortByDate ? setSortByDate(false) : setSortByDate(true);
+    }
+  };
+
+  const handleDateReset = () => {
+    setSelectedDateOne(new Date().toLocaleDateString());
+    setSelectedDateTwo(date.toLocaleDateString());
+  };
+
   const handleRadioChange = () => {
     setRadioCheckAll(!radioCheckAll);
     setRadioCheckGenre(!radioCheckGenre);
   };
+
   let dataToShow = [];
 
   if (searchParam) {
     dataToShow = radioCheckAll
-      ? events.filter((concert) =>
-        concert.artist.toLowerCase().includes(searchParam.toLowerCase())
-      )
-      : events.filter((concert) =>
-        concert.genre.toLowerCase().includes(searchParam.toLowerCase())
-      );
+      ? events
+          .filter((concert) =>
+            concert.artist.toLowerCase().includes(searchParam.toLowerCase())
+          )
+          .filter(
+            (concert) =>
+              Date.parse(concert.date) >= Date.parse(selectedDateOne) &&
+              Date.parse(concert.date) <= Date.parse(selectedDateTwo)
+          )
+      : events
+          .filter((concert) =>
+            concert.genre.toLowerCase().includes(searchParam.toLowerCase())
+          )
+          .filter(
+            (concert) =>
+              Date.parse(concert.date) >= Date.parse(selectedDateOne) &&
+              Date.parse(concert.date) <= Date.parse(selectedDateTwo)
+          );
   }
 
   return (
@@ -151,6 +188,44 @@ function SearchComponent() {
         radioGenreValue={radioCheckGenre}
         handleRadioClick={handleRadioChange}
       />
+      <div className="search-checkbox">
+        <button onClick={handleSetSortByDate} className="sortbydatebtn ">
+          Sort by date
+        </button>
+      </div>
+
+      <div className="dpdiv">
+        {sortByDate ? (
+          <>
+            <h2>Sort events by date:</h2>
+            <div className="dpdiv">
+              <Datepicker
+                value={selectedDateOne}
+                onChange={(date) => {
+                  const d = new Date(date).toLocaleDateString("sv-SE");
+                  console.log(d);
+                  setSelectedDateOne(d);
+                }}
+                minDate={new Date()}
+              />
+              <Datepicker
+                value={selectedDateTwo}
+                onChange={(date) => {
+                  const d = new Date(date).toLocaleDateString("sv-SE");
+                  console.log(d);
+                  setSelectedDateTwo(d);
+                }}
+                minDate={new Date(selectedDateOne)}
+              />
+            </div>
+            <button onClick={handleDateReset} className="sortbydatebtn ">
+              Reset
+            </button>
+          </>
+        ) : (
+          <div></div>
+        )}
+      </div>
 
       <div>
         {dataToShow.length > 0 ? (
@@ -158,8 +233,7 @@ function SearchComponent() {
             <SearchResult key={concert.id} concert={concert} />
           ))
         ) : (
-          // <NoResult onClick={() => navigate("/")} searchString={searchParam} />
-          <DatePickerComponent />
+          <NoResult onClick={() => navigate("/")} searchString={searchParam} />
         )}
       </div>
     </div>

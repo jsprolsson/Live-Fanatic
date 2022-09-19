@@ -25,7 +25,7 @@ import { GlobalContextProvider } from './store/store';
 import LiveStreamComponent from './components/LiveStreamComponent';
 import EnterCardComponent from './components/EnterCardComponent'
 import ConfirmBuyComponent from './components/ConfirmBuyComponent';
-
+import CancelBuyComponent from './components/CancelBuyComponent';
 const PageNotFoundComponent = () => {
   return (
     <div><h1>Page not found</h1></div>
@@ -53,6 +53,7 @@ function App() {
               <Route path='/payment' element={<PaymentComponent />} />
               <Route path='/enterCard' element={<EnterCardComponent />} />
               <Route path='/confirmbuy' element={<ConfirmBuyComponent />} />
+              <Route path='/cancelbuy' element={<CancelBuyComponent />} />
               <Route path='/profile' element={<ProfileComponent />} />
             </Routes>
           </main>

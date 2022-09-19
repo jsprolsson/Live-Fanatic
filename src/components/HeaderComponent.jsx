@@ -121,7 +121,7 @@ function HeaderComponent() {
         </div>
       ) : null}
       <ModalComponent title="Login" onClose={() => setShow(!show)} show={show}>
-        <LoginComponent closeModal={() => setShow(false)} />
+        {<LoginComponent closeModal={() => setShow(false)} /> /*ta bort????? */}
       </ModalComponent>
     </header>
   );
