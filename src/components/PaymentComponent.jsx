@@ -15,7 +15,7 @@ const PaymentComponent = (props) => {
   const { user } = useStore()
 
 
-  const displayTickets = props.event.tickets < 200 ? "Few" : "Availible";
+  const displayTickets = props.event.tickets < 200 ? "Few" : "Available";
 
   const [numberOfTicket, setNumberOfTicket] = useState(1);
 
