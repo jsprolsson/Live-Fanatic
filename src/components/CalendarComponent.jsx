@@ -7,6 +7,7 @@ const CalendarComponent = () => {
   const [eventsData, setEventsData] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   let navigate = useNavigate();
+  let currentDate = new Date();
 
   useEffect(() => {
     fetchData();
@@ -14,17 +15,9 @@ const CalendarComponent = () => {
 
   async function fetchData() {
     let data = await eventService.getAll();
-    setEventsData(data);
+    let filteredEvents = data.filter((event) => Date.parse(event.date) > currentDate);   
+    setEventsData(filteredEvents);
     setDataLoaded(true);
-    // await fetch('/data/events/')
-    //   .then(response => {
-    //       return response.json();
-    //   })
-    //   .then(data => {
-    //       console.log(data);
-    //       setEventsData(data);
-    //       setDataLoaded(true);
-    //   })
   }
 
   return (

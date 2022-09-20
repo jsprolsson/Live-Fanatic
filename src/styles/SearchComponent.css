@@ -55,7 +55,6 @@
   grid-template-columns:1fr 1fr;
   width: 35vw;
   align-items: center;
-  justify-content: space-between;
   margin-top: 15px;
   margin-bottom: 5vh;
 }
