@@ -202,14 +202,10 @@ function ProfileComponent() {
           <div className="profile-unauthorized-page">
             <h1>You are not logged in</h1>
             <span>
-              Please log in{" "}
-              <span
-                className="profile-login-link"
-                onClick={() => setShow(true)}
-              >
-                here
-              </span>{" "}
-              to see tour profile
+
+              Please login <span className="profile-login-link" onClick={() => setShow(true)}>here</span> to
+              see tour profile
+
             </span>
           </div>
           <ModalComponent

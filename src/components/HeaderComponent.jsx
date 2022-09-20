@@ -89,13 +89,14 @@ function HeaderComponent() {
 
         <div id="header-searchbar">
           <input
+            id="header-search-field"
             onKeyDown={inputOnEnterPress}
             value={searchString}
             onChange={(e) => setSearchString(e.target.value)}
-            placeholder="search"
+            placeholder="Search Artist"
           />
           <button onClick={handleSearchSubmit} id="header-search-btn">
-            search
+            Search
           </button>
         </div>
         <div className="hamburger" onClick={handleHamburger}>
