@@ -18,27 +18,27 @@ label {
 }
 
 .login-button {
-  font-family: "Quicksand", sans-serif;
+  margin-top: 10px;
+  color: white;
   background-color: #60c7a2;
-  border: 1px solid black;
-  color:white;
+  border: 0;
+  border-radius: 5px;
+  height: 30px;
 }
 
 #login-error {
   color: red;
 }
-.button-navigateToRegister{
-  font-family: "Quicksand", sans-serif;
+.button-navigate-to-register {
+  margin-top: 10px;
+  color: white;
   background-color: #60c7a2;
-  border: 1px solid black;
-  margin-top: 2vh;
-  color:white;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-
-
+  border: 0;
+  border-radius: 5px;
+  height: 30px;
 }
-.register-form{
-  display:flex;
+.register-form {
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2vh;

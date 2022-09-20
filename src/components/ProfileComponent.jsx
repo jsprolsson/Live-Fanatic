@@ -142,15 +142,12 @@ function ProfileComponent() {
             <h1 className="profile-h1">
               Welcome to your page {userFromDb.email}
             </h1>
-            <h1 className="profile-h1">Profile</h1>
           </div>
           <div className="profile-page">
             <div className="register-details">
               <form id="register-form" onSubmit={handleSubmit}>
                 <div className="account-label">
-                  <h2 className="profile-h2">
-                    Update Password on your Account
-                  </h2>
+                  <h2 className="profile-h2">Update your password</h2>
                 </div>
 
                 <label className="profile-label">
@@ -188,7 +185,7 @@ function ProfileComponent() {
               </div>
             </div>
             <div className="user-purchase-list">
-              <h1 className="profile-h1">Ticket Purchase</h1>
+              <h1 className="profile-h1">Your tickets</h1>
               <div className="concert-list">
                 {userevents.map((events) => (
                   <UserTicketsProfileComponent key={events.id} event={events} />
@@ -202,10 +199,14 @@ function ProfileComponent() {
           <div className="profile-unauthorized-page">
             <h1>You are not logged in</h1>
             <span>
-
-              Please login <span className="profile-login-link" onClick={() => setShow(true)}>here</span> to
-              see tour profile
-
+              Please login{" "}
+              <span
+                className="profile-login-link"
+                onClick={() => setShow(true)}
+              >
+                here
+              </span>{" "}
+              to see tour profile
             </span>
           </div>
           <ModalComponent

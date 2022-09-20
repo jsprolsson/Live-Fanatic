@@ -44,8 +44,8 @@ function LoginFormComponent({ Login, error }) {
         <input type="submit" value="Login" className="login-button" />
       </div>
        <div className="register-form">
-        <p className="doyouregister">Do you want to register?</p>
-          <button className="button-navigateToRegister"onClick={()=>{
+        <p>Do you want to register?</p>
+          <button className="button-navigate-to-register"onClick={()=>{
             navigate("/register")
           }}>Register</button>
        </div>
