@@ -1,8 +1,7 @@
+import QRCode from 'react-qr-code'
+
+
 const UserTicketsToEventComponent = ({ticket, index}) => {
-
-
-
-    
 
     return ( 
         <div className="ticket">
@@ -14,7 +13,7 @@ const UserTicketsToEventComponent = ({ticket, index}) => {
       <p>Date: {ticket.date}</p>
       </div>
       <div className="rightcol">
-        <img src="https://quicknet.se/wp-content/uploads/2012/05/qr-code-459x459.png" alt="qr code" />
+        <QRCode value={ticket.id}/>
       </div>
     </div>
      );
