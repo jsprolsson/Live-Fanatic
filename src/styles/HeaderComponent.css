@@ -81,8 +81,8 @@
 }
 
 #header-search-field {
-  margin-right: 10px;
-  border-radius: 5px;
+  margin-right: 3px;
+  border-radius: 2px;
   border: 0;
 }
 
@@ -102,15 +102,26 @@
 
   #header-searchbar {
     display: flex;
+    flex: 1;
+    justify-content: flex-end;
   }
 
+  .header-icon{
+    flex: 1;
+  }
   .header-nav-top {
     display: flex;
+    flex: 1;
     gap: 20px;
+    justify-content: center;
   }
 
   .header-nav-top > Link > a {
     text-decoration: none;
+  }
+
+  .header-nav-link{
+    font-size: large;
   }
 
   .header-bot {
@@ -120,4 +131,6 @@
   .hamburger {
     display: none;
   }
+
+
 }

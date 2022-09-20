@@ -48,7 +48,7 @@ function HeaderComponent() {
   return (
     <header id="header">
       <div className="header-top">
-        <Link to={"/"}>
+        <Link className="header-icon" to={"/"}>
           <img id="header-logo" src={logo} alt="logo of Live Fanatic" />
         </Link>
         <nav className="header-nav-top">
@@ -95,7 +95,11 @@ function HeaderComponent() {
             onChange={(e) => setSearchString(e.target.value)}
             placeholder="Search Artist"
           />
-          <button onClick={handleSearchSubmit} className="header-search-button" id="header-search-btn">
+          <button
+            onClick={handleSearchSubmit}
+            className="header-search-button"
+            id="header-search-btn"
+          >
             Search
           </button>
         </div>
