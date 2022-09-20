@@ -5,6 +5,7 @@ const TodaysShowsComponent = ({ events }) => {
 
   return (
     <div className="main">
+      <h1 className="concertstext">Upcoming months events</h1>
       {events.map((event) => (
         <Link key={event.id} to={"events/" + event.id}>
           <div className="subpic">
@@ -21,7 +22,7 @@ const TodaysShowsComponent = ({ events }) => {
         </Link>
       ))}
     </div>
-  )
+  );
 };
 
 export default TodaysShowsComponent;
