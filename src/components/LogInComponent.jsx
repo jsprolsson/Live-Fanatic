@@ -3,6 +3,7 @@ import LoginFormComponent from "./LoginFormComponent";
 import { useStore } from "../store/useStore";
 import { useNavigate } from "react-router-dom";
 import userService from "../services/userservice";
+import RegisterComponent from "./RegisterComponent";
 
 const LoginComponent = ({ closeModal }) => {
   const { user, setUser } = useStore();
@@ -33,7 +34,9 @@ const LoginComponent = ({ closeModal }) => {
   return (
     <div>
       <LoginFormComponent Login={Login} error={error} />
+      
     </div>
+   
   );
 };
 

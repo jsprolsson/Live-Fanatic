@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "../styles/LoginFormComponent.css";
+import {useNavigate} from 'react-router-dom'
 
 function LoginFormComponent({ Login, error }) {
   const [details, setDetails] = useState({ email: "", password: "" });
+  let navigate=useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -41,6 +43,13 @@ function LoginFormComponent({ Login, error }) {
         </div>
         <input type="submit" value="Login" className="login-button" />
       </div>
+       <div className="register-form">
+        <p className="doyouregister">Do you want to register?</p>
+          <button className="button-navigateToRegister"onClick={()=>{
+            navigate("/register")
+          }}>Register</button>
+       </div>
+       
     </form>
   );
 }
