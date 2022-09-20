@@ -42,7 +42,6 @@ const ConfirmBuyComponent = () => {
       if (!isCancelled) {
         if (purchaseData) {
           const { userId, eventId, amountOfTickets } = purchaseData
-          await paymentService.removeTicketsFromEvent(eventId, amountOfTickets)
           await paymentService.addTicketsToUser(eventId, userId, amountOfTickets)
           setTimeout(() => {
             navigate('/profile')
@@ -57,31 +56,6 @@ const ConfirmBuyComponent = () => {
     }
   }, [purchaseData])
 
-  //const generateId = () => Math.floor(Math.random() * 1000000)
-
-  // const removeTicketsFromEvent = async (eventId, amountOfTickets) => {
-  //   const event = await eventService.getOneEvent(eventId)
-  //   const updatedEvent = { ...event, tickets: event.tickets - amountOfTickets }
-  //   await eventService.update(eventId, updatedEvent)
-  // }
-
-  // const addTicketsToUser = async (eventId, userId, amountOfTickets) => {
-  //   const newUserTickets = {
-  //     id: generateId(),
-  //     event_id: eventId,
-  //     user_id: userId,
-  //     tickets: amountOfTickets
-  //   }
-
-
-  //   const requestOptions = {
-  //     method: 'post',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(newUserTickets)
-  //   }
-
-  //   await fetch('/data/usertickets', requestOptions)
-  // }
 
   if (isLoading) {
     return <div className="cb-loading-main">
