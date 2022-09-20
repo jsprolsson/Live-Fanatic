@@ -13,6 +13,13 @@ function TicketComponent(){
   const {user}=useStore();
   const location = useLocation()
   const eventId = location.state
+  const Print = () => {
+    let printContents = document.getElementById("printablediv").innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+  };
   
   useEffect(()=>{
     let isCancelled = false;
@@ -43,11 +50,24 @@ function TicketComponent(){
 
  
 
-  return <>
-  {userTickets.map((ticket, index) => (
-    <UserTicketsToEventComponent key={index} ticket={ticket} index={index}/>
-  ))})
-  </>
+  return (
+    <>
+      <div id="printablediv">
+        {userTickets.map((ticket, index) => (
+          <UserTicketsToEventComponent
+            key={index}
+            ticket={ticket}
+            index={index}
+          />
+        ))}
+      </div>
+
+      <button type="button" onClick={Print}>
+        {" "}
+        Print div
+      </button>
+    </>
+  );
    
 }
 export default TicketComponent
