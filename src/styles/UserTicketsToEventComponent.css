@@ -1,0 +1,21 @@
+
+.ticket {
+    display: grid;
+        grid-template-columns: 1fr 1fr;
+    border: 1px solid black;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 10px;
+}
+.rightcol{
+    justify-self: end;
+    align-self:center;
+}
+.leftcol{
+    padding: 1vh;
+}
+
+.rightcol>img{
+    max-width: 18vh;
+    justify-content: end;
+}
