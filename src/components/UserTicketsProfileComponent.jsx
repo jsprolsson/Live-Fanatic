@@ -23,28 +23,27 @@ useEffect(() => {
     return ( <div className=" ticket">
     <div>
       <h2 className="profile-h2">
-        Booked Event Concert:{event.artist}
+        {event.artist}
       </h2>
       <h3 className="profile-h3">
-        Event Genre:{event.genre}
+        {event.venue}
+      </h3>
+      <p className="profile-h3">
+        {event.address}
+      </p>
+      <p className="profile-h3">
+        {event.date}
+      </p>
+      <h3 className="profile-h3">
+        Price: {event.price}
+        
       </h3>
       <h3 className="profile-h3">
-        Address Location:{event.address}
-      </h3>
-      <h3 className="profile-h3">
-        Event Date:{event.date}
-      </h3>
-      <h3 className="profile-h3">
-        Event Age Limit:{event.age_limit}
-      </h3>
-      <h3 className="profile-h3">
-        Event Price:{event.price}
+        
+        Age Limit: {event.age_limit}
       </h3>
     </div>
-    <div>
-      <h3 className="profile-h3">About the band</h3>
-      {event.description}
-    </div>
+    
     <div>
       <img
         className="profile-image"
@@ -53,11 +52,11 @@ useEffect(() => {
     </div>
     
     {expiredTicket ? <div className="button-component">
-      <button className="button expired-ticket" type="button">
+      <button className="button expired-ticket" id="ticketbutton"type="button">
         EXPIRED
       </button>
     </div> : <div className="button-component">
-      <Link to="/ticket" state={{ eventId: event.id }}> <button className="button" type="button">
+      <Link to="/ticket" state={{ eventId: event.id }}> <button className="button" id="ticketbutton" type="button">
         Show Ticket
       </button></Link>
       

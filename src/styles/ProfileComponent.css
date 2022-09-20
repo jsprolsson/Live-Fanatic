@@ -119,15 +119,22 @@
   .ticket {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-left: none;
-    border-right: none;
+    /* border-left: none;
+    border-right: none; */
     grid-auto-rows: minmax(100px, auto);
-    border-bottom: 1px;
-    margin-top: 2vh;
+    /* border-bottom: 1px; */
+    margin-top: 0vh;
+    padding: 5px;
+    border-radius:2%;
+    gap:10px;
+  
+   
   }
 
   .profile-h3 {
-    font-size: 10px;
+    font-size: 18px;
+    
+   
   }
 
   .button-component {
@@ -144,5 +151,17 @@
   }
   .profile-h1 {
     font-size: 30px;
+
   }
+  .concert-list{
+    margin-top:5vh;
+  }
+  .profile-h2{
+    font-size:17px;
+   
+    
+  }
+ #ticketbutton{
+  font-size: 25px;
+ }
 }
