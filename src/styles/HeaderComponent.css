@@ -74,10 +74,14 @@
   position: absolute;
 }
 
-.account-dropdown-menu>div>p {
+.account-dropdown-menu > div > p {
   margin-top: 5px;
   text-transform: uppercase;
   font-size: small;
+}
+
+#header-search-field {
+  margin-right: 10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -102,7 +106,7 @@
     gap: 20px;
   }
 
-  .header-nav-top>Link>a {
+  .header-nav-top > Link > a {
     text-decoration: none;
   }
 
