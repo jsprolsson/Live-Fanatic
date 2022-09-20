@@ -1,0 +1,44 @@
+.ticket-container {
+    border: 1px solid black;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 10px;
+}
+
+.ticket-header {
+    text-align:center;
+}
+
+.ticket-info {
+    display:flex;
+    justify-content: space-between;
+}
+
+.ticket-info > h2, p {
+    font-size: 1.3rem;
+    margin: 10px;
+}
+
+.ticket-info > .rightcol{
+    justify-self: end;
+    align-self:center;
+}
+.ticket-info > .leftcol{
+    padding: 1vh;
+}
+
+.qr-code{
+    height: auto;
+    margin: 10px; 
+    min-width: 100%;
+    justify-content: end;
+}
+
+@media screen and (max-width: 614px){
+    .ticket-info > .leftcol{
+        display: none;
+    }
+    .ticket-info{
+        justify-content: center;
+    }
+}
