@@ -95,7 +95,7 @@ function HeaderComponent() {
             onChange={(e) => setSearchString(e.target.value)}
             placeholder="Search Artist"
           />
-          <button onClick={handleSearchSubmit} id="header-search-btn">
+          <button onClick={handleSearchSubmit} className="header-search-button" id="header-search-btn">
             Search
           </button>
         </div>

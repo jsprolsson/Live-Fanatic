@@ -82,6 +82,8 @@
 
 #header-search-field {
   margin-right: 10px;
+  border-radius: 5px;
+  border: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -91,10 +93,11 @@
 
   #header-search-btn {
     display: block;
-    color: #60c7a2;
-    background-color: #343a40;
-    border: 1px solid #60c7a2;
-    border-radius: 10%;
+    color: white;
+    background-color: #60c7a2;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
   }
 
   #header-searchbar {
