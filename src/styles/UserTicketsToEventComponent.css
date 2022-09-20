@@ -1,44 +1,43 @@
 .ticket-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border: 1px solid black;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    border-radius: 10px;
     margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+}
+
+.rightcol {
+    align-self: center;
+    justify-self: flex-end;
+    margin-right: 3vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
 }
 
 .ticket-header {
-    text-align:center;
+    padding: 2vh
 }
 
-.ticket-info {
-    display:flex;
-    justify-content: space-between;
+.artist-name {
+    margin-bottom: 1vh;
+    margin-top: 1vh;
 }
 
-.ticket-info > h2, p {
-    font-size: 1.3rem;
-    margin: 10px;
+.outercontainer {
+    margin: 1vh;
 }
 
-.ticket-info > .rightcol{
-    justify-self: end;
-    align-self:center;
+#print-button {
+   
+color: #60c7a2;
+    background-color: #343A40;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
 }
-.ticket-info > .leftcol{
-    padding: 1vh;
-}
+.button-container>button{
+    margin: 1vh;
 
-.qr-code{
-    height: auto;
-    margin: 10px; 
-    min-width: 100%;
-    justify-content: end;
-}
-
-@media screen and (max-width: 614px){
-    .ticket-info > .leftcol{
-        display: none;
-    }
-    .ticket-info{
-        justify-content: center;
-    }
 }
