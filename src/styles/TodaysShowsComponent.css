@@ -1,4 +1,4 @@
-.main {
+.todays-shows-main {
     background-color: black;
 }
 
@@ -19,7 +19,7 @@
     width: 100%;
     margin-top: -12vh;
     color: rgba(255, 255, 255, 0.784);
-    position: absolute;
+    position: sticky;
     background-color: #0a0a0a9b;
     margin-bottom: 0;
 

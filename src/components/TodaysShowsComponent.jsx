@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const TodaysShowsComponent = ({ events }) => {
 
   return (
-    <div className="main">
+    <div className="todays-shows-main">
       <h1 className="concertstext">Upcoming months events</h1>
       {events.map((event) => (
         <Link key={event.id} to={"events/" + event.id}>

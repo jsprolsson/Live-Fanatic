@@ -26,7 +26,7 @@ function HomeComponent() {
     console.log(eventsInNearFuture)
 
   return (
-    <div className="main">
+    <div className="home-main">
       <div className="mainpic">
         <img src="src/assets/Livefanatic.png" alt="" />
       </div>
