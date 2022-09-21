@@ -87,7 +87,7 @@ function ProfileComponent() {
     return () => {
       isCancelled = true;
     };
-  }, []);
+  }, [user]);
 
   function Message(message) {
     setError(message);
@@ -152,6 +152,10 @@ function ProfileComponent() {
       Message("Email address do not match the logged in user");
     }
   };
+
+  const closeProfileModal = () => {
+    setShow(false)
+  }
 
   return (
     <>
@@ -233,7 +237,7 @@ function ProfileComponent() {
             onClose={() => setShow(!show)}
             show={show}
           >
-            <LoginComponent closeModal={() => setShow(false)} />
+            <LoginComponent closeModal={closeProfileModal} />
           </ModalComponent>
         </>
       )}
