@@ -5,11 +5,12 @@ const UserTicketsComponent = ({event}) => {
     const [expiredTicket, setExpiredTicket] = useState(false);
 
     function isExpired(event){
-        let todaysDate = new Date();
-        let eventDate = new Date(event.date);
-        eventDate = eventDate.setHours(event.time);
+      let eventStart = new Date(event.date)
+      eventStart.setHours(event.time)
+      let eventEnd = new Date(event.date)
+      eventEnd.setHours(eventStart.getHours() + 2)
 
-        if(todaysDate > eventDate) {
+        if(new Date() > eventEnd) {
             setExpiredTicket(true);
         }
     }
