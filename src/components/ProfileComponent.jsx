@@ -51,31 +51,28 @@ function ProfileComponent() {
         // lägg till utgånga biljetter i egen lista
         let expiredTickets = filteredEventsList
           .filter((event) => {
-            let eventStart = new Date(event.date)
-            eventStart.setHours(event.time)
-            let eventEnd = new Date(event.date)
-            eventEnd.setHours(eventStart.getHours() + 2)
+            let eventStart = new Date(event.date);
+            eventStart.setHours(event.time);
+            let eventEnd = new Date(event.date);
+            eventEnd.setHours(eventStart.getHours() + 2);
 
-            if(eventEnd < new Date()){
+            if (eventEnd < new Date()) {
               return true;
             }
           })
           .splice(-3);
 
         //ta bort utgånga biljetter från listan med userns event
-        filteredEventsList = filteredEventsList.filter(
-          (event) => {
-            let eventStart = new Date(event.date)
-            eventStart.setHours(event.time)
-            let eventEnd = new Date(event.date)
-            eventEnd.setHours(eventStart.getHours() + 2)
+        filteredEventsList = filteredEventsList.filter((event) => {
+          let eventStart = new Date(event.date);
+          eventStart.setHours(event.time);
+          let eventEnd = new Date(event.date);
+          eventEnd.setHours(eventStart.getHours() + 2);
 
-            if(eventEnd >= new Date()){
-              return true;
-            }
+          if (eventEnd >= new Date()) {
+            return true;
           }
-        );
-          
+        });
 
         //lägg till utgånga events i slutet av listan för att separera aktuella och utgånga biljetter
         const sortedUsersEventList = filteredEventsList.concat(expiredTickets);
@@ -154,17 +151,15 @@ function ProfileComponent() {
   };
 
   const closeProfileModal = () => {
-    setShow(false)
-  }
+    setShow(false);
+  };
 
   return (
     <>
       {user != null ? (
         <div className="user-update-account">
           <div>
-            <h1 className="profile-h1">
-              Welcome to your page: {userFromDb.email}
-            </h1>
+            <h1 className="profile-h1">Your profile</h1>
           </div>
           <div className="profile-page">
             <div className="register-details">
@@ -202,7 +197,7 @@ function ProfileComponent() {
                 <div className="profile-error">{error}</div>
               </form>
               <div className="logout-button-component">
-                <button className="button-logout"  onClick={login}> 
+                <button className="button-logout" onClick={login}>
                   Log Out
                 </button>
               </div>
