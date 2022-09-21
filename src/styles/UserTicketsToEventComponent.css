@@ -30,15 +30,16 @@
 }
 
 #print-button {
-
-    color: #60c7a2;
-    background-color: #343A40;
+margin-top: 10px;
+    color: white;
+    background-color: #60c7a2;
+    border: 0;
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
+    height: 35px;
 }
 
 .button-container>button {
     margin: 1vh;
-
 }
