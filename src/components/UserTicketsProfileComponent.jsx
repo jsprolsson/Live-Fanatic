@@ -53,11 +53,11 @@ useEffect(() => {
     
     {expiredTicket ? <div className="button-component">
       <button className="button expired-ticket" id="ticketbutton"type="button">
-        EXPIRED
+        Expired
       </button>
     </div> : <div className="button-component">
       <Link to="/ticket" state={{ eventId: event.id }}> <button className="button" id="ticketbutton" type="button">
-        Show Ticket
+        Ticket
       </button></Link>
       
     </div>}

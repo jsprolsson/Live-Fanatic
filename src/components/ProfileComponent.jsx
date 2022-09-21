@@ -140,7 +140,7 @@ function ProfileComponent() {
         <div className="user-update-account">
           <div>
             <h1 className="profile-h1">
-              Welcome to your page {userFromDb.email}
+              Welcome to your page: {userFromDb.email}
             </h1>
           </div>
           <div className="profile-page">
@@ -179,8 +179,8 @@ function ProfileComponent() {
                 <div className="profile-error">{error}</div>
               </form>
               <div className="logout-button-component">
-                <button className="button" onClick={login}>
-                  Log out
+                <button className="button" id="logout-button" onClick={login}>
+                  Log Out
                 </button>
               </div>
             </div>
