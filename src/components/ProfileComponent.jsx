@@ -50,13 +50,32 @@ function ProfileComponent() {
 
         // lägg till utgånga biljetter i egen lista
         let expiredTickets = filteredEventsList
-          .filter((event) => Date.parse(event.date) < new Date())
+          .filter((event) => {
+            let eventStart = new Date(event.date)
+            eventStart.setHours(event.time)
+            let eventEnd = new Date(event.date)
+            eventEnd.setHours(eventStart.getHours() + 2)
+
+            if(eventEnd < new Date()){
+              return true;
+            }
+          })
           .splice(-3);
 
         //ta bort utgånga biljetter från listan med userns event
         filteredEventsList = filteredEventsList.filter(
-          (event) => Date.parse(event.date) > new Date()
+          (event) => {
+            let eventStart = new Date(event.date)
+            eventStart.setHours(event.time)
+            let eventEnd = new Date(event.date)
+            eventEnd.setHours(eventStart.getHours() + 2)
+
+            if(eventEnd >= new Date()){
+              return true;
+            }
+          }
         );
+          
 
         //lägg till utgånga events i slutet av listan för att separera aktuella och utgånga biljetter
         const sortedUsersEventList = filteredEventsList.concat(expiredTickets);
