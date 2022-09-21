@@ -170,8 +170,14 @@
   max-height: 190px;
  }
  #logout-button{
-  font-size:30px;
-  height:40px;
+  font-size:20px;
+  height:30px;
+  width: 100px;
+  color:white;
+  background-color: rgb(113, 2, 2);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ 
+ 
  
  }
 }
