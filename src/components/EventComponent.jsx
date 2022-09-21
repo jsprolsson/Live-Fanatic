@@ -55,25 +55,11 @@ const EventComponent = () => {
       .catch((error) => console.log(error));
   }
 
-  function checkDate() {
-    let eventStart = new Date(eventData.date);
-    eventStart.setHours(eventData.time);
-    let eventEnd = new Date(eventStart);
-    let currentTime = new Date();
-    eventEnd.setHours(eventStart.getHours() + 1);
-
-    if (currentTime >= eventStart && !(currentTime > eventEnd)) {
-      setLivestreamAvailable(true);
-    }
-  }
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    checkDate();
-  }, [eventData]);
 
   const randomizeAudioStreamId = Math.floor(Math.random() * (2 - 1 + 1) + 1);
 
@@ -101,22 +87,6 @@ const EventComponent = () => {
                 </p>
                 <p>Age limit: {eventData.age_limit}</p>
                 <p>Type of event: {eventData.type}</p>
-                {eventData.type === "livestream" ? (
-                  <button id="livestream-button"
-                    onClick={() => {
-                      navigate("/livestream/" + eventData.id);
-                    }}
-                    disabled={!livestreamAvailable ? true : false}
-                  >
-                    {livestreamAvailable ? (
-                      <span>Go to livestream</span>
-                    ) : (
-                      <span>Livestream not available</span>
-                    )}
-                  </button>
-                ) : (
-                  <div></div>
-                )}
               </div>
               <div className="eventinfo-audio">
                 <audio controls>

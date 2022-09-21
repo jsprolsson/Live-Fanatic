@@ -22,7 +22,7 @@ const login = async (details, setUser) => {
     const resUser = await fetch('/data/login');
     const loggedInUser = await resUser.json();
 
-    window.localStorage.setItem("user", JSON.stringify(
+    window.sessionStorage.setItem("user", JSON.stringify(
       {
         id: loggedInUser.id,
         email: loggedInUser.email,
