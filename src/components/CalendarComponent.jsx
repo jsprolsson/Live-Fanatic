@@ -16,7 +16,16 @@ const CalendarComponent = () => {
   async function fetchData() {
     let data = await eventService.getAll();
     let filteredEvents = data
-      .filter((event) => Date.parse(event.date) > currentDate)
+      .filter((event) => {
+        let eventStart = new Date(event.date)
+        eventStart.setHours(event.time)
+        let eventEnd = new Date(event.date)
+        eventEnd.setHours(eventStart.getHours() + 2)
+
+        if(eventEnd > new Date()) {
+            return true;
+        }
+      })
       .sort((a, b) => (a.date > b.date ? 1 : -1));   
     setEventsData(filteredEvents);
     setDataLoaded(true);
