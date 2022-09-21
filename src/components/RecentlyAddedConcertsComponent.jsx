@@ -39,9 +39,15 @@ const RecentlyAddedConcertsComponent = ({ events }) => {
                 style={{ backgroundImage: `url(${event.img_url})` }}
               >
                 <section className="concert-container">
-                  <h4 className="concertstext">{event.artist}</h4>
-                  <span className="concertstext">{event.description}</span>
-                  <span className="concertstext"> {event.date}</span>
+                  <div className="concertArtistDescription">
+                    <h4 className="concertstext">{event.artist}</h4>
+                  </div>
+                  <div className="concertDescription"> 
+                    <span className="concertstext">{event.venue}</span>
+                  </div>
+                  <div className="concertDate">
+                    <span className="concertstext"> {event.date}</span>
+                  </div>
                 </section>
               </div>
             </Link>
