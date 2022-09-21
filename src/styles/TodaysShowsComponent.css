@@ -1,67 +1,95 @@
 .todays-shows-main {
-    background-color: black;
+  background-color: black;
 }
 
 .subpic {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .subpic>img {
-    width: 100%;
-    height: auto;
-    position: relative;
-    margin-top: 0;
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-top: 0;
 }
 
 .cinfo {
-    display: grid;
-    height: 10vh;
-    width: 100%;
-    margin-top: -12vh;
-    color: rgba(255, 255, 255, 0.784);
-    position: sticky;
-    background-color: #0a0a0a9b;
-    margin-bottom: 0;
+  display: grid;
+  height: 10vh;
+  width: 100%;
+  margin-top: -70px;
+  color: rgba(255, 255, 255, 0.784);
+  position: sticky;
+  background-color: #0a0a0a9b;
+  margin-bottom: 0;
 
 }
 
 .cinfo>div>h5 {
-    margin: 0;
-    padding-top: 7px;
-    padding-left: 17px;
+  margin: 0;
+  padding-top: 7px;
+  padding-left: 17px;
 }
 
 .cinfo>p {
-    font-size: 10px;
-    margin: 0;
-    padding: 7px;
-    text-align: center;
+  font-size: 10px;
+  margin: 0;
+  padding: 7px;
+  text-align: center;
 }
 
 .divcol {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .divcol>h5 {
-    justify-self: center;
+  justify-self: center;
 }
 
 .divcol>h5:first-child {
-    justify-self: start;
+  justify-self: start;
 }
 
 .divcol>h5:last-child {
-    justify-self: end;
-    padding-right: 17px;
+  justify-self: end;
+  padding-right: 17px;
 }
-@media screen and (min-width: 380px) {
-    .cinfo>p {
-        font-size: 15px;
-        
-    }
 
-    .recently-added-concerts-container>h2 {
-        font-size: 40px;
-    }
+.today-card-wrapper>.subpic>Link>a {
+  text-decoration: none;
+}
+
+@media screen and (min-width: 380px) {
+  .cinfo>p {
+    font-size: 15px;
+
+  }
+
+  .recently-added-concerts-container>h2 {
+    font-size: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .todays-shows-main {
+    background-image: url('../assets/Livefanatic.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 50px;
+  }
+
+  .today-shows-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .today-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
 }

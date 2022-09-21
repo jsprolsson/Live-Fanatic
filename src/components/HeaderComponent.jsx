@@ -78,8 +78,8 @@ function HeaderComponent() {
                   <p className="header-nav-link" onClick={() => setShow(true)}>
                     Login
                   </p>
-                  <Link className="header-nav-link" to={"/register"}>
-                    <p>Register</p>
+                  <Link to={"/register"}>
+                    <p className="header-nav-link">Register</p>
                   </Link>
                 </div>
               )}
