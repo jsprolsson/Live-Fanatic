@@ -48,9 +48,8 @@ function RegisterComponent() {
     } else {
       let getAllUsersResponse = await fetch("/data/users");
       let allUsers = await getAllUsersResponse.json();
-      console.log(allUsers);
+      // kollar duplicate i db
       const foundDuplicate = allUsers.filter((user) => user.email == email);
-      console.log(foundDuplicate);
 
       if (foundDuplicate.length != 0) {
         ErrorMessage("Pick another username");
