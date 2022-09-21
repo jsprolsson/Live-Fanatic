@@ -1,86 +1,81 @@
-.Cancelbuy{
-    display: flex;
-    width:100%;
-    flex-direction:column;
-    min-height: 100%;
+.Cancelbuy {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  min-height: 100%;
+  margin-bottom: 20px;
 }
 
-.cancelbuy-position{
-    align-items: center;
+.cancelbuy-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cancelbuySymbol {
+  align-items: center;
+  color: red;
+  font-size: 300px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.cancelbuy-btn {
+  background-color: #60c7a2;
+  color: white;
+  font-weight: bold;
+  width: 125px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 25px;
+  text-align: center;
+}
+
+#cancelbuy-H3 {
+  color: black;
+  text-align: center;
+
+}
+
+@media screen and (min-width: 768px) {
+  #cancelbuySymbol {
+    color: red;
+    font-size: 400px;
     text-align: center;
-}
+  }
 
-@media screen and (max-width: 678px) {
-    #cancelbuySymbol{
-        align-items: center;
-        color:red;
-        font-size: 300px;
-        margin-top: 15px;
-        text-align: center;
-    }
+  #cancelbuy-Homepagebtn {
+    background-color: #60c7a2;
+    font-weight: bold;
+    width: 125px;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 2vh;
+    border: none;
+    text-align: center;
+  }
 
-    #cancelbuy-Homepagebtn{
-        background-color: #60c7a2;
-        font-weight: bold;
-        width: 125px;
-        height: 50px;
-        border-radius: 5px;
-        border: none;
-        margin-top: 25px;
-        text-align: center;
-        
-    }
+  #cancelbuy-BackToEventpagebtn {
+    background-color: #60c7a2;
+    font-weight: bold;
+    width: 125px;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 45px;
+    border: none;
+    text-align: center;
+  }
 
-    #cancelbuy-BackToEventpagebtn{
-        background-color: #60c7a2;  
-        font-weight: bold;
-        width: 125px;
-        height: 50px;
-        border-radius: 5px;
-        margin-left: 45px;
-        border: none; 
-        text-align: center;
-        
-    }
+  #cancelbuy-H3 {
+    color: black;
+    text-align: center;
+  }
 
-    #cancelbuy-H3{
-        color: black;
-        text-align: center;
-       
-    }
-}
-
-@media screen and (min-width: 679px) {
-    #cancelbuySymbol{
-        color:red;
-        font-size: 400px;
-        text-align: center;
-    }
-
-    #cancelbuy-Homepagebtn{
-        background-color: #60c7a2;
-        font-weight: bold;
-        width: 125px;
-        height: 50px;
-        border-radius: 5px;
-        margin-top: 2vh;
-        border: none;
-        text-align: center;
-    }
-
-    #cancelbuy-BackToEventpagebtn{
-        background-color: #60c7a2;  
-        font-weight: bold;
-        width: 125px;
-        height: 50px;
-        border-radius: 5px;
-        margin-left: 45px;
-        border: none; 
-        text-align: center;
-    }
-
-    #cancelbuy-H3{
-        color: black;
-        text-align: center;
-    }
+  .cancelbuy-position {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 50px;
+  }
 }
