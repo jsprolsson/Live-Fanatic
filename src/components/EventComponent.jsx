@@ -14,6 +14,23 @@ const TicketOptions = ({ show, data }) => {
   }
 };
 
+const ShowTicketOptions = ({ user, show, data, handleClick }) => {
+  if (data.tickets > 0) {
+    if (user !== null) {
+      return <TicketOptions show={!show} data={data} />
+    } else {
+      return <button
+        id="event-toggle-modal-btn"
+        onClick={() => handleClick(true)}
+      >
+        Login to purchase tickets
+      </button>
+    }
+  } else {
+    return null
+  }
+}
+
 const EventComponent = () => {
   const navigate = useNavigate();
   const [livestreamAvailable, setLivestreamAvailable] = useState(false);
@@ -110,16 +127,11 @@ const EventComponent = () => {
               </div>
             </div>
           </div>
-          {user !== null ? (
-            <TicketOptions show={dataLoaded} data={eventData} />
-          ) : (
-            <button
-              id="event-toggle-modal-btn"
-              onClick={() => setToggleLoginModal(true)}
-            >
-              Login to purchase tickets
-            </button>
-          )}
+          <ShowTicketOptions
+            data={eventData}
+            show={toggleLoginModal}
+            user={user}
+            handleClick={setToggleLoginModal} />
         </div>
       )}
       <ModalComponent

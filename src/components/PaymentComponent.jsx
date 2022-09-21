@@ -14,13 +14,19 @@ const PaymentComponent = (props) => {
   const ticketprice = props.event.price;
   const { user } = useStore()
 
+  let displayTickets;
 
-  const displayTickets = props.event.tickets < 200 ? "Few" : "Available";
+  if (props.event.tickets > 150) {
+    displayTickets = "Available"
+  } else if (props.event.tickets > 0) {
+    displayTickets = "Few"
+  } else {
+    displayTickets = "Sold Out"
+  }
 
   const [numberOfTicket, setNumberOfTicket] = useState(1);
 
   const [totalPrice, setTotalPrice] = useState(ticketprice);
-
 
   const removeTicket = () => {
     if (numberOfTicket > 1) {
@@ -65,6 +71,8 @@ const PaymentComponent = (props) => {
     }
   }
 
+  const liveStream = props.event.type === 'livestream'
+
   return (
     <>
       {stripeUrl ? (
@@ -77,12 +85,14 @@ const PaymentComponent = (props) => {
                 {totalPrice} Sek?
               </h3>
 
-              <a className="paybtn" href={stripeUrl}>
-                Confirm buy
-              </a>
-              <button onClick={() => navigate(0)} className="paybtn">
-                Cancel
-              </button>
+              <div id="stripe-btns">
+                <a id="pay-confirm-buy" href={stripeUrl}>
+                  Confirm
+                </a>
+                <button onClick={() => navigate(0)} id="pay-cancel-btn">
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </>
@@ -91,7 +101,7 @@ const PaymentComponent = (props) => {
           <div className="payhead">
             <h2 className="payh2">Tickets:</h2>
             <div className="payticketschoice">
-              <h3>Available:</h3>
+              <h3>Ticket status:</h3>
               <h3 className="paysetRight">{displayTickets}</h3>
 
               <h3>Price/ticket incl vat:</h3>
@@ -99,28 +109,26 @@ const PaymentComponent = (props) => {
 
               <h3>Number of tickets:</h3>
 
-              <div className="paycounter">
+              {liveStream ? <p id="pay-livestream-info">Livestreams are limited to one ticket only.</p> : <div className="paycounter">
                 <p></p>
-                <button className="paybtn" onClick={removeTicket}>
+                <button disabled={liveStream} className="paybtn" onClick={removeTicket}>
                   -
                 </button>
-                <p>{numberOfTicket}</p>
-                <button className="paybtn" onClick={addTicket}>
+                <p id="pay-amountoftickets">
+                  {numberOfTicket}
+                </p>
+                <button disabled={liveStream} className="paybtn" onClick={addTicket}>
                   +
                 </button>
-              </div>
+              </div>}
 
               <h3>Total price incl vat:</h3>
               <h3 className="paysetRight">{totalPrice} Sek</h3>
             </div>
             <hr className="payhr"></hr>
             <div className="paytotalPrice">
-              <button onClick={buyThroughStripe} className="paybtn">
-                Buy
-              </button>
-
-              <button onClick={() => navigate(-1)} className="paybtn">
-                Cancel
+              <button onClick={buyThroughStripe} id="pay-continue-btn">
+                Continue
               </button>
             </div>
           </div>
