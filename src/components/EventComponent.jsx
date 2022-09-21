@@ -14,6 +14,23 @@ const TicketOptions = ({ show, data }) => {
   }
 };
 
+const ShowTicketOptions = ({ user, show, data, handleClick }) => {
+  if (data.tickets > 0) {
+    if (user !== null) {
+      return <TicketOptions show={!show} data={data} />
+    } else {
+      return <button
+        id="event-toggle-modal-btn"
+        onClick={() => handleClick(true)}
+      >
+        Login to purchase tickets
+      </button>
+    }
+  } else {
+    return null
+  }
+}
+
 const EventComponent = () => {
   const navigate = useNavigate();
   const [livestreamAvailable, setLivestreamAvailable] = useState(false);
@@ -38,25 +55,11 @@ const EventComponent = () => {
       .catch((error) => console.log(error));
   }
 
-  function checkDate() {
-    let eventStart = new Date(eventData.date);
-    eventStart.setHours(eventData.time);
-    let eventEnd = new Date(eventStart);
-    let currentTime = new Date();
-    eventEnd.setHours(eventStart.getHours() + 1);
-
-    if (currentTime >= eventStart && !(currentTime > eventEnd)) {
-      setLivestreamAvailable(true);
-    }
-  }
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    checkDate();
-  }, [eventData]);
 
   const randomizeAudioStreamId = Math.floor(Math.random() * (2 - 1 + 1) + 1);
 
@@ -70,6 +73,7 @@ const EventComponent = () => {
               <img src={eventData.img_url} alt="artist image" />
             </div>
             <div className="venue-info-1">
+              {eventData.tickets == 0 ? (<h1 className="sold-out">Sold out!</h1>): (<div></div>)}
               <h2>{eventData.artist}</h2>
               <h3>{eventData.venue}</h3>
               <h4>
@@ -83,22 +87,6 @@ const EventComponent = () => {
                 </p>
                 <p>Age limit: {eventData.age_limit}</p>
                 <p>Type of event: {eventData.type}</p>
-                {eventData.type === "livestream" ? (
-                  <button id="livestream-button"
-                    onClick={() => {
-                      navigate("/livestream/" + eventData.id);
-                    }}
-                    disabled={!livestreamAvailable ? true : false}
-                  >
-                    {livestreamAvailable ? (
-                      <span>Go to livestream</span>
-                    ) : (
-                      <span>Livestream not available</span>
-                    )}
-                  </button>
-                ) : (
-                  <div></div>
-                )}
               </div>
               <div className="eventinfo-audio">
                 <audio controls>
@@ -110,16 +98,11 @@ const EventComponent = () => {
               </div>
             </div>
           </div>
-          {user !== null ? (
-            <TicketOptions show={dataLoaded} data={eventData} />
-          ) : (
-            <button
-              id="event-toggle-modal-btn"
-              onClick={() => setToggleLoginModal(true)}
-            >
-              Login to purchase tickets
-            </button>
-          )}
+          <ShowTicketOptions
+            data={eventData}
+            show={toggleLoginModal}
+            user={user}
+            handleClick={setToggleLoginModal} />
         </div>
       )}
       <ModalComponent

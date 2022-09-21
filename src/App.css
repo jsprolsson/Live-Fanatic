@@ -1,9 +1,15 @@
 .main {
   max-width: 1000px;
-  margin: auto;
 }
-.body{
- min-height: 100vh;
- display: flex;
- flex-direction: column;
+
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1000px) {
+  .main {
+    margin: auto;
+  }
 }

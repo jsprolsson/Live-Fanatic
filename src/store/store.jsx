@@ -9,7 +9,7 @@ const getState = () => {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const userInStorage = JSON.parse(localStorage.getItem('user'))
+    const userInStorage = JSON.parse(sessionStorage.getItem('user'))
 
     if (userInStorage) {
       setUser(userInStorage)

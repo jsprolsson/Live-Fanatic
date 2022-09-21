@@ -8,12 +8,13 @@ const style = {
 }
 
 const btnStyle = {
-  backgroundColor: '#343A40',
-  color: '#60c7a2',
-  borderRadius: '5px',
-  padding: '5px',
-  width: '100px'
-}
+  backgroundColor: "#60c7a2",
+  color: "#ffffff",
+  borderRadius: "5px",
+  padding: "5px",
+  height: "30px",
+  border: "0",
+};
 
 const PageNotFoundComponent = () => {
   const navigate = useNavigate()

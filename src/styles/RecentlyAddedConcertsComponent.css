@@ -9,7 +9,7 @@
   gap: 10px;
 }
 
-.child-containers>a {
+.child-containers > a {
   flex-grow: 1;
   text-decoration: none;
   height: 100%;
@@ -19,11 +19,41 @@
   color: white;
   text-align: center;
   background: rgba(0, 0, 0, 0.6);
+  background-color: black;
+  font-size: 3vw;
+  margin-top: 0;
+  padding: 10px;
+}
+
+.recently-added-headline {
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
   font-size: 3vw;
   margin-top: 0;
 }
+.recently-added-artist {
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 3vw;
+  margin-top: 0;
+}
+.recently-added-venue {
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 2vw;
+}
+.recently-added-date {
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 1vw;
+  margin-top: 0;
+}
 
-.recently-added-concerts-container>h2 {
+.recently-added-concerts-container > h2 {
   font-size: 4vw;
   margin-top: 0;
 }
@@ -39,16 +69,84 @@
   background-position: 50% 50%;
 }
 
-.recently-added-wrapper>a {
+.recently-added-wrapper > a {
   text-decoration: none;
 }
 
-@media screen and (min-width: 1000px) {
-  .concertstext {
-    font-size: 30px;
+@media screen and (min-width: 679px) {
+  .concertArtistDescription {
+    font-size: 40px;
   }
 
-  .recently-added-concerts-container>h2 {
+  .recently-added-concerts-container > h2 {
+    font-size: 20px;
+  }
+
+  .concertDescription {
+    margin-top: 120px;
+    text-align: center;
+  }
+
+  .concertDate {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .concertArtistDescription {
     font-size: 40px;
+  }
+
+  .recently-added-concerts-container > h2 {
+    font-size: 40px;
+  }
+
+  .concertDescription {
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .concertDate {
+    font-size: 8px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1175px) {
+  .concertArtistDescription {
+    font-size: 40px;
+    margin-bottom: 100px;
+  }
+
+  .recently-added-concerts-container > h2 {
+    font-size: 40px;
+  }
+
+  .concertDescription {
+    margin-top: 55px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .concertDate {
+    font-size: 8px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 678px) {
+  .concertArtistDescription {
+    font-size: 40px;
+  }
+
+  .concertDescription {
+    margin-top: 145px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .concertDate {
+    font-size: 8px;
+    text-align: center;
   }
 }

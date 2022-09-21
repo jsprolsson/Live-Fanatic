@@ -11,7 +11,7 @@ function FooterComponent() {
   return (
     <footer className="Navbar-Footer" id="navbar-footer-desktop">
       <button className="FooterButtonHome">
-        <Link to="/">
+        <Link id="aHome" to="/">
           <span className="material-symbols-outlined">home</span>
         </Link>
       </button>

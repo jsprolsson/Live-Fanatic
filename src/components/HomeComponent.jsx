@@ -23,7 +23,7 @@ function HomeComponent() {
   const eventsInNearFuture = events
   .filter(event => Date.parse(event.date) >= currentDate && Date.parse(event.date) <= currentDatePlusMonth)
     .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
-    console.log(eventsInNearFuture)
+
 
   return (
     <div className="home-main">
