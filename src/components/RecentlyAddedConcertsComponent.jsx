@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 const RecentlyAddedConcertsComponent = ({ events }) => {
 
+
   return (
     <>
       <div className="recently-added-concerts-container">
-        <h2 className="concertstext">Recently added concerts</h2>
+        <h2 className="recently-added-headline">Recently added concerts</h2>
         <div className="child-containers">
           {events.map((event) => (
             <Link to={"events/" + event.id}>
@@ -18,13 +19,13 @@ const RecentlyAddedConcertsComponent = ({ events }) => {
               >
                 <section className="concert-container">
                   <div className="concertArtistDescription">
-                    <h4 className="concertstext">{event.artist}</h4>
+                    <h4 className="recently-added-artist">{event.artist}</h4>
                   </div>
-                  <div className="concertDescription"> 
-                    <span className="concertstext">{event.venue}</span>
+                  <div className="concertDescription">
+                    <span className="recently-added-venue">{event.venue}</span>
                   </div>
                   <div className="concertDate">
-                    <span className="concertstext"> {event.date}</span>
+                    <span className="recently-added-date"> {event.date}</span>
                   </div>
                 </section>
               </div>

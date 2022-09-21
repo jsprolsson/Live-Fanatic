@@ -24,6 +24,7 @@ function HomeComponent() {
   .filter(event => Date.parse(event.date) >= currentDate && Date.parse(event.date) <= currentDatePlusMonth)
     .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
 
+
   return (
     <div className="home-main">
       <div className="mainpic">
