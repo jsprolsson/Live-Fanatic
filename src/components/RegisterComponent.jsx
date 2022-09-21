@@ -133,7 +133,7 @@ function RegisterComponent() {
             value={confirmPassword}
             id="confirmPassword"
             onChange={handleInputChange}
-            placeholder="Confirm password"
+            placeholder="Confirm Password"
           />
         </div>
         <button className="register-button" type="submit">

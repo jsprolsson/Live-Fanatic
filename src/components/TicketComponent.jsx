@@ -4,6 +4,7 @@ import paymentService from '../services/paymentService';
 import {useEffect, useState} from'react'
 import eventService from '../services/eventService';
 import UserTicketsToEventComponent from './UserTicketsToEventComponent';
+import '../styles/UserTicketsToEventComponent.css'
 
 
 
@@ -61,11 +62,11 @@ function TicketComponent(){
           />
         ))}
       </div>
-
-      <button type="button" onClick={Print}>
+      <div className="button-container">
+      <button type="button" id="print-button" onClick={Print}>
         {" "}
-        Print div
-      </button>
+        Print tickets
+      </button></div>
     </>
   );
    

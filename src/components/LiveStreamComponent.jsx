@@ -73,7 +73,7 @@ function LiveStreamComponent() {
           <div className="livestream-content">
             <h2>{event.artist} at {event.venue}</h2>
             <h3>{event.date}</h3>
-            <h4>Information</h4>
+            <h4>Information about this live event:</h4>
             <p>{event.description}</p>
           </div>
         </div> : <div className="livestream-error">

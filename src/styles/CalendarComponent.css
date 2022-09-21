@@ -1,15 +1,16 @@
 .calendar-cards {
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
-  margin-right: 10px;
+   /* margin-left: 20vw; 
+   margin-right: 20vw;  */
+   margin-right: 20vw;
   margin-top: 10px;
+  width: 100%;
 }
 
 .calendar-cards > a {
   text-decoration:none;
   color: black;
-  
 }
 
 .card {
@@ -45,11 +46,11 @@
   font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 48;
 }
 
-@media (min-width: 668px) {
+@media (min-width: 768px) {
   .calendar-cards {
     display: flex;
     flex-direction: column;
-    margin-left: 20vw;
+    /* margin-left: 20vw; */
     margin-right: 20vw;
     margin-top: 2vh;
    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

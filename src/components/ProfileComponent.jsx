@@ -158,7 +158,7 @@ function ProfileComponent() {
                     id="email"
                     value={email}
                     onChange={(e) => setUpdateEmail(e.target.value)}
-                    placeholder="email"
+                    placeholder="Email"
                   ></input>
                 </label>
                 <label className="profile-label" htmlFor="confirmPassword">

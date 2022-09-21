@@ -35,7 +35,7 @@ function App() {
 
         <GlobalContextProvider>
           <HeaderComponent />
-          <main>
+          <main className="main">
             <Routes>
 
               <Route path="/" element={<HomeComponent />} />
