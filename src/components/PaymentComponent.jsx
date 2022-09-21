@@ -101,11 +101,11 @@ const PaymentComponent = (props) => {
 
               <div className="paycounter">
                 <p></p>
-                <button className="paybtn" onClick={removeTicket}>
+                <button className="paybtnNumber" onClick={removeTicket}>
                   -
                 </button>
                 <p>{numberOfTicket}</p>
-                <button className="paybtn" onClick={addTicket}>
+                <button className="paybtnNumber" onClick={addTicket}>
                   +
                 </button>
               </div>

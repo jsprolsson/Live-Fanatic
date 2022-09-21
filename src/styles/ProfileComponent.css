@@ -57,6 +57,7 @@
   background-color: grey;
 }
 
+
 .user-purchase-list {
   margin: 5px;
 }
@@ -95,6 +96,11 @@
   font-size: large;
   margin-bottom: 2vh;
 }
+.button-ticket{
+  background-color: #60c7a2;
+  color:white;
+  border:none;
+ }
 
 .profile-unauthorized-page {
   display: flex;
@@ -108,6 +114,8 @@
   color: #60c7a2;
   cursor: pointer;
 }
+
+
 
 @media only screen and (min-width: 760px) {
   .profile-page {
@@ -165,19 +173,51 @@
   font-size: 20px;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 1, 0.35) 0px 5px 15px;
+
+  
+
  }
+ .button-ticket{
+  background-color: #60c7a2;
+  color:white;
+  border:none;
+ }
+
  .profile-image{
   max-height: 190px;
  }
- #logout-button{
+ .button-logout{
+  align-self: center;
+  border-radius:5px;
+  border:none;
   font-size:20px;
-  height:30px;
-  width: 100px;
+  
   color:white;
   background-color: rgb(113, 2, 2);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  
  
- 
- }
+}
+ button.button-logout:hover,
+ button.button-logout:active{
+  font-size: 150%;
+  cursor: pointer;
+}
+
+ button.button:hover,
+ button.button:active{
+  font-size: 120%;
+  cursor: pointer;
+}
+
+button#ticketbutton:hover,
+ button#ticketbutton:active{
+  font-size:250%;
+  cursor: pointer;
+}
+
+
+
+
+
 }

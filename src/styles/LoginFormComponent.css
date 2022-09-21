@@ -24,6 +24,7 @@ label {
   border: 0;
   border-radius: 5px;
   height: 30px;
+  cursor: pointer;
 }
 
 #login-error {
@@ -36,10 +37,19 @@ label {
   border: 0;
   border-radius: 5px;
   height: 30px;
+  cursor: pointer;
 }
 .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2vh;
+}
+button.button-navigate-to-register:hover,
+button.button-navigate-to-register:active{
+  font-size:120%
+}
+button.login-button:hover,
+button.login-button:active{
+  font-size:120%
 }

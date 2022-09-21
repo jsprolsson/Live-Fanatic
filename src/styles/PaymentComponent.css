@@ -67,9 +67,24 @@
   color: white;
   background-color: #60c7a2;
   border: 0;
+  
 
 
 }
+button.paybtn:hover,
+button.paybtn:active{
+  font-size: 150%;
+  cursor: pointer;
+}
+.paybtnNumber{
+  border-radius: 5px;
+  margin: 8px;
+  color: white;
+  background-color: #60c7a2;
+  border: 0;
+  cursor: pointer;
+}
+
 
 .paycounter {
   display: grid;

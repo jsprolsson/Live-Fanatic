@@ -47,4 +47,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  button.register-button:hover,
+  button.register-button:active{
+    font-size:150%
+  }
 }
+

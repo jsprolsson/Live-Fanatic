@@ -38,3 +38,8 @@
 .modal-button {
   font-family: "Quicksand", sans-serif;
 }
+button.modal-button:hover,
+button.modal-button:active{
+  font-size: 120%;
+  cursor: pointer;
+}

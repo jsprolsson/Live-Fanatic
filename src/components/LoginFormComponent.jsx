@@ -41,7 +41,7 @@ function LoginFormComponent({ Login, error }) {
             placeholder="Password"
           />
         </div>
-        <input type="submit" value="Login" className="login-button" />
+        <button type="submit" value="Login" className="login-button">Login</button>
       </div>
        <div className="register-form">
         <p>Do you want to register?</p>
