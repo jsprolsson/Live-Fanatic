@@ -63,7 +63,7 @@ function Searchbar({
 
 function NoResult({ searchString, onClick }) {
   return (
-    <div >
+    <div>
       <p className="no-result">No results for "{searchString}", please refine your search</p>
     </div>
   );
