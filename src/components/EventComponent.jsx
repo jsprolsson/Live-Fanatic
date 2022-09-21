@@ -77,7 +77,7 @@ const EventComponent = () => {
               <h2>{eventData.artist}</h2>
               <h3>{eventData.venue}</h3>
               <h4>
-                {eventData.address}, {eventData.city}
+                {eventData.address}
               </h4>
               <p> kl. {eventData.time}</p>
               <p>{eventData.date}</p>
