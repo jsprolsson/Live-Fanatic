@@ -34,9 +34,19 @@ const LoginComponent = ({ closeModal }) => {
   return (
     <div>
       <LoginFormComponent Login={Login} error={error} />
-      
+      <div className="register-form">
+        <em>Not a member? </em>
+        <button
+          className="button-navigate-to-register"
+          onClick={() => {
+            navigate("/register");
+            closeModal();
+          }}
+        >
+          Register here
+        </button>
+      </div>
     </div>
-   
   );
 };
 
