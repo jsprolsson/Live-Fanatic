@@ -122,9 +122,11 @@
     grid-auto-rows: minmax(100px, auto);
     border-radius: 10px;
     padding: 10px;
-    box-shadow: rgba(0, 0, 1, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background: #fff;
-    border-width: 3px;
+    border: none;
+    margin-bottom: 10px;
+
     
    
   }
