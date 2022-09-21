@@ -48,10 +48,44 @@
 }
 
 .paytotalPrice {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 8vh;
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pay-continue-btn {
+  padding: 10px;
+  margin-bottom: 5px;
+  color: white;
+  background-color: #60c7a2;
+  border: 0;
+  border-radius: 5px;
+}
+
+#pay-confirm-buy {
+  padding: 10px;
+  margin-bottom: 5px;
+  color: white;
+  background-color: #60c7a2;
+  border: 0;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#pay-cancel-btn {
+  padding: 10px;
+  margin-bottom: 5px;
+  color: white;
+  background-color: lightcoral;
+  border: 0;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#stripe-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .payhr {
@@ -67,8 +101,6 @@
   color: white;
   background-color: #60c7a2;
   border: 0;
-
-
 }
 
 .paycounter {
@@ -87,12 +119,32 @@
 }
 
 .confirmdiv {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-items: center;
+  align-items: center;
   margin: 2vh;
+  gap: 15px;
 }
 
 .confirmdiv>a {
   padding: 20px;
   text-decoration: none;
+}
+
+#pay-livestream-info {
+  color: red;
+  margin-top: 15px;
+}
+
+#pay-amountoftickets {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  #stripe-btns {
+    flex-direction: row;
+  }
 }
