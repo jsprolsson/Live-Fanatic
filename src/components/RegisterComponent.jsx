@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/RegisterComponent.css";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../store/useStore";
+import userservice from "../services/userservice";
 
 function RegisterComponent() {
   const [email, setEmail] = useState("");
@@ -65,18 +66,21 @@ function RegisterComponent() {
 
         const response = await fetch("/data/users", registerRequest);
 
-        if (response.ok) {
-          const loginRequest = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              email: email,
-              password: password,
-            }),
-          };
+        // if (response.ok) {
+        //   // const loginRequest = {
+        //   //   method: "POST",
+        //   //   headers: { "Content-Type": "application/json" },
+        //   //   body: JSON.stringify({
+        //   //     email: email,
+        //   //     password: password,
+        //   //   }),
+        //   };
 
-          const response = await fetch("/data/login", loginRequest);
-          const loginData = await response.json();
+          const details = {email: email, password: password};
+          const loginData = await userservice.login(details, setUser)
+
+        //   const response = await fetch("/data/login", loginRequest);
+        //   const loginData = await response.json();
           if (loginData.loggedIn) {
             //fetch userid
             const userResponse = await fetch("/data/login");
@@ -90,7 +94,7 @@ function RegisterComponent() {
             setUser(newUser);
             navigate("/");
           }
-        } else {
+         else {
           ErrorMessage("Something went wrong, try again");
         }
       }
