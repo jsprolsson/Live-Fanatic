@@ -17,7 +17,7 @@
   display: grid;
   height: 10vh;
   width: 100%;
-  margin-top: -12vh;
+  margin-top: -70px;
   color: rgba(255, 255, 255, 0.784);
   position: sticky;
   background-color: #0a0a0a9b;
@@ -56,6 +56,10 @@
   padding-right: 17px;
 }
 
+.today-card-wrapper>.subpic>Link>a {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 380px) {
   .cinfo>p {
     font-size: 15px;
@@ -86,6 +90,6 @@
   .today-card-wrapper {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 70%;
   }
 }
