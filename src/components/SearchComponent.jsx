@@ -63,8 +63,8 @@ function Searchbar({
 
 function NoResult({ searchString, onClick }) {
   return (
-    <div className="search-card search-error">
-      <p>No results for "{searchString}", please refine your search</p>
+    <div >
+      <p className="no-result">No results for "{searchString}", please refine your search</p>
     </div>
   );
 }
@@ -130,7 +130,7 @@ function DateFilter({
             </button>
           </>
         ) : (
-          <div></div>
+          null
         )}
       </div>
     </>
@@ -226,12 +226,16 @@ function SearchComponent() {
                   Date.parse(concert.date) <= Date.parse(selectedDateTwo)
               ))
       : (dataToShow = radioCheckAll
-          ? events.filter((concert) =>
-              concert.artist.toLowerCase().includes(searchParam.toLowerCase())
-            )
-          : events.filter((concert) =>
-              concert.genre.toLowerCase().includes(searchParam.toLowerCase())
-            ));
+          ? events
+              .filter((concert) =>
+                concert.artist.toLowerCase().includes(searchParam.toLowerCase())
+              )
+              .filter((concert) => Date.parse(concert.date) >= new Date())
+          : events
+              .filter((concert) =>
+                concert.genre.toLowerCase().includes(searchParam.toLowerCase())
+              )
+              .filter((concert) => Date.parse(concert.date) >= new Date()));
   }
 
   return (
