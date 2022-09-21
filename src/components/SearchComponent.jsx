@@ -49,6 +49,8 @@ function Searchbar({
           <option>Rock</option>
           <option>Orchestra</option>
           <option>Metal</option>
+          <option>Pop</option>
+          <option>Post-punk</option>
         </datalist>
       ) : (
         <></>
@@ -64,7 +66,9 @@ function Searchbar({
 function NoResult({ searchString, onClick }) {
   return (
     <div>
-      <p className="no-result">No results for "{searchString}", please refine your search</p>
+      <p className="no-result">
+        No results for "{searchString}", please refine your search
+      </p>
     </div>
   );
 }
@@ -129,9 +133,7 @@ function DateFilter({
               Reset
             </button>
           </>
-        ) : (
-          null
-        )}
+        ) : null}
       </div>
     </>
   );
