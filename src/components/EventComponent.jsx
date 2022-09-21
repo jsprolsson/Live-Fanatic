@@ -87,6 +87,7 @@ const EventComponent = () => {
               <img src={eventData.img_url} alt="artist image" />
             </div>
             <div className="venue-info-1">
+              {eventData.tickets == 0 ? (<h1 className="sold-out">Sold out!</h1>): (<div></div>)}
               <h2>{eventData.artist}</h2>
               <h3>{eventData.venue}</h3>
               <h4>
