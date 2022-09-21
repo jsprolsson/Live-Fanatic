@@ -93,7 +93,7 @@ function HeaderComponent() {
             onKeyDown={inputOnEnterPress}
             value={searchString}
             onChange={(e) => setSearchString(e.target.value)}
-            placeholder="Search Artist"
+            placeholder="Search"
           />
           <button
             onClick={handleSearchSubmit}

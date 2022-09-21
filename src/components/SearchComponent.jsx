@@ -14,7 +14,7 @@ function RadioBoxes({ radioAllValue, radioGenreValue, handleRadioClick }) {
           onChange={handleRadioClick}
           type="radio"
         />
-        All
+        Artist
       </label>
       <label className="search-checkbox">
         <input
