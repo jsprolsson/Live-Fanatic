@@ -1,5 +1,3 @@
-
-
 .register-page {
   display: flex;
   flex-direction: column;
@@ -39,11 +37,12 @@
   font-weight: 1000;
 }
 
-.register-error {
-  position: absolute;
-  top: 130px;
-  color: red;
-  width: 50%;
+.register-page-error {
+  color: rgb(232, 62, 62);
+  text-align: center;
+  font-size: medium;
+  margin-bottom: 2vh;
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {

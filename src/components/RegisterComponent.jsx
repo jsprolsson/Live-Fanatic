@@ -46,19 +46,16 @@ function RegisterComponent() {
     } else if (password != confirmPassword) {
       ErrorMessage("Password do not match");
     } else {
-      const registerRequest = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      };
+      let getAllUsersResponse = await fetch("/data/users");
+      let allUsers = await getAllUsersResponse.json();
+      console.log(allUsers);
+      const foundDuplicate = allUsers.filter((user) => user.email == email);
+      console.log(foundDuplicate);
 
-      const response = await fetch("/data/users", registerRequest);
-
-      if (response.ok) {
-        const loginRequest = {
+      if (foundDuplicate.length != 0) {
+        ErrorMessage("Pick another username");
+      } else {
+        const registerRequest = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -67,23 +64,36 @@ function RegisterComponent() {
           }),
         };
 
-        const response = await fetch("/data/login", loginRequest);
-        const loginData = await response.json();
-        if (loginData.loggedIn) {
-          //fetch userid
-          const userResponse = await fetch("/data/login");
-          const userFromDb = await userResponse.json();
-          //set user in context
-          const newUser = {
-            email: email,
-            password: password,
-            id: userFromDb.id,
+        const response = await fetch("/data/users", registerRequest);
+
+        if (response.ok) {
+          const loginRequest = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: email,
+              password: password,
+            }),
           };
-          setUser(newUser);
-          navigate("/");
+
+          const response = await fetch("/data/login", loginRequest);
+          const loginData = await response.json();
+          if (loginData.loggedIn) {
+            //fetch userid
+            const userResponse = await fetch("/data/login");
+            const userFromDb = await userResponse.json();
+            //set user in context
+            const newUser = {
+              email: email,
+              password: password,
+              id: userFromDb.id,
+            };
+            setUser(newUser);
+            navigate("/");
+          }
+        } else {
+          ErrorMessage("Something went wrong, try again");
         }
-      } else {
-        ErrorMessage("Something went wrong, try again");
       }
     }
   };
@@ -92,9 +102,8 @@ function RegisterComponent() {
     <div className="register-page">
       <h1 id="register-header">Register to Live-Fanatic</h1>
       <form id="register-form" onSubmit={handleSubmit}>
-        {error != "" ? <div className="register-error">{error}</div> : null}
-
         <div className="register-field">
+          <div className="register-page-error">{error}</div>
           <label className="label-text" htmlFor="email">
             {" "}
             Enter E-mail
