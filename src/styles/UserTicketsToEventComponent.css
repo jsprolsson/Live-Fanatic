@@ -16,8 +16,12 @@
 
 }
 
-.ticket-header {
-    padding: 2vh
+
+.ticket-info > h2,
+.ticket-info > p {
+    font-size: 1.3rem;
+    margin: 10px;
+
 }
 
 .artist-name {
