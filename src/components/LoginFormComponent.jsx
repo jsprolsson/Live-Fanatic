@@ -44,10 +44,10 @@ function LoginFormComponent({ Login, error }) {
         <button type="submit" value="Login" className="login-button">Login</button>
       </div>
        <div className="register-form">
-        <p>Do you want to register?</p>
+        <em>Not a member? </em>
           <button className="button-navigate-to-register"onClick={()=>{
             navigate("/register")
-          }}>Register</button>
+          }}>Register here</button>
        </div>
        
     </form>

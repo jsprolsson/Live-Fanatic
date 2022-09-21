@@ -80,7 +80,7 @@ useEffect(() => {
     </div>
     
     {expiredTicket ? <div className="button-component">
-      <button className="button expired-ticket" id="ticketbutton"type="button">
+      <button className="button expired-ticket" id="ticketbutton-expired"type="button">
         Expired
       </button>
 

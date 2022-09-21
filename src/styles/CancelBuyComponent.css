@@ -30,12 +30,12 @@
   border: none;
   margin-top: 25px;
   text-align: center;
+  cursor: pointer;
 }
 
 #cancelbuy-H3 {
   color: black;
   text-align: center;
-
 }
 
 @media screen and (min-width: 768px) {
@@ -54,6 +54,7 @@
     margin-top: 2vh;
     border: none;
     text-align: center;
+    cursor: pointer;
   }
 
   #cancelbuy-BackToEventpagebtn {
@@ -72,12 +73,10 @@
     text-align: center;
   }
 
-
   .cancelbuy-position {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     gap: 50px;
   }
-
 }

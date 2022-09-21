@@ -52,7 +52,7 @@ function RegisterComponent() {
       const foundDuplicate = allUsers.filter((user) => user.email == email);
 
       if (foundDuplicate.length != 0) {
-        ErrorMessage("Pick another username");
+        ErrorMessage("Email is already in use");
       } else {
         const registerRequest = {
           method: "POST",

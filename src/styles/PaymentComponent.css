@@ -7,7 +7,6 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
 }
 
-
 .payevent {
   margin-top: -15px;
 }
@@ -24,14 +23,11 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   padding: 6px;
-
-
 }
 
-.payticketschoice>h3 {
+.payticketschoice > h3 {
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 .paynumberOfTickets {
@@ -60,6 +56,11 @@
   background-color: #60c7a2;
   border: 0;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+#pay-continue-btn:hover {
+  font-size: 120%;
 }
 
 #pay-confirm-buy {
@@ -70,6 +71,7 @@
   border: 0;
   border-radius: 5px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #pay-cancel-btn {
@@ -80,6 +82,15 @@
   border: 0;
   border-radius: 5px;
   text-decoration: none;
+  cursor: pointer;
+}
+
+#pay-cancel-btn:hover {
+  font-size: 120%;
+}
+
+#pay-confirm-buy:hover {
+  font-size: 120%;
 }
 
 #stripe-btns {
@@ -101,36 +112,21 @@
   color: white;
   background-color: #60c7a2;
   border: 0;
-
-
 }
-button.paybtn:hover,
-button.paybtn:active{
-  font-size: 150%;
-  cursor: pointer;
-}
-.paybtnNumber{
-  border-radius: 5px;
-  margin: 8px;
-  color: white;
-  background-color: #60c7a2;
-  border: 0;
-  cursor: pointer;
-}
-
 
 .paycounter {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.paycounter>button {
+.paycounter > button {
   margin: 8px;
   border-radius: 50%;
   border: 0;
+  cursor: pointer;
 }
 
-.paycounter>p {
+.paycounter > p {
   justify-self: center;
 }
 
@@ -143,11 +139,10 @@ button.paybtn:active{
   gap: 15px;
 }
 
-.confirmdiv>a {
+.confirmdiv > a {
   padding: 20px;
   text-decoration: none;
 }
-
 
 #pay-livestream-info {
   color: red;
@@ -165,4 +160,3 @@ button.paybtn:active{
     flex-direction: row;
   }
 }
-

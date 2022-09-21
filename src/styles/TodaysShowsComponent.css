@@ -56,7 +56,9 @@
   padding-right: 17px;
 }
 
-.today-card-wrapper>.subpic>Link>a {
+
+
+.today-card-wrapper > a{
   text-decoration: none;
 }
 

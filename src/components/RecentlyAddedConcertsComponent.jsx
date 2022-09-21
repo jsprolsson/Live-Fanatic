@@ -1,19 +1,16 @@
-import { useState, useEffect } from 'react'
-import '../styles/RecentlyAddedConcertsComponent.css'
+import { useState, useEffect } from "react";
+import "../styles/RecentlyAddedConcertsComponent.css";
 import { Link } from "react-router-dom";
 
 const RecentlyAddedConcertsComponent = ({ events }) => {
-
-
   return (
     <>
       <div className="recently-added-concerts-container">
         <h2 className="recently-added-headline">Recently added concerts</h2>
         <div className="child-containers">
           {events.map((event) => (
-            <Link to={"events/" + event.id}>
+            <Link key={event.id} to={"events/" + event.id}>
               <div
-                key={event.id}
                 className="recently-added-wrapper"
                 style={{ backgroundImage: `url(${event.img_url})` }}
               >
@@ -35,6 +32,6 @@ const RecentlyAddedConcertsComponent = ({ events }) => {
       </div>
     </>
   );
-}
+};
 
 export default RecentlyAddedConcertsComponent;

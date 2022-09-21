@@ -24,9 +24,6 @@
   height: auto;
 }
 
-/* .left {
-  grid-row: 2 / 3;
-} */
 
 .eventinfo-audio {
   margin-top: 5px;
@@ -71,10 +68,12 @@ p {
   border: 0;
   border-radius: 5px;
   height: 30px;
+  cursor: pointer;
 }
 
 #livestream-button {
   margin-top: 20px;
+  cursor: pointer;
 }
 .eventinfo-audio {
     margin: 5px;
@@ -109,6 +108,7 @@ p {
 
   #livestream-button {
     margin-top: 20px;
+    cursor: pointer;
   }
 }
 
