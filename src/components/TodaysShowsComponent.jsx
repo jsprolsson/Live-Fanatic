@@ -5,7 +5,7 @@ const TodaysShowsComponent = ({ events }) => {
 
   return (
     <div className="todays-shows-main">
-      <h1 className="concertstext">Upcoming months events</h1>
+      <h2 className="concertstext">Upcoming months events</h2>
       <div className="today-shows-list">
         {events.map((event) => (
           <div key={event.id} className="today-card-wrapper">

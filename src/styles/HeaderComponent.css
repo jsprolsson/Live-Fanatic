@@ -109,9 +109,10 @@
     flex: 1;
     gap: 20px;
     justify-content: center;
+    margin-right: 10px;
   }
 
-  .header-nav-top>Link>a {
+  .header-nav-top > Link > a {
     text-decoration: none;
   }
 
@@ -126,6 +127,4 @@
   .hamburger {
     display: none;
   }
-
-
 }
