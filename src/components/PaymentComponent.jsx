@@ -111,6 +111,7 @@ const PaymentComponent = (props) => {
 
               {liveStream ? <p id="pay-livestream-info">Livestreams are limited to one ticket only.</p> : <div className="paycounter">
                 <p></p>
+
                 <button disabled={liveStream} className="paybtn" onClick={removeTicket}>
                   -
                 </button>
@@ -118,6 +119,7 @@ const PaymentComponent = (props) => {
                   {numberOfTicket}
                 </p>
                 <button disabled={liveStream} className="paybtn" onClick={addTicket}>
+
                   +
                 </button>
               </div>}

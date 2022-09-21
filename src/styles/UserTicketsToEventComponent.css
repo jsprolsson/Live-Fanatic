@@ -42,4 +42,14 @@ margin-top: 10px;
 
 .button-container>button {
     margin: 1vh;
+
+
+}
+button#print-button:hover,
+button#print-button:active{
+    font-size:120%;
+    cursor: pointer;
+
+
+
 }

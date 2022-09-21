@@ -202,7 +202,7 @@ function ProfileComponent() {
                 <div className="profile-error">{error}</div>
               </form>
               <div className="logout-button-component">
-                <button className="button" id="logout-button" onClick={login}>
+                <button className="button-logout"  onClick={login}> 
                   Log Out
                 </button>
               </div>
