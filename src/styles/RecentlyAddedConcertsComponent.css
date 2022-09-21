@@ -43,13 +43,13 @@
   color: white;
   text-align: center;
   background: rgba(0, 0, 0, 0.6);
-  font-size: 2vw;
+  font-size: 3vw;
 }
 .recently-added-date {
   color: white;
   text-align: center;
   background: rgba(0, 0, 0, 0.6);
-  font-size: 1vw;
+  font-size: 3vw;
   margin-top: 0;
 }
 
@@ -110,6 +110,41 @@
     font-size: 8px;
     text-align: center;
   }
+  
+
+  .recently-added-date {
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .recently-added-artist {
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 30px;
+    margin-top: 0;
+  }
+
+  .recently-added-venue {
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+  }
+
+  .concertstext {
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    background-color: black;
+    font-size: 40px;
+    margin-top: 0;
+    padding: 10px;
+  }
+
 }
 
 @media screen and (min-width: 1175px) {
