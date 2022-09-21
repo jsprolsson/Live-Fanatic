@@ -16,12 +16,8 @@
 
 }
 
-
-.ticket-info > h2,
-.ticket-info > p {
-    font-size: 1.3rem;
-    margin: 10px;
-
+.ticket-header {
+    padding: 2vh
 }
 
 .artist-name {
@@ -34,14 +30,15 @@
 }
 
 #print-button {
-   
-color: #60c7a2;
+
+    color: #60c7a2;
     background-color: #343A40;
     margin-bottom: 5px;
     padding: 5px;
     border-radius: 5px;
 }
-.button-container>button{
+
+.button-container>button {
     margin: 1vh;
 
 }
