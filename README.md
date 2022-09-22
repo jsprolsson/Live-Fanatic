@@ -2,7 +2,7 @@
 
 Hej Benjamin! 
 
-Det ligger en textfil i databasmappen i backend-projektet med lite SQL inserts. Databas-filen har redan lite data i sig som vi använde till redovisningen, men vill du nollställa den för evenemang och användarköp så kan du köra den.
+Det ligger en textfil i databasmappen i backend-projektet med lite SQL inserts. Databas-filen har redan lite data i sig som vi använde till redovisningen, men vill du återställa den med originaldatan vi har använt under projektets gång för evenemang och användarköp så kan du köra den.
 
 Kom ihåg att installera dependencies i både backendprojektet och frontenden.
 
