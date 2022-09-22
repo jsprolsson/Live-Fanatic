@@ -1,0 +1,90 @@
+DROP TABLE IF EXISTS usertickets;
+DROP TABLE IF EXISTS events;
+
+
+CREATE TABLE events(
+	id INT PRIMARY KEY NOT NULL,
+	tickets INT NOT NULL,
+	time TEXT NOT NULL,
+	date TEXT NOT NULL,
+	city TEXT,
+	address TEXT,
+	artist TEXT,
+	age_limit INT,
+	price INT,
+	genre TEXT,
+	img_url TEXT,
+	description TEXT, 
+	type TEXT,
+	venue TEXT
+);
+
+CREATE TABLE usertickets(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	event_id int,
+	user_id int,
+	tickets int,
+	CONSTRAINT fk_event
+	FOREIGN KEY (event_id)
+	references events(id),
+	CONSTRAINT fk_user
+	FOREIGN KEY (user_id)
+	references users(id)
+);
+
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (1, 200, "20.00", "2022-09-21","", "Kent", 18, 500, "Rock",
+	"https://i.scdn.co/image/ab67616d00001e0246654ced34cdf02ded1bb507", "Kent rockar loss",
+	"livestream","The Cobalt");
+	
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (2, 0, "20.00", "2022-10-20","Storgatan 3 Malmö", "Rammstein", 18, 800, "Metal",
+	"https://gaffa.blob.core.windows.net/gaffa-media/media/a0571aba-7c9d-4f77-87ea-d1d1bb4439d0/Rammstein-default.webp", "Tyska pyromaner inomhus",
+	"live","Malmö Arena");
+	
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (3, 500, "17.00", "2022-11-14","Lillgatan 5 Malmö", "Bathouse", 10, 200, "Rock",
+	"https://i1.sndcdn.com/artworks-xDXOnySsWzjbaW5x-Q2qWuw-t240x240.jpg", "Död åt egot",
+	"live","Orange No.5");
+	
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (4,1000,"15.00", "2022-12-07","Kanalen 10 Malmö", "Score!", 7, 345, "Orchestra",
+	"https://old.liu.se/ikk/music/score/1.548752/score_420.png", "Lyssna på spelmusik som aldrig förr",
+	"live","Malmö Live");
+	
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (5, 6000,"20.00", "2022-10-22","Storgatan 3 Malmö", "Lisa Miskovsky", 18, 500, "Rock",
+	"https://images.aftonbladet-cdn.se/v2/images/f63bd507-b02d-47c7-a92a-51f189d71576?fit=crop&format=auto&h=1267&q=50&w=1900&s=f4b78034a9857a0c286b6827cca61d3a32d1d0ee", "Ballader från nu och då",
+	"live","Malmö Arena");
+
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (6, 100,"10.00", "2022-09-22","", "ABBA", 45, 1500, "Pop",
+	"https://www.maklarringen.se/globalassets/ovrigt/upptack-bloggarna/vallentuna/abba2.jpg?preset=Content", "Äntligen är megastjärnorna tillbaka! Med fjorton nya album på gång är ABBA mer levande än någonsin.",
+	"livestream","Friends Arena");
+
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (7, 250,"22.00", "2023-02-19","Storgatan 8 Malmö", "Iceage", 15, 50, "Post-punk",
+	"https://static.stereogum.com/uploads/2018/03/JAR8133-1522332411.jpg", "Danska punkare som gillar att smöga cigg",
+	"live","Lokala haket");
+
+
+INSERT INTO events(id,tickets,time,date,address,artist,
+	age_limit,price,genre,img_url,description,type,
+	venue)
+VALUES (8, 50000,"18.00", "2024-05-19","Mallorcagatan 15 Island", "Ted Gärdestad", 15, 300, "Härlig svensk pop",
+	"https://modernpsykologi.se/app/uploads/modernpsykologi/2021/03/11409358_800_8001.jpg", "Härliga sommarvisor framförs bäst när dem framförs av Ted Gärdestad",
+	"live","Vips Arena");
